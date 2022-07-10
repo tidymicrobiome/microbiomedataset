@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   filtering: filtering.html
   microbiomedataset: microbiomedataset.html
-last_built: 2022-07-10T05:10Z
+last_built: 2022-07-10T05:13Z
 urls:
   reference: https://tidymicrobiome.github.io/microbiomedataset/reference
   article: https://tidymicrobiome.github.io/microbiomedataset/articles
