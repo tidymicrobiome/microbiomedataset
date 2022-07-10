@@ -7,6 +7,15 @@
     <loc>https://tidymicrobiome.github.io/microbiomedataset/LICENSE-text.html</loc>
   </url>
   <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/filtering.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/microbiomedataset.html</loc>
+  </url>
+  <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/authors.html</loc>
   </url>
   <url>
@@ -23,6 +32,9 @@
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/check_microbiome_dataset_class.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2microbiome_dataset.html</loc>
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2phyloseq.html</loc>
@@ -56,5 +68,8 @@
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/reexports.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/subsetting-mass_dataset.html</loc>
   </url>
 </urlset>

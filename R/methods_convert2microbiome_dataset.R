@@ -7,7 +7,6 @@ convert2microbiome_dataset <- function(object, ...) {
   UseMethod("convert2microbiome_dataset")
 }
 
-
 #' @rdname convert2microbiome_dataset
 #' @export
 as.microbiome_dataset <- convert2microbiome_dataset
@@ -32,8 +31,8 @@ convert2microbiome_dataset.phyloseq <-
           NULL
       )
     
-    if(is.null(sample_info)) {
-      sample_info <- 
+    if (is.null(sample_info)) {
+      sample_info <-
         data.frame(sample_id = colnames(expression_data),
                    class = "Subject")
     }
@@ -45,15 +44,17 @@ convert2microbiome_dataset.phyloseq <-
           NULL
       )
     
-    if(is.null(variable_info)) {
-      variable_info <- 
+    if (is.null(variable_info)) {
+      variable_info <-
         data.frame(variable_id = rownames(expression_data))
     }
     
     new_object <-
-      create_microbiome_dataset(expression_data = expression_data, 
-                                sample_info = sample_info, 
-                                variable_info = variable_info)
+      create_microbiome_dataset(
+        expression_data = expression_data,
+        sample_info = sample_info,
+        variable_info = variable_info
+      )
     
     return(new_object)
   }
