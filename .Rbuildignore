@@ -9,6 +9,7 @@ NEWS.md
 .RData
 .Rhistory
 ^_pkgdown\.yml$
+^docs$
 ^pkgdown$
 .git
 ^\.github$
