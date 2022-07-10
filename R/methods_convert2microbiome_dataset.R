@@ -37,7 +37,13 @@ convert2microbiome_dataset.phyloseq <-
                    class = "Subject")
     } else{
       new_sample_info <-
-        slot(sample_info, name = ".Data") %>%
+        seq_along(slot(sample_info, name = ".Data")) %>% 
+        purrr::map(function(i){
+          temp <- 
+            data.frame(slot(sample_info, name = ".Data")[[i]])
+          colnames(temp) <- i
+          temp
+        }) %>% 
         dplyr::bind_cols() %>%
         as.data.frame()
       colnames(new_sample_info) <-
@@ -63,21 +69,38 @@ convert2microbiome_dataset.phyloseq <-
         data.frame(variable_id = rownames(expression_data))
     } else{
       new_variable_info <-
-        slot(variable_info, name = ".Data") %>% 
-        as.data.frame() %>% 
-        tibble::rownames_to_column(var = "variable_id") %>% 
+        slot(variable_info, name = ".Data") %>%
+        as.data.frame() %>%
+        tibble::rownames_to_column(var = "variable_id") %>%
         dplyr::select(variable_id, dplyr::everything())
       
       variable_info <-
         new_variable_info
     }
     
+    if (!is.null(phyloseq::tax_table(object = object))) {
+      if (ncol(phyloseq::tax_table(object = object)) != 0) {
+        taxa_tree <- convert2treedata(phyloseq::tax_table(object = object))
+      }
+    } else{
+      taxa_tree <- NULL
+    }
+    
+    if (!is.null(object@phy_tree)) {
+      otu_tree <-
+        object@phy_tree %>%
+        tidytree::as.treedata()
+    } else{
+      otu_tree <- NULL
+    }
+    
     new_object <-
       create_microbiome_dataset(
         expression_data = expression_data,
         sample_info = sample_info,
-        variable_info = variable_info
+        variable_info = variable_info,
+        otu_tree = otu_tree,
+        taxa_tree = taxa_tree
       )
-    
     return(new_object)
   }

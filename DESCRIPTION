@@ -48,7 +48,8 @@ Imports:
     massdataset,
     tidyselect,
     vctrs,
-    phyloseq
+    phyloseq,
+    zoo
 Suggests: 
     knitr,
     rmarkdown,

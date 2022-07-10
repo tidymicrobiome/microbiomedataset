@@ -9,4 +9,7 @@ globalVariables(names = c("variable_id",
                           "Order",
                           "Family",
                           "Genus",
-                          "Species"))
+                          "Species",
+                          "taxlevelchar",
+                          "Root",
+                          ""))

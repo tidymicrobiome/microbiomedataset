@@ -9,7 +9,7 @@ setClassUnion("xstringset_or_null", c("XStringSet", "NULL"))
 #' @slot otu_tree A treedata object of tidytree package or NULL.
 #' @slot taxa_tree A treedata object of tidytree package or NULL.
 #' @slot ref_seq A XStringSet object of Biostrings package or NULL.
-#' @slot ... Other slots from \code{\link[massdataset:mass_dataset]{mass_dataset}}
+#' @slot ... Other slots from mass_dataset class object in massdataset pacakge
 #' @importClassesFrom massdataset mass_dataset
 #' @exportClass microbiome_dataset
 setClass(
@@ -26,7 +26,6 @@ setClass(
     ref_seq   = NULL
   )
 )
-
 
 #' @title create_microbiome_dataset
 #' @description Create the microbiome_dataset object.

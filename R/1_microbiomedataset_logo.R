@@ -21,13 +21,13 @@
 #' @importFrom methods slot slot<-
 #' @import ggplot2
 #' @importFrom methods .hasSlot new is
-#' @importFrom stats p.adjust rgamma sd median time
+#' @importFrom stats p.adjust rgamma sd median time setNames
 #' @importFrom utils data str head tail packageVersion write.table
 #' @importFrom magrittr %>%
 #' @importFrom ggsci pal_lancet
 #' @importFrom masstools read_mgf read_mzxml ms2_plot
 #' @importFrom rlang warn quo_is_null abort seq2
-#' @importFrom tibble add_column
+#' @importFrom tibble add_column as_tibble
 #' @export
 #' @return logo
 #' @examples

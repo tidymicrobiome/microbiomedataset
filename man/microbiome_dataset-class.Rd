@@ -16,6 +16,6 @@ microbiome_dataset class
 
 \item{\code{ref_seq}}{A XStringSet object of Biostrings package or NULL.}
 
-\item{\code{...}}{Other slots from \code{\link[massdataset:mass_dataset]{mass_dataset}}}
+\item{\code{...}}{Other slots from mass_dataset class object in massdataset pacakge}
 }}
 
