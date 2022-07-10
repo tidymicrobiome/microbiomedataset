@@ -100,8 +100,22 @@ massdataset::report_parameters
 #' @export
 massdataset::parse_tidymass_parameter
 
+#' @importFrom massdataset get_mv_number
+#' @export
+massdataset::get_mv_number
 
+#' @importFrom massdataset get_sample_id
+#' @export
+massdataset::get_sample_id
 
+#' @importFrom massdataset get_sample_number
+#' @export
+massdataset::get_sample_number
 
+#' @importFrom massdataset get_variable_id
+#' @export
+massdataset::get_variable_id
 
-
+#' @importFrom massdataset get_variable_number
+#' @export
+massdataset::get_variable_number

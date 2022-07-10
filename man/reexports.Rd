@@ -41,6 +41,11 @@
 \alias{extract_process_info}
 \alias{report_parameters}
 \alias{parse_tidymass_parameter}
+\alias{get_mv_number}
+\alias{get_sample_id}
+\alias{get_sample_number}
+\alias{get_variable_id}
+\alias{get_variable_number}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -52,7 +57,7 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr:pipe]{\%>\%}}}
 
-  \item{massdataset}{\code{\link[massdataset]{check_mass_dataset}}, \code{\link[massdataset]{check_mass_dataset_class}}, \code{\link[massdataset:extract-mass_dataset]{extract_expression_data}}, \code{\link[massdataset:extract-mass_dataset]{extract_process_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_process_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_sample_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_sample_info_note}}, \code{\link[massdataset:extract-mass_dataset]{extract_variable_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_variable_info_note}}, \code{\link[massdataset]{parse_tidymass_parameter}}, \code{\link[massdataset]{report_parameters}}}
+  \item{massdataset}{\code{\link[massdataset]{check_mass_dataset}}, \code{\link[massdataset]{check_mass_dataset_class}}, \code{\link[massdataset:extract-mass_dataset]{extract_expression_data}}, \code{\link[massdataset:extract-mass_dataset]{extract_process_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_process_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_sample_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_sample_info_note}}, \code{\link[massdataset:extract-mass_dataset]{extract_variable_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_variable_info_note}}, \code{\link[massdataset:summary-mass_dataset]{get_mv_number}}, \code{\link[massdataset:summary-mass_dataset]{get_sample_id}}, \code{\link[massdataset:summary-mass_dataset]{get_sample_number}}, \code{\link[massdataset:summary-mass_dataset]{get_variable_id}}, \code{\link[massdataset:summary-mass_dataset]{get_variable_number}}, \code{\link[massdataset]{parse_tidymass_parameter}}, \code{\link[massdataset]{report_parameters}}}
 
   \item{tidyr}{\code{\link[tidyr]{nest}}, \code{\link[tidyr:nest]{unnest}}}
 }}

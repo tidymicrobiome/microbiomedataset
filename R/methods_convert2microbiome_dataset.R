@@ -35,6 +35,20 @@ convert2microbiome_dataset.phyloseq <-
       sample_info <-
         data.frame(sample_id = colnames(expression_data),
                    class = "Subject")
+    } else{
+      new_sample_info <-
+        slot(sample_info, name = ".Data") %>%
+        dplyr::bind_cols() %>%
+        as.data.frame()
+      colnames(new_sample_info) <-
+        slot(sample_info, name = "names")
+      rownames(new_sample_info) <- NULL
+      new_sample_info <-
+        new_sample_info %>%
+        dplyr::rename(sample_id = "X.SampleID") %>%
+        dplyr::mutate(class = "Subject")
+      sample_info <-
+        new_sample_info
     }
     
     variable_info <-
@@ -47,6 +61,15 @@ convert2microbiome_dataset.phyloseq <-
     if (is.null(variable_info)) {
       variable_info <-
         data.frame(variable_id = rownames(expression_data))
+    } else{
+      new_variable_info <-
+        slot(variable_info, name = ".Data") %>% 
+        as.data.frame() %>% 
+        tibble::rownames_to_column(var = "variable_id") %>% 
+        dplyr::select(variable_id, dplyr::everything())
+      
+      variable_info <-
+        new_variable_info
     }
     
     new_object <-
