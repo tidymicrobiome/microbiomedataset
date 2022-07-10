@@ -61,3 +61,37 @@ dplyr::left_join
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
+
+
+####extract methods from massdataset
+#' @importFrom massdataset extract_expression_data
+#' @export
+massdataset::extract_expression_data
+
+#' @importFrom massdataset extract_sample_info
+#' @export
+massdataset::extract_sample_info
+
+#' @importFrom massdataset extract_variable_info
+#' @export
+massdataset::extract_variable_info
+
+#' @importFrom massdataset extract_variable_info_note
+#' @export
+massdataset::extract_variable_info_note
+
+#' @importFrom massdataset extract_sample_info_note
+#' @export
+massdataset::extract_sample_info_note
+
+#' @importFrom massdataset extract_process_info
+#' @export
+massdataset::extract_process_info
+
+#' @importFrom massdataset extract_process_info
+#' @export
+massdataset::extract_process_info
+
+
+
+
