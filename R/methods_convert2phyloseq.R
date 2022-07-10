@@ -21,24 +21,23 @@ as.phyloseq <- convert2phyloseq
 convert2phyloseq.microbiome_dataset <-
   function(object,
            ...) {
-    
-    otu_data <- 
-      extract_expression_data(object) %>% 
-      as.matrix() %>% 
+    otu_data <-
+      extract_expression_data(object) %>%
+      as.matrix() %>%
       phyloseq::otu_table(taxa_are_rows = TRUE)
     
-    sample_data <- 
-      extract_sample_info(object) %>% 
-      tibble::column_to_rownames(var = "sample_id") %>% 
+    sample_data <-
+      extract_sample_info(object) %>%
+      tibble::column_to_rownames(var = "sample_id") %>%
       phyloseq::sample_data()
     
-    taxa_data <- 
-      extract_variable_info(object) %>% 
-      dplyr::select(Domain, Phylum, Class, Order, Family, Genus, Species) %>% 
-      as.matrix() %>% 
+    taxa_data <-
+      extract_variable_info(object) %>%
+      dplyr::select(Domain, Phylum, Class, Order, Family, Genus, Species) %>%
+      as.matrix() %>%
       phyloseq::tax_table()
-      
-    new_object <- 
+    
+    new_object <-
       phyloseq::phyloseq(otu_data, sample_data, taxa_data)
     
     return(new_object)

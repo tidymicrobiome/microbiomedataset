@@ -39,6 +39,8 @@
 \alias{extract_variable_info_note}
 \alias{extract_sample_info_note}
 \alias{extract_process_info}
+\alias{report_parameters}
+\alias{parse_tidymass_parameter}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -50,7 +52,7 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr:pipe]{\%>\%}}}
 
-  \item{massdataset}{\code{\link[massdataset]{check_mass_dataset}}, \code{\link[massdataset]{check_mass_dataset_class}}, \code{\link[massdataset:extract-mass_dataset]{extract_expression_data}}, \code{\link[massdataset:extract-mass_dataset]{extract_process_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_process_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_sample_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_sample_info_note}}, \code{\link[massdataset:extract-mass_dataset]{extract_variable_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_variable_info_note}}}
+  \item{massdataset}{\code{\link[massdataset]{check_mass_dataset}}, \code{\link[massdataset]{check_mass_dataset_class}}, \code{\link[massdataset:extract-mass_dataset]{extract_expression_data}}, \code{\link[massdataset:extract-mass_dataset]{extract_process_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_process_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_sample_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_sample_info_note}}, \code{\link[massdataset:extract-mass_dataset]{extract_variable_info}}, \code{\link[massdataset:extract-mass_dataset]{extract_variable_info_note}}, \code{\link[massdataset]{parse_tidymass_parameter}}, \code{\link[massdataset]{report_parameters}}}
 
   \item{tidyr}{\code{\link[tidyr]{nest}}, \code{\link[tidyr:nest]{unnest}}}
 }}
