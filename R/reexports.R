@@ -92,6 +92,16 @@ massdataset::extract_process_info
 #' @export
 massdataset::extract_process_info
 
+#' @importFrom massdataset report_parameters
+#' @export
+massdataset::report_parameters
+
+#' @importFrom massdataset parse_tidymass_parameter
+#' @export
+massdataset::parse_tidymass_parameter
+
+
+
 
 
 

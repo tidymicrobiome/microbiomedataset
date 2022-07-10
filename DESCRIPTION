@@ -47,7 +47,8 @@ Imports:
     Biostrings,
     massdataset,
     tidyselect,
-    vctrs
+    vctrs,
+    phyloseq
 Suggests: 
     knitr,
     rmarkdown,

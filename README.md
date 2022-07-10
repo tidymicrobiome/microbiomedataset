@@ -15,8 +15,6 @@
 
 `microbiomedataset` provide the `microbiome_dataset` class which is specifically developed and designed to organize the rectangular **metabolomics data sets** into a standard structure.
 
-<img src="man/figures/Figure.png" align="middle" alt="" width = "100%"/>
-
 # Installation
 
 You can install `microbiomedataset` from [GitLab](https://gitlab.com/jaspershen/microbiomedataset)

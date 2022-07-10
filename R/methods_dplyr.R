@@ -103,7 +103,7 @@ select.microbiome_dataset <-
     
     if (.data@activated == "expression_data") {
       .data@sample_info <-
-        .data@sample_info[match(colnames(x), .data@sample_info$sample_id), ]
+        .data@sample_info[match(colnames(x), .data@sample_info$sample_id),]
     }
     
     if (.data@activated == "sample_info") {
@@ -165,13 +165,13 @@ arrange.microbiome_dataset <-
     }
     
     if (.data@activated == "variable_info") {
-      .data@expression_data = .data@expression_data[x$variable_id,]
+      .data@expression_data = .data@expression_data[x$variable_id, ]
     }
     
     if (.data@activated == "expression_data") {
       .data@variable_info <-
         .data@variable_info[match(rownames(.data@expression_data),
-                                  .data@variable_info$variable_id),]
+                                  .data@variable_info$variable_id), ]
     }
     
     return(.data)
@@ -296,7 +296,7 @@ group_by.microbiome_dataset <-
     
     if (.data@activated == "variable_info") {
       .data@expression_data <-
-        .data@expression_data[x$variable_id, ]
+        .data@expression_data[x$variable_id,]
     }
     
     return(.data)
@@ -658,7 +658,7 @@ relocate.microbiome_dataset <-
     slot(object = .data, name = .data@activated) = out
     
     if (.data@activated == "expression_data") {
-      .data@sample_info = .data@sample_info[match(colnames(out), .data@sample_info$sample_id),]
+      .data@sample_info = .data@sample_info[match(colnames(out), .data@sample_info$sample_id), ]
     }
     
     return(.data)

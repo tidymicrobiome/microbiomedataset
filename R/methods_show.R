@@ -14,7 +14,7 @@ setMethod(
       cat(crayon::red(check_result, "\n"))
       cat(
         crayon::red(
-          "You may changed the slots, try to use update_microbiome_dataset().\n"
+          "You may changed the slots, try to use update_mass_dataset().\n"
         )
       )
     }

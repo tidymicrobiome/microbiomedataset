@@ -2,4 +2,11 @@ globalVariables(names = c("variable_id",
                           "name",
                           "sample_id",
                           "group",
-                          "class"))
+                          "class",
+                          "Domain",
+                          "Phylum",
+                          "Class",
+                          "Order",
+                          "Family",
+                          "Genus",
+                          "Species"))
