@@ -12,4 +12,6 @@ globalVariables(names = c("variable_id",
                           "Species",
                           "taxlevelchar",
                           "Root",
-                          ""))
+                          "taxa",
+                          "value",
+                          "na.rm"))
