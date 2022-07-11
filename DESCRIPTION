@@ -1,6 +1,6 @@
 Package: microbiomedataset
 Title: microbiomedataset
-Version: 0.99.4
+Version: 0.99.5
 Date: 2022-07-09
 Authors@R: 
     person(given = "Xiaotao",
@@ -49,7 +49,9 @@ Imports:
     tidyselect,
     vctrs,
     phyloseq,
-    zoo
+    zoo,
+    tidygraph,
+    ggraph
 Suggests: 
     knitr,
     rmarkdown,

@@ -29,6 +29,7 @@
 #' @importFrom masstools read_mgf read_mzxml ms2_plot
 #' @importFrom rlang warn quo_is_null abort seq2
 #' @importFrom tibble add_column as_tibble
+#' @importFrom ggraph ggraph
 #' @export
 #' @return logo
 #' @examples

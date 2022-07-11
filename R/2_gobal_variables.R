@@ -14,4 +14,8 @@ globalVariables(names = c("variable_id",
                           "Root",
                           "taxa",
                           "value",
-                          "na.rm"))
+                          "na.rm",
+                          "Kingdom",
+                          "from",
+                          "to",
+                          "node"))
