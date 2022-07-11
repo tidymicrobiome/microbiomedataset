@@ -37,13 +37,13 @@ convert2microbiome_dataset.phyloseq <-
                    class = "Subject")
     } else{
       new_sample_info <-
-        seq_along(slot(sample_info, name = ".Data")) %>% 
-        purrr::map(function(i){
-          temp <- 
+        seq_along(slot(sample_info, name = ".Data")) %>%
+        purrr::map(function(i) {
+          temp <-
             data.frame(slot(sample_info, name = ".Data")[[i]])
           colnames(temp) <- i
           temp
-        }) %>% 
+        }) %>%
         dplyr::bind_cols() %>%
         as.data.frame()
       colnames(new_sample_info) <-
@@ -88,8 +88,12 @@ convert2microbiome_dataset.phyloseq <-
     
     if (!is.null(object@phy_tree)) {
       otu_tree <-
-        object@phy_tree %>%
-        tidytree::as.treedata()
+        tryCatch(
+          object@phy_tree %>%
+            tidytree::as.treedata(),
+          error = function(e)
+            NULL
+        )
     } else{
       otu_tree <- NULL
     }

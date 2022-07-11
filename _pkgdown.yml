@@ -37,8 +37,10 @@ navbar:
     tutorials:
       text: Tutorials
       menu:
-      - text: Preprocess
+      - text: Basic processing
       - text: ---
+      - text: Data import
+        href: articles/import_data.html
       - text: Filtering
         href: articles/filtering.html
     twitter:

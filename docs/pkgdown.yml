@@ -3,8 +3,9 @@ pkgdown: 2.0.5
 pkgdown_sha: ~
 articles:
   filtering: filtering.html
+  import_data: import_data.html
   microbiomedataset: microbiomedataset.html
-last_built: 2022-07-11T07:16Z
+last_built: 2022-07-11T16:32Z
 urls:
   reference: https://tidymicrobiome.github.io/microbiomedataset/reference
   article: https://tidymicrobiome.github.io/microbiomedataset/articles
