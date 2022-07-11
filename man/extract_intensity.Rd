@@ -7,6 +7,7 @@
 \usage{
 extract_intensity(
   object,
+  sample_wise = "sample_id",
   taxonomic_rank = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus",
     "Species"),
   data_type = c("wider", "longer"),
@@ -18,6 +19,7 @@ extract_intensity(
 
 \method{extract_intensity}{microbiome_dataset}(
   object,
+  sample_wise = "sample_id",
   taxonomic_rank = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus",
     "Species"),
   data_type = c("longer", "wider"),
@@ -29,6 +31,8 @@ extract_intensity(
 }
 \arguments{
 \item{object}{microbiome_dataset}
+
+\item{sample_wise}{sample_wise, default is sample_id}
 
 \item{taxonomic_rank}{taxonomic_rank}
 

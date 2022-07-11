@@ -22,6 +22,9 @@
     <loc>https://tidymicrobiome.github.io/microbiomedataset/index.html</loc>
   </url>
   <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/news/index.html</loc>
+  </url>
+  <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/activate_microbiome_dataset.html</loc>
   </url>
   <url>
@@ -40,13 +43,22 @@
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2phyloseq.html</loc>
   </url>
   <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2treedata.html</loc>
+  </url>
+  <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/create_microbiome_dataset.html</loc>
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract-microbiome_dataset.html</loc>
   </url>
   <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_intensity.html</loc>
+  </url>
+  <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/get_microbiomedataset_version.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/global_patterns.html</loc>
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/index.html</loc>
@@ -65,6 +77,12 @@
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiomedataset_packages.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/mutate2sample.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_barplot.html</loc>
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/reexports.html</loc>

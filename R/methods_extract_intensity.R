@@ -1,5 +1,6 @@
 #' @title extract_intensity
 #' @param object microbiome_dataset
+#' @param sample_wise sample_wise, default is sample_id
 #' @param what which you want to mutate
 #' @param taxonomic_rank taxonomic_rank
 #' @param data_type if return_same_object is FALSE, the return data.frame
@@ -11,6 +12,7 @@
 #' @export
 extract_intensity <-
   function(object,
+           sample_wise = "sample_id",
            taxonomic_rank = c("Kingdom",
                               "Phylum",
                               "Class",
@@ -35,7 +37,7 @@ extract_intensity <-
 #' @export
 #' @examples
 #' data("global_patterns", package = "microbiomedataset")
-#' 
+#'
 #' x <-
 #'   extract_intensity(
 #'     object = global_patterns,
@@ -56,6 +58,7 @@ extract_intensity <-
 
 extract_intensity.microbiome_dataset <-
   function(object,
+           sample_wise = "sample_id",
            taxonomic_rank = c("Kingdom",
                               "Phylum",
                               "Class",
@@ -71,10 +74,16 @@ extract_intensity.microbiome_dataset <-
            relative = TRUE,
            ...) {
     data_type <- match.arg(data_type)
-    what = match.arg(what)
+    what <- match.arg(what)
     taxonomic_rank <- match.arg(taxonomic_rank)
     sample_info <-
       extract_sample_info(object)
+    
+    if (sample_wise != "sample_id") {
+      if (!sample_wise %in% colnames(sample_info)) {
+        stop(sample_wise, " must is one of columns of sample_info")
+      }
+    }
     
     variable_info <-
       extract_variable_info(object)
@@ -104,6 +113,22 @@ extract_intensity.microbiome_dataset <-
       dplyr::arrange(sample_id, taxa) %>%
       dplyr::ungroup()
     
+    if (sample_wise != "sample_id") {
+      temp_data <-
+        temp_data %>%
+        dplyr::left_join(sample_info[, c("sample_id", sample_wise)],
+                         by = "sample_id") %>%
+        dplyr::select(-sample_id)
+      colnames(temp_data)[ncol(temp_data)] <- "sample_id"
+      temp_data <-
+        temp_data %>% 
+        dplyr::group_by(sample_id, taxa) %>%
+        dplyr::summarise(value = calculate(value, what = what, na.rm = na.rm),
+                         .groups = "keep") %>%
+        dplyr::arrange(sample_id, taxa) %>%
+        dplyr::ungroup()
+    }
+    
     if (relative) {
       temp_data <-
         temp_data %>%
@@ -116,7 +141,7 @@ extract_intensity.microbiome_dataset <-
     }
     
     if (data_type == "longer") {
-      colnames(temp_data)[2] <- taxonomic_rank
+      colnames(temp_data)[1:2] <- c(sample_wise, taxonomic_rank)
       return(temp_data)
     }
     

@@ -1,192 +1,171 @@
-#' #' @title Barplot based on ggplot2
-#' #' @param object microbiome_dataset
-#' #' @param what which you want to mutate
-#' #' @param na.rm na.rm
-#' #' @param relative relative intensity or not.
-#' #' @param x x axis
-#' #' @param fill fill for barplot
-#' #' @param color color for barplot
-#' #' @param facet_grid facet_grid
-#' #' @param ... other params
-#' #' @return ggplot2 class object
-#' #' @export
-#' plot_barplot <-
-#'   function(object,
-#'            what = c("mean_intensity",
-#'                     "median_intensity",
-#'                     "sum_intensity"),
-#'            na.rm = TRUE,
-#'            relative = FALSE,
-#'            x,
-#'            fill,
-#'            color,
-#'            facet_grid,
-#'            ...) {
-#'     UseMethod("plot_barplot")
-#'   }
-#' 
-#' #' @method plot_barplot microbiome_datase
-#' #' @rdname plot_barplot
-#' #' @importFrom phyloseq sample_data tax_table phyloseq otu_table
-#' #' @importFrom tibble column_to_rownames
-#' #' @importFrom massdataset check_column_name
-#' #' @export
-#' 
-#' plot_barplot.microbiome_dataset <-
-#'   function(object,
-#'            what = c("mean_intensity",
-#'                     "median_intensity",
-#'                     "sum_intensity"),
-#'            na.rm = TRUE,
-#'            relative = FALSE,
-#'            x,
-#'            fill,
-#'            color,
-#'            facet_grid,
-#'            ...) {
-#'     what <-
-#'       match.arg(what)
-#' 
-#'     
-#'     
-#'     
-#'     sample_info <-
-#'       extract_sample_info(object)
-#'     
-#'     variable_info <-
-#'       extract_variable_info(object)
-#'     
-#'     expression_data <-
-#'       extract_expression_data(object)
-#'     
-#'     if (!missing(group_by)) {
-#'       if (!group_by %in% colnames(variable_info)) {
-#'         stop(group_by, " should be one column of variable_info")
-#'       }
-#'     } else{
-#'       group_by <- "all"
-#'       variable_info <-
-#'         variable_info %>%
-#'         dplyr::mutate(all = "Total")
-#'     }
-#'     
-#'     temp_data <-
-#'       tidyr::pivot_longer(data = object) %>%
-#'       dplyr::left_join(variable_info %>%
-#'                          dplyr::select(variable_id, group_by),
-#'                        by = "variable_id")
-#'     colnames(temp_data)[ncol(temp_data)] <- "class"
-#'     
-#'     if (grepl("na", what)) {
-#'       if (what == "na_number") {
-#'         new_columns <-
-#'           temp_data %>%
-#'           dplyr::group_by(sample_id, class) %>%
-#'           dplyr::summarise(new_column = sum(is.na(.)),
-#'                            .groups = "keep") %>%
-#'           dplyr::ungroup() %>%
-#'           tidyr::pivot_wider(names_from = "class",
-#'                              values_from = "new_column")
-#'       }
-#'       
-#'       if (what == "na_prop") {
-#'         new_columns <-
-#'           temp_data %>%
-#'           dplyr::group_by(sample_id, class) %>%
-#'           dplyr::summarise(new_column = sum(is.na(.)) / length(.),
-#'                            .groups = "keep") %>%
-#'           dplyr::ungroup() %>%
-#'           tidyr::pivot_wider(names_from = "class",
-#'                              values_from = "new_column")
-#'       }
-#'     } else{
-#'       new_columns <-
-#'         temp_data %>%
-#'         dplyr::group_by(sample_id, class) %>%
-#'         dplyr::summarise(new_column = calculate(value, what = what, na.rm = na.rm),
-#'                          .groups = "keep") %>%
-#'         dplyr::ungroup() %>%
-#'         tidyr::pivot_wider(names_from = "class", values_from = "new_column")
-#'     }
-#'     
-#'     if (!return_same_object) {
-#'       if (data_type == "wider") {
-#'         return(as.data.frame(new_columns))
-#'       } else{
-#'         new_columns <-
-#'           new_columns %>%
-#'           tidyr::pivot_longer(
-#'             cols = -sample_id,
-#'             names_to = "group_by",
-#'             values_to = "value"
-#'           ) %>%
-#'           as.data.frame()
-#'         return(new_columns)
-#'       }
-#'       
-#'     }
-#'     
-#'     colnames(new_columns)[-1] <-
-#'       paste(colnames(new_columns)[-1], what, sep = "_")
-#'     
-#'     colnames(new_columns)[-1] <-
-#'       colnames(new_columns)[-1] %>%
-#'       purrr::map(function(x) {
-#'         massdataset::check_column_name(sample_info,
-#'                                        x)
-#'       }) %>%
-#'       unlist()
-#'     
-#'     sample_info <-
-#'       sample_info %>%
-#'       dplyr::left_join(new_columns, by = "sample_id") %>%
-#'       as.data.frame()
-#'     
-#'     slot(object = object, name = "sample_info") <-
-#'       sample_info
-#'     
-#'     object <-
-#'       massdataset::update_sample_info(object = object)
-#'     
-#'     process_info <- object@process_info
-#'     
-#'     parameter <- new(
-#'       Class = "tidymass_parameter",
-#'       pacakge_name = "massmicrobiome",
-#'       function_name = "mutate2sample()",
-#'       parameter = list(
-#'         "what" = what,
-#'         "group_by" = group_by,
-#'         "na.rm" = na.rm
-#'       ),
-#'       time = Sys.time()
-#'     )
-#'     
-#'     if (all(names(process_info) != "mutate2sample")) {
-#'       process_info$mutate2sample <- parameter
-#'     } else{
-#'       process_info$mutate2sample <-
-#'         c(process_info$mutate2sample,
-#'           parameter)
-#'     }
-#'     
-#'     object@process_info <- process_info
-#'     return(object)
-#'     
-#'   }
-#' 
-#' calculate <-
-#'   function(value,
-#'            what = c("mean_intensity",
-#'                     "median_intensity",
-#'                     "sum_intensity",
-#'                     "na_number",
-#'                     "na_freq"),
-#'            ...) {
-#'     switch(
-#'       EXPR = what,
-#'       mean_intensity = mean(value, ...),
-#'       median_intensity = median(value, ...),
-#'       sum_intensity = sum(value, ...)
-#'     )
-#'   }
+#' @title Barplot based on ggplot2
+#' @param object microbiome_dataset
+#' @param fill fill for barplot
+#' @param top_n default is 5
+#' @param show.legend show.legend or not
+#' @param what which you want to mutate
+#' @param na.rm na.rm
+#' @param relative relative intensity or not.
+#' @param re_calculate_relative re-calculate relative abundance or not.
+#' @param x x axis
+#' @param color color for barplot
+#' @param facet_grid facet_grid
+#' @param ... other params
+#' @return ggplot2 class object
+#' @export
+
+plot_barplot <-
+  function(object,
+           fill = c("Kingdom",
+                    "Phylum",
+                    "Class",
+                    "Order",
+                    "Family",
+                    "Genus",
+                    "Species"),
+           top_n = 5,
+           show.legend,
+           what = c("sum_intensity",
+                    "mean_intensity",
+                    "median_intensity"),
+           na.rm = TRUE,
+           relative = TRUE,
+           re_calculate_relative = FALSE,
+           x = "sample_id",
+           color = "balck",
+           facet_grid,
+           ...) {
+    UseMethod("plot_barplot")
+  }
+
+#' @method plot_barplot microbiome_dataset
+#' @rdname plot_barplot
+#' @importFrom phyloseq sample_data tax_table phyloseq otu_table
+#' @importFrom tibble column_to_rownames
+#' @importFrom massdataset check_column_name
+#' @importFrom ggplot2 ggplot geom_bar aes labs theme_bw
+#' @importFrom ggplot2 scale_x_discrete expansion guides guide_legend
+#' @importFrom ggplot2 element_text theme facet_grid vars
+#' @export
+
+plot_barplot.microbiome_dataset <-
+  function(object,
+           fill = c("Kingdom",
+                    "Phylum",
+                    "Class",
+                    "Order",
+                    "Family",
+                    "Genus",
+                    "Species"),
+           top_n = 5,
+           show.legend,
+           what = c("sum_intensity",
+                    "mean_intensity",
+                    "median_intensity"),
+           na.rm = TRUE,
+           relative = TRUE,
+           re_calculate_relative = FALSE,
+           x = "sample_id",
+           color = "balck",
+           facet_grid,
+           ...) {
+    fill <-
+      match.arg(fill)
+    what <-
+      match.arg(what)
+    
+    intensity <-
+      extract_intensity(
+        object = object,
+        sample_wise = x,
+        taxonomic_rank = fill,
+        data_type = "longer",
+        what = what,
+        na.rm = na.rm,
+        relative = relative
+      )
+    
+    colnames(intensity)[1] <- "sample_id"
+    
+    intensity <-
+      intensity %>%
+      dplyr::group_by(sample_id) %>%
+      dplyr::slice_max(order_by = value, n = top_n) %>%
+      dplyr::ungroup() %>%
+      dplyr::arrange(dplyr::desc(value)) %>%
+      as.data.frame()
+    
+    if (relative & re_calculate_relative) {
+      intensity <-
+        intensity %>%
+        plyr::dlply(.variables = plyr::.(sample_id)) %>%
+        purrr::map(function(x) {
+          x$value <- x$value * 100 / sum(x$value)
+          x
+        }) %>%
+        dplyr::bind_rows() %>%
+        dplyr::arrange(dplyr::desc(value)) %>%
+        as.data.frame()
+    }
+    
+    intensity[, 2] <-
+      factor(intensity[, 2], levels = unique(intensity[, 2]))
+    
+    if (missing(show.legend)) {
+      if (length(unique(intensity[, 2, drop = TRUE])) > 10) {
+        show.legend <- FALSE
+      } else{
+        show.legend <- TRUE
+      }
+    }
+    
+    colnames(intensity)[1] <- x
+    
+    sample_info <-
+      extract_sample_info(object)
+    
+    intensity <-
+      intensity %>%
+      dplyr::left_join(sample_info %>%
+                         dplyr::distinct(!!as.symbol(x),
+                                         .keep_all = TRUE),
+                       by = setNames(x, x))
+    plot <-
+      intensity %>%
+      ggplot(aes(x = get(x),
+                 y = value)) +
+      geom_bar(
+        stat = "identity",
+        aes(fill = get(fill)),
+        show.legend = show.legend,
+        color = "black"
+      ) +
+      labs(x = x) +
+      theme_bw() +
+      scale_x_discrete(expand = expansion(mult = c(0, 0))) +
+      scale_y_continuous(expand = expansion(mult = c(0, 0))) +
+      guides(fill = guide_legend(title = fill)) +
+      theme(axis.text.x = element_text(
+        angle = 45,
+        hjust = 1,
+        vjust = 1
+      ))
+    
+    if (relative) {
+      plot <-
+        plot +
+        labs(y = "Relative abundance (%)")
+    } else{
+      plot <-
+        plot +
+        labs(y = "Absolute abundance")
+    }
+    
+    if (!missing(facet_grid)) {
+      plot <-
+        plot +
+        facet_grid(cols = vars(!!as.symbol(facet_grid)),
+                   scales = "free_x")
+    }
+    plot
+  }
