@@ -41,14 +41,11 @@ navbar:
       - text: ---
       - text: Data import
         href: articles/import_data.html
-      - text: Filtering
-        href: articles/filtering.html
+      - text: Preprocess
+        href: articles/preprocess.html
     twitter:
       icon: "fab fa-twitter fa-lg"
       href: https://twitter.com/xiaotaoshen1990
-    contact:
-      text: Contact us
-      href: articles/contact_us.html
     news:
       text: News
       menu:

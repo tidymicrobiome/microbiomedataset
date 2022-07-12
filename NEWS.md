@@ -14,3 +14,10 @@
 # microbiomedataset 0.99.6
 
 * New function: mutate2sample and mutate2variable
+
+# microbiomedataset 0.99.7
+
+* New function: summarise_samples and summarise_variables
+
+
+

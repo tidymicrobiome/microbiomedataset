@@ -8,7 +8,7 @@
 #' @importFrom grid gpar
 #' @importFrom ggplotify as.ggplot
 #' @importFrom dplyr filter mutate select everything left_join bind_rows arrange 
-#' @importFrom dplyr desc distinct
+#' @importFrom dplyr desc distinct bind_cols bind_rows pull
 #' @importFrom plyr dlply .
 #' @importFrom rstudioapi isAvailable hasFun getThemeInfo
 #' @importFrom utils packageDescription write.csv
