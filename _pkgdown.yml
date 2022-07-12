@@ -43,6 +43,8 @@ navbar:
         href: articles/import_data.html
       - text: Preprocess
         href: articles/preprocess.html
+      - text: Merge
+        href: articles/merge.html
     twitter:
       icon: "fab fa-twitter fa-lg"
       href: https://twitter.com/xiaotaoshen1990
