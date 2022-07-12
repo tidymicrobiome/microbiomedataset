@@ -47,7 +47,7 @@ summarise_variables.microbiome_dataset <-
       return(object)
     }
     
-    if (missing(remain_variable_info_id) & 
+    if (missing(remain_variable_info_id) &
         missing(remain_variable_info_index)) {
       remain_variable_info_index <- 1
     }
@@ -76,11 +76,11 @@ summarise_variables.microbiome_dataset <-
     }
     
     if (!missing(remain_variable_info_id)) {
-      remain_variable_info_index <- 
+      remain_variable_info_index <-
         match(remain_variable_info_id, variable_id)
     }
     
-    remain_variable_info_index <- 
+    remain_variable_info_index <-
       remain_variable_info_index[remain_variable_info_index %in% seq_along(variable_index)]
     
     what <-
@@ -90,27 +90,27 @@ summarise_variables.microbiome_dataset <-
     sample_id <- get_sample_id(object)
     
     expression_data1 <-
-      expression_data[variable_index, ] %>% 
-      apply(2, function(x){
+      expression_data[variable_index,] %>%
+      apply(2, function(x) {
         calculate(x, what = what)
-      }) %>% 
-      data.frame() %>% 
-      t() %>% 
+      }) %>%
+      data.frame() %>%
+      t() %>%
       as.data.frame()
     
-    rownames(expression_data1) <- 
+    rownames(expression_data1) <-
       variable_info$variable_id[remain_variable_info_index]
     
     expression_data2 <-
-      expression_data[-variable_index, ]
+      expression_data[-variable_index,]
     
     expression_data <-
       rbind(expression_data1,
-            expression_data2) %>% 
+            expression_data2) %>%
       as.data.frame()
-   
+    
     variable_info <-
-      variable_info[match(rownames(expression_data), variable_info$variable_id),]
+      variable_info[match(rownames(expression_data), variable_info$variable_id), ]
     
     process_info <-
       slot(object, name = "process_info")
@@ -119,9 +119,11 @@ summarise_variables.microbiome_dataset <-
       Class = "tidymass_parameter",
       pacakge_name = "microbiomedataset",
       function_name = "summarise_variables()",
-      parameter = list("what" = what,
-                       "variable_index" = variable_index,
-                       remain_variable_info_index = remain_variable_info_index),
+      parameter = list(
+        "what" = what,
+        "variable_index" = variable_index,
+        remain_variable_info_index = remain_variable_info_index
+      ),
       time = Sys.time()
     )
     

@@ -19,6 +19,9 @@
     <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/microbiomedataset.html</loc>
   </url>
   <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/preprocess.html</loc>
+  </url>
+  <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/authors.html</loc>
   </url>
   <url>
@@ -44,6 +47,9 @@
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2phyloseq.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2tbl_graph.html</loc>
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2treedata.html</loc>
@@ -85,6 +91,9 @@
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/mutate2sample.html</loc>
   </url>
   <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/mutate2variable.html</loc>
+  </url>
+  <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_barplot.html</loc>
   </url>
   <url>
@@ -92,5 +101,14 @@
   </url>
   <url>
     <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/subsetting-mass_dataset.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_samples.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_variables.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/transform2relative_intensity.html</loc>
   </url>
 </urlset>

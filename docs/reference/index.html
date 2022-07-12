@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">microbiomedataset</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.4</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.7</span>
       </span>
     </div>
 
@@ -43,7 +43,7 @@
       <a href="../articles/import_data.html">Data import</a>
     </li>
     <li>
-      <a href="../articles/filtering.html">Filtering</a>
+      <a href="../articles/preprocess.html">Preprocess</a>
     </li>
   </ul></li>
 <li class="dropdown">
@@ -113,6 +113,10 @@
         </td>
         <td><p>convert to phyloseq class object.</p></td>
       </tr><tr><td>
+          <p><code><a href="convert2tbl_graph.html">convert2tbl_graph()</a></code> <code><a href="convert2tbl_graph.html">as.tbl_graph()</a></code> </p>
+        </td>
+        <td><p>convert to tbl_graph class object in tidygraph.</p></td>
+      </tr><tr><td>
           <p><code><a href="convert2treedata.html">convert2treedata()</a></code> <code><a href="convert2treedata.html">as.treedata()</a></code> </p>
         </td>
         <td><p>convert data.frame contained hierarchical relationship or other classes to treedata class</p></td>
@@ -159,15 +163,27 @@
       </tr><tr><td>
           <p><code><a href="mutate2sample.html">mutate2sample()</a></code> </p>
         </td>
-        <td><p>Mutate new columns in sample_info</p></td>
+        <td><p>Mutate new columns into sample_info</p></td>
+      </tr><tr><td>
+          <p><code><a href="mutate2variable.html">mutate2variable()</a></code> </p>
+        </td>
+        <td><p>Mutate new columns into variable_info</p></td>
       </tr><tr><td>
           <p><code><a href="plot_barplot.html">plot_barplot()</a></code> </p>
         </td>
         <td><p>Barplot based on ggplot2</p></td>
       </tr><tr><td>
-          <p><code><a href="subsetting-mass_dataset.html">`[`(<i>&lt;mass_dataset&gt;</i>)</a></code> <code><a href="subsetting-mass_dataset.html">`$`(<i>&lt;mass_dataset&gt;</i>)</a></code> </p>
+          <p><code><a href="summarise_samples.html">summarise_samples()</a></code> <code><a href="summarise_samples.html">summarize_samples()</a></code> </p>
         </td>
-        <td><p>[ method</p></td>
+        <td><p>merge samples</p></td>
+      </tr><tr><td>
+          <p><code><a href="summarise_variables.html">summarise_variables()</a></code> <code><a href="summarise_variables.html">summarize_variables()</a></code> </p>
+        </td>
+        <td><p>merge samples</p></td>
+      </tr><tr><td>
+          <p><code><a href="transform2relative_intensity.html">transform2relative_intensity()</a></code> </p>
+        </td>
+        <td><p>transform data to relative data</p></td>
       </tr></tbody></table></div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

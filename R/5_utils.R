@@ -278,7 +278,7 @@ remove_na_from_taxa_table <-
     ###Genus
     idx <- which(is.na(x$Genus))
     if (length(idx) > 0) {
-      x[idx, c("Species")] <- NA
+      x[idx, ]$Species <- NA
     }
     
     return(x)
