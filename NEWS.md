@@ -19,5 +19,9 @@
 
 * New function: summarise_samples and summarise_variables
 
+# microbiomedataset 0.99.8
+
+* Improve code.
+
 
 

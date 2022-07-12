@@ -7,7 +7,6 @@ convert2phyloseq <- function(object, ...) {
   UseMethod("convert2phyloseq")
 }
 
-
 #' @rdname convert2phyloseq
 #' @export
 as.phyloseq <- convert2phyloseq
@@ -33,12 +32,24 @@ convert2phyloseq.microbiome_dataset <-
     
     taxa_data <-
       extract_variable_info(object) %>%
-      dplyr::select(Domain, Phylum, Class, Order, Family, Genus, Species) %>%
+      dplyr::select(Kingdom, Phylum, Class, Order, Family, Genus, Species) %>%
       as.matrix() %>%
       phyloseq::tax_table()
     
+    if (!is.null(object@otu_tree)) {
+      otu_tree <-
+        object@otu_tree
+      phy_tree <-
+        tidytree::as.phylo(x = otu_tree)
+    } else{
+      phy_tree <- NULL
+    }
+    
     new_object <-
-      phyloseq::phyloseq(otu_data, sample_data, taxa_data)
+      phyloseq::phyloseq(otu_data,
+                         sample_data,
+                         taxa_data,
+                         phy_tree)
     
     return(new_object)
   }

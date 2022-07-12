@@ -43,7 +43,7 @@ navbar:
         href: articles/import_data.html
       - text: Preprocess
         href: articles/preprocess.html
-      - text: Merge
+      - text: Merge data
         href: articles/merge.html
     twitter:
       icon: "fab fa-twitter fa-lg"
