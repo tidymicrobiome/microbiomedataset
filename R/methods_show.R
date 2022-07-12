@@ -1,5 +1,6 @@
 
 
+
 setMethod(
   f = "show",
   signature = "microbiome_dataset",
@@ -12,11 +13,9 @@ setMethod(
     )
     if (check_result != "all good.") {
       cat(crayon::red(check_result, "\n"))
-      cat(
-        crayon::red(
-          "You may changed the slots, try to use update_mass_dataset().\n"
-        )
-      )
+      cat(crayon::red(
+        "You may changed the slots, try to use update_mass_dataset().\n"
+      ))
     }
     cat(crayon::yellow(paste(rep("-", 20), collapse = ""), "\n"))
     cat(crayon::green("microbiomedataset version:", object@version, "\n"))
@@ -27,8 +26,15 @@ setMethod(
       nrow(object@expression_data),
       "x",
       ncol(object@expression_data),
-      "data.frame]\n"
+      "data.frame]"
     )
+    counts_or_relative <-
+      attr(slot(object, "expression_data"), "counts_or_relative")
+    if (!is.null(counts_or_relative)) {
+      cat("(Relative)\n")
+    } else{
+      cat("\n")
+    }
     cat(crayon::green("2.sample_info:"))
     cat("[",
         nrow(object@sample_info),

@@ -246,39 +246,58 @@ remove_na_from_taxa_table <-
   function(x) {
     ###Kingdom
     idx <- which(is.na(x$Kingdom))
-    if(length(idx) > 0){
-      x[idx, c("Phylum", "Class", "Order", "Family", "Genus", "Species")] <- NA
+    if (length(idx) > 0) {
+      x[idx, c("Phylum", "Class", "Order", "Family", "Genus", "Species")] <-
+        NA
     }
     
     ###Phylum
     idx <- which(is.na(x$Phylum))
-    if(length(idx) > 0){
+    if (length(idx) > 0) {
       x[idx, c("Class", "Order", "Family", "Genus", "Species")] <- NA
     }
     
     ###Class
     idx <- which(is.na(x$Class))
-    if(length(idx) > 0){
+    if (length(idx) > 0) {
       x[idx, c("Order", "Family", "Genus", "Species")] <- NA
     }
     
     ###Order
     idx <- which(is.na(x$Order))
-    if(length(idx) > 0){
+    if (length(idx) > 0) {
       x[idx, c("Family", "Genus", "Species")] <- NA
     }
     
     ###Family
     idx <- which(is.na(x$Family))
-    if(length(idx) > 0){
+    if (length(idx) > 0) {
       x[idx, c("Genus", "Species")] <- NA
     }
     
     ###Genus
     idx <- which(is.na(x$Genus))
-    if(length(idx) > 0){
+    if (length(idx) > 0) {
       x[idx, c("Species")] <- NA
     }
     
     return(x)
+  }
+
+
+
+calculate <-
+  function(value,
+           what = c("mean_intensity",
+                    "median_intensity",
+                    "sum_intensity",
+                    "na_number",
+                    "na_freq"),
+           ...) {
+    switch(
+      EXPR = what,
+      mean_intensity = mean(value, ...),
+      median_intensity = median(value, ...),
+      sum_intensity = sum(value, ...)
+    )
   }

@@ -30,6 +30,7 @@
 #' @importFrom rlang warn quo_is_null abort seq2
 #' @importFrom tibble add_column as_tibble
 #' @importFrom ggraph ggraph
+#' @importFrom massdataset check_column_name
 #' @export
 #' @return logo
 #' @examples

@@ -10,3 +10,7 @@
 # microbiomedataset 0.99.5
 
 * New function: convert2tbl_graph
+
+# microbiomedataset 0.99.6
+
+* New function: mutate2sample and mutate2variable
