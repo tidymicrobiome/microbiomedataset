@@ -7,7 +7,7 @@
 #' @importFrom ComplexHeatmap Heatmap columnAnnotation anno_barplot
 #' @importFrom grid gpar
 #' @importFrom ggplotify as.ggplot
-#' @importFrom dplyr filter mutate select everything left_join bind_rows arrange 
+#' @importFrom dplyr filter mutate select everything left_join bind_rows arrange
 #' @importFrom dplyr desc distinct bind_cols bind_rows pull
 #' @importFrom plyr dlply .
 #' @importFrom rstudioapi isAvailable hasFun getThemeInfo
@@ -27,7 +27,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom ggsci pal_lancet
 #' @importFrom masstools read_mgf read_mzxml ms2_plot
-#' @importFrom rlang warn quo_is_null abort seq2
+#' @importFrom rlang warn quo_is_null abort seq2 syms
 #' @importFrom tibble add_column as_tibble
 #' @importFrom ggraph ggraph
 #' @importFrom massdataset check_column_name extract_expression_data extract_sample_info
@@ -40,16 +40,14 @@
 
 microbiomedataset_logo <-
   function() {
-    message(crayon::green("Thank you for using microbiomedataset!\n"))
+    message(crayon::green("Thank you for using microbiomedataset!"))
+    message(crayon::green("Version ",
+                          microbiomedataset_version,
+                          " (",
+                          update_date,
+                          ')'))
     message(crayon::green(
-      "Version",
-      as.character(utils::packageVersion(pkg = "microbiomedataset")),
-      "(",
-      update_date,
-      ')\n'
-    ))
-    message(crayon::green(
-      "More information: search 'tidymicrobiome microbiomedataset'.\n"
+      "More information: search 'tidymicrobiome microbiomedataset'."
     ))
     cat(crayon::green(
       c(
@@ -68,7 +66,8 @@ microbiomedataset_logo <-
 
 microbiomedataset_version <-
   as.character(utils::packageVersion(pkg = "microbiomedataset"))
-update_date = as.character(Sys.time())
+
+update_date <- as.character(Sys.time())
 
 #' @title get_microbiomedataset_version
 #' @description Get microbiomedataset package version

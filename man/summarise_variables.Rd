@@ -8,21 +8,23 @@
 \usage{
 summarise_variables(
   object,
-  what = c("mean_intensity", "median_intensity", "sum_intensity"),
+  what = c("sum_intensity", "mean_intensity", "median_intensity"),
   variable_id,
   variable_index,
   remain_variable_info_id,
   remain_variable_info_index,
+  group_by,
   ...
 )
 
 summarize_variables(
   object,
-  what = c("mean_intensity", "median_intensity", "sum_intensity"),
+  what = c("sum_intensity", "mean_intensity", "median_intensity"),
   variable_id,
   variable_index,
   remain_variable_info_id,
   remain_variable_info_index,
+  group_by,
   ...
 )
 
@@ -33,6 +35,7 @@ summarize_variables(
   variable_index,
   remain_variable_info_id,
   remain_variable_info_index,
+  group_by,
   ...
 )
 }
@@ -49,6 +52,8 @@ summarize_variables(
 
 \item{remain_variable_info_index}{which variable information should be used.}
 
+\item{group_by}{group all variables by column in variable_info}
+
 \item{...}{other params}
 }
 \value{
@@ -56,4 +61,20 @@ microbiome_dataset
 }
 \description{
 merge samples
+}
+\examples{
+data(global_patterns)
+dim(global_patterns)
+global_patterns
+
+global_patterns <-
+  global_patterns \%>\%
+  activate_microbiome_dataset(what = "variable_info") \%>\%
+  dplyr::filter(!is.na(Genus))
+
+object <-
+  global_patterns \%>\%
+  summarize_variables(what = "sum_intensity", group_by = "Genus")
+
+dim(object)
 }

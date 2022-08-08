@@ -23,5 +23,9 @@
 
 * Improve code.
 
+# microbiomedataset 0.99.9 (2022-8-08)
+
+* Improve summarise_variables function.
+
 
 

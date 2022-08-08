@@ -6,18 +6,20 @@
 #' @param variable_index variables should be merged
 #' @param remain_variable_info_id which variable information should be used.
 #' @param remain_variable_info_index which variable information should be used.
+#' @param group_by group all variables by column in variable_info
 #' @param ... other params
 #' @return microbiome_dataset
 #' @export
 summarise_variables <-
   function(object,
-           what = c("mean_intensity",
-                    "median_intensity",
-                    "sum_intensity"),
+           what = c("sum_intensity",
+                    "mean_intensity",
+                    "median_intensity"),
            variable_id,
            variable_index,
            remain_variable_info_id,
            remain_variable_info_index,
+           group_by,
            ...) {
     UseMethod("summarise_variables")
   }
@@ -32,6 +34,22 @@ summarize_variables <- summarise_variables
 #' @importFrom tibble column_to_rownames
 #' @importFrom massdataset check_column_name
 #' @export
+#' @examples
+#' data(global_patterns)
+#' dim(global_patterns)
+#' global_patterns
+#' 
+#' global_patterns <-
+#'   global_patterns %>%
+#'   activate_microbiome_dataset(what = "variable_info") %>%
+#'   dplyr::filter(!is.na(Genus))
+#' 
+#' object <-
+#'   global_patterns %>%
+#'   summarize_variables(what = "sum_intensity", group_by = "Genus")
+#' 
+#' dim(object)
+
 
 summarise_variables.microbiome_dataset <-
   function(object,
@@ -42,7 +60,88 @@ summarise_variables.microbiome_dataset <-
            variable_index,
            remain_variable_info_id,
            remain_variable_info_index,
+           group_by,
            ...) {
+    what <-
+      match.arg(what)
+    ####if group_by is provided
+    variable_info <-
+      extract_variable_info(object)
+    
+    sample_info <-
+      extract_sample_info(object)
+    
+    expression_data <-
+      extract_expression_data(object)
+    
+    if (!group_by %in% colnames(variable_info)) {
+      stop(group_by, " must be in the variable_info.")
+    }
+    
+    variable_id <- get_variable_id(object)
+    sample_id <- get_sample_id(object)
+    
+    variable_id2 <-
+      variable_info %>%
+      dplyr::pull(group_by) %>%
+      as.character()
+    
+    if (sum(is.na(variable_id2)) > 0) {
+      stop(group_by, " contains NA.")
+    }
+    
+    expression_data2 <-
+      unique(variable_id2) %>%
+      purrr::map(function(x) {
+        temp <-
+          expression_data[which(variable_id2 == x), , drop = FALSE] %>%
+          apply(2, function(y) {
+            calculate(y, what = what)
+          })
+        temp
+      }) %>%
+      dplyr::bind_rows() %>%
+      as.data.frame()
+    
+    rownames(expression_data2) <-
+      unique(variable_id2)
+    
+    variable_info2 <-
+      variable_info
+    
+    variable_info2 <-
+      variable_info2 %>%
+      dplyr::distinct(!!!syms(group_by), .keep_all = TRUE) %>%
+      as.data.frame()
+    
+    rownames(expression_data2) <-
+      variable_info2$variable_id
+    
+    process_info <-
+      slot(object, name = "process_info")
+    
+    parameter <- new(
+      Class = "tidymass_parameter",
+      pacakge_name = "microbiomedataset",
+      function_name = "summarise_variables()",
+      parameter = list("what" = what,
+                       "group_by" = group_by),
+      time = Sys.time()
+    )
+    
+    if (all(names(process_info) != "summarise_variables")) {
+      process_info$summarise_variables <- parameter
+    } else{
+      process_info$summarise_variables <-
+        c(process_info$summarise_variables,
+          parameter)
+    }
+    slot(object, "process_info") <- process_info
+    slot(object, "variable_info") <- variable_info2
+    slot(object, "expression_data") <- expression_data2
+    return(object)
+    
+    ###if don't provide the group_by
     if (missing(variable_id) & missing(variable_index)) {
       return(object)
     }
@@ -82,9 +181,6 @@ summarise_variables.microbiome_dataset <-
     
     remain_variable_info_index <-
       remain_variable_info_index[remain_variable_info_index %in% seq_along(variable_index)]
-    
-    what <-
-      match.arg(what)
     
     variable_id <- get_variable_id(object)
     sample_id <- get_sample_id(object)
