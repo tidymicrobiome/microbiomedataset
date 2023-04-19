@@ -13,7 +13,7 @@
 
 # About
 
-`microbiomedataset` provide the `microbiome_dataset` class which is specifically developed and designed to organize the rectangular **metabolomics data sets** into a standard structure.
+`microbiomedataset` provide the `microbiome_dataset` class which is specifically developed and designed to organize the rectangular **microbiome data sets** into a standard structure.
 
 # Installation
 
@@ -58,7 +58,7 @@ Palo Alto, CA
 
 If you use `microbiomedataset` in your publications, please cite this paper:
 
-tidyMicrobiome for microbiome data processing and analysis.
+MicrobiomeDataset: An tidy framework for organizing and processing microbiome data.
 
 Xiaotao Shen, Chuchu Wang,Michael P. Snyder.
 

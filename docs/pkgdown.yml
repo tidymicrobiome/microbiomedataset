@@ -1,5 +1,5 @@
-pandoc: 2.17.1.1
-pkgdown: 2.0.5
+pandoc: 2.19.2
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   filtering: filtering.html
@@ -7,7 +7,7 @@ articles:
   merge: merge.html
   microbiomedataset: microbiomedataset.html
   preprocess: preprocess.html
-last_built: 2022-07-12T18:58Z
+last_built: 2023-04-19T17:18Z
 urls:
   reference: https://tidymicrobiome.github.io/microbiomedataset/reference
   article: https://tidymicrobiome.github.io/microbiomedataset/articles

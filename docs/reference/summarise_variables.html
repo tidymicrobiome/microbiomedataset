@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">microbiomedataset</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.8</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.10</span>
       </span>
     </div>
 
@@ -100,21 +100,23 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">summarise_variables</span><span class="op">(</span></span>
 <span>  <span class="va">object</span>,</span>
-<span>  what <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean_intensity"</span>, <span class="st">"median_intensity"</span>, <span class="st">"sum_intensity"</span><span class="op">)</span>,</span>
+<span>  what <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sum_intensity"</span>, <span class="st">"mean_intensity"</span>, <span class="st">"median_intensity"</span><span class="op">)</span>,</span>
 <span>  <span class="va">variable_id</span>,</span>
 <span>  <span class="va">variable_index</span>,</span>
 <span>  <span class="va">remain_variable_info_id</span>,</span>
 <span>  <span class="va">remain_variable_info_index</span>,</span>
+<span>  <span class="va">group_by</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">summarize_variables</span><span class="op">(</span></span>
 <span>  <span class="va">object</span>,</span>
-<span>  what <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean_intensity"</span>, <span class="st">"median_intensity"</span>, <span class="st">"sum_intensity"</span><span class="op">)</span>,</span>
+<span>  what <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sum_intensity"</span>, <span class="st">"mean_intensity"</span>, <span class="st">"median_intensity"</span><span class="op">)</span>,</span>
 <span>  <span class="va">variable_id</span>,</span>
 <span>  <span class="va">variable_index</span>,</span>
 <span>  <span class="va">remain_variable_info_id</span>,</span>
 <span>  <span class="va">remain_variable_info_index</span>,</span>
+<span>  <span class="va">group_by</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -126,6 +128,7 @@
 <span>  <span class="va">variable_index</span>,</span>
 <span>  <span class="va">remain_variable_info_id</span>,</span>
 <span>  <span class="va">remain_variable_info_index</span>,</span>
+<span>  <span class="va">group_by</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -156,6 +159,10 @@
 <dd><p>which variable information should be used.</p></dd>
 
 
+<dt>group_by</dt>
+<dd><p>group all variables by column in variable_info</p></dd>
+
+
 <dt>...</dt>
 <dd><p>other params</p></dd>
 
@@ -167,6 +174,41 @@
 <p>microbiome_dataset</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> variables   samples </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     19216        26 </span>
+<span class="r-in"><span><span class="va">global_patterns</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">-------------------- </span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">microbiomedataset version: 0.99.1 </span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">-------------------- </span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">1.expression_data:</span>[ 19216 x 26 data.frame]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">2.sample_info:</span>[ 26 x 8 data.frame]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">3.variable_info:</span>[ 19216 x 8 data.frame]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">4.sample_info_note:</span>[ 8 x 2 data.frame]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">5.variable_info_note:</span>[ 8 x 2 data.frame]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">-------------------- </span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Processing information (extract_process_info())</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">create_microbiome_dataset ---------- </span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Package               Function.used                Time</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 microbiomedataset create_microbiome_dataset() 2022-07-10 10:56:13</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">global_patterns</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="va">global_patterns</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="activate_microbiome_dataset.html">activate_microbiome_dataset</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"variable_info"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Genus</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="va">global_patterns</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarize_variables</span><span class="op">(</span>what <span class="op">=</span> <span class="st">"sum_intensity"</span>, group_by <span class="op">=</span> <span class="st">"Genus"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> variables   samples </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       983        26 </span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
