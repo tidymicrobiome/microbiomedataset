@@ -144,6 +144,8 @@ updated on 2023-04-19</h4>
 <h2 id="loading-included-data">
 <strong>Loading included data</strong><a class="anchor" aria-label="anchor" href="#loading-included-data"></a>
 </h2>
+<p>You can load the demo data in <code>microbiomedataset</code> package
+to see the <code>microbiome_dataset</code> class.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymicrobiome/microbiomedataset" class="external-link">microbiomedataset</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
@@ -164,11 +166,28 @@ updated on 2023-04-19</h4>
 <span><span class="co"><span style="color: #00BB00;">#&gt; create_microbiome_dataset ---------- </span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; </span>            Package               Function.used                Time</span></span>
 <span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2022-07-10 10:56:13</span></span></code></pre></div>
+<p>So you can see that we have 1,9216 variables and 26 samples in the
+dataset.</p>
 </div>
 <div class="section level2">
 <h2 id="create-microbiome_dataset-class-object">
 <strong>Create microbiome_dataset class object</strong><a class="anchor" aria-label="anchor" href="#create-microbiome_dataset-class-object"></a>
 </h2>
+<p>You can also create the <code>microbiome_dataset</code> class using
+the <code>create_microbiome_dataset</code> function.</p>
+<p>We need to prepare at least three data for it.</p>
+<ol style="list-style-type: decimal">
+<li><p><code>expression_data</code>: rows are variables and columns are
+samples.</p></li>
+<li><p><code>sample_info</code>: Information for all the samples in
+<code>expression_data</code>. The first column should be
+<code>sample_id</code> which should be identical with the column names
+of <code>expression_data</code>.</p></li>
+<li><p><code>variable_info</code>: Information for all the variables in
+<code>expression_data</code>. The first column should be
+<code>variable_id</code> which should be identical with the row names of
+<code>expression_data</code>.</p></li>
+</ol>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expression_data</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
@@ -183,27 +202,27 @@ updated on 2023-04-19</h4>
 <span></span>
 <span><span class="va">expression_data</span></span>
 <span><span class="co">#&gt;       Sample1 Sample2 Sample3 Sample4 Sample5 Sample6 Sample7 Sample8 Sample9</span></span>
-<span><span class="co">#&gt; OTU1       28       1      41      72      46      17      18      74       1</span></span>
-<span><span class="co">#&gt; OTU2       21      27       2      78      98      20      37      51      35</span></span>
-<span><span class="co">#&gt; OTU3       71      17      66       9      72      21      84      65      86</span></span>
-<span><span class="co">#&gt; OTU4       85       7      89      28      54      36      86      51       9</span></span>
-<span><span class="co">#&gt; OTU5       95      25      54      87      24      41      91      96      72</span></span>
-<span><span class="co">#&gt; OTU6       54      77      49      83      27      91      22      33      17</span></span>
-<span><span class="co">#&gt; OTU7       19      75     100      33      57      45      51      68      32</span></span>
-<span><span class="co">#&gt; OTU8       79      56      14      27      39       1      52      16      48</span></span>
-<span><span class="co">#&gt; OTU9       80      88      72      11       4      66      99      81      62</span></span>
-<span><span class="co">#&gt; OTU10       1      20      64      66       4      78      65       4      27</span></span>
+<span><span class="co">#&gt; OTU1        4      95      97      75      78      73      48      52      97</span></span>
+<span><span class="co">#&gt; OTU2       38      24      45      83     100      97      94       9      56</span></span>
+<span><span class="co">#&gt; OTU3       67      79      10      32      77      58      41      76      35</span></span>
+<span><span class="co">#&gt; OTU4       13      28      51      81     100      32      32      94       5</span></span>
+<span><span class="co">#&gt; OTU5       54      71      94      55      86      54      55      23      26</span></span>
+<span><span class="co">#&gt; OTU6       96      91      20      14      99      75      38      42      24</span></span>
+<span><span class="co">#&gt; OTU7       50      31      84      81      62      51      91      17      42</span></span>
+<span><span class="co">#&gt; OTU8       34      55      45      16      76      19      87      61      62</span></span>
+<span><span class="co">#&gt; OTU9       96      41       1      66      90      68      57      62      34</span></span>
+<span><span class="co">#&gt; OTU10      38      29      37      63      20      26       7      76      77</span></span>
 <span><span class="co">#&gt;       Sample10</span></span>
-<span><span class="co">#&gt; OTU1        41</span></span>
-<span><span class="co">#&gt; OTU2        47</span></span>
-<span><span class="co">#&gt; OTU3        30</span></span>
-<span><span class="co">#&gt; OTU4        96</span></span>
-<span><span class="co">#&gt; OTU5        44</span></span>
-<span><span class="co">#&gt; OTU6        96</span></span>
-<span><span class="co">#&gt; OTU7        30</span></span>
-<span><span class="co">#&gt; OTU8        29</span></span>
-<span><span class="co">#&gt; OTU9        17</span></span>
-<span><span class="co">#&gt; OTU10       95</span></span>
+<span><span class="co">#&gt; OTU1        61</span></span>
+<span><span class="co">#&gt; OTU2        30</span></span>
+<span><span class="co">#&gt; OTU3        51</span></span>
+<span><span class="co">#&gt; OTU4        99</span></span>
+<span><span class="co">#&gt; OTU5        80</span></span>
+<span><span class="co">#&gt; OTU6        19</span></span>
+<span><span class="co">#&gt; OTU7        11</span></span>
+<span><span class="co">#&gt; OTU8        71</span></span>
+<span><span class="co">#&gt; OTU9        79</span></span>
+<span><span class="co">#&gt; OTU10       29</span></span>
 <span></span>
 <span><span class="va">variable_info</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
@@ -224,6 +243,10 @@ updated on 2023-04-19</h4>
 <span></span>
 <span><span class="va">variable_info</span><span class="op">$</span><span class="va">variable_id</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">variable_info</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">variable_info</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">variable_id</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sample_info</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>sample_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span>,</span>
@@ -249,14 +272,25 @@ updated on 2023-04-19</h4>
 <span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">Processing information (extract_process_info())</span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; create_microbiome_dataset ---------- </span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; </span>            Package               Function.used                Time</span></span>
-<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2022-07-11 09:33:09</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2023-04-19 10:38:22</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="convert-phyloseq-class-to-microbiome_dataset-class-object">
 <strong>Convert phyloseq class to microbiome_dataset class
 object</strong><a class="anchor" aria-label="anchor" href="#convert-phyloseq-class-to-microbiome_dataset-class-object"></a>
 </h2>
+<p>We can also transfer or convert other common class object to
+<code>microbiome_dataset</code> class.</p>
+<p>Please install <code>phyloseq</code> package at first.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">BiocManager</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217" class="external-link">phyloseq</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"phyloseq"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217" class="external-link">phyloseq</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">GlobalPatterns</span><span class="op">)</span></span>
 <span><span class="va">GlobalPatterns</span></span>
@@ -265,7 +299,8 @@ object</strong><a class="anchor" aria-label="anchor" href="#convert-phyloseq-cla
 <span><span class="co">#&gt; sample_data() Sample Data:       [ 26 samples by 7 sample variables ]</span></span>
 <span><span class="co">#&gt; tax_table()   Taxonomy Table:    [ 19216 taxa by 7 taxonomic ranks ]</span></span>
 <span><span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 19216 tips and 19215 internal nodes ]</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>The first function is <code>convert2microbiome_dataset</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">object1</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="fu"><a href="../reference/convert2microbiome_dataset.html">convert2microbiome_dataset</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">GlobalPatterns</span><span class="op">)</span></span>
 <span><span class="va">object1</span></span>
@@ -281,8 +316,9 @@ object</strong><a class="anchor" aria-label="anchor" href="#convert-phyloseq-cla
 <span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">Processing information (extract_process_info())</span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; create_microbiome_dataset ---------- </span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; </span>            Package               Function.used                Time</span></span>
-<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2022-07-11 09:33:20</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2023-04-19 10:38:32</span></span></code></pre></div>
+<p>The second function is <code>as.microbiome_dataset</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">object2</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="fu"><a href="../reference/convert2microbiome_dataset.html">as.microbiome_dataset</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">GlobalPatterns</span><span class="op">)</span></span>
 <span><span class="va">object2</span></span>
@@ -298,25 +334,25 @@ object</strong><a class="anchor" aria-label="anchor" href="#convert-phyloseq-cla
 <span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">Processing information (extract_process_info())</span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; create_microbiome_dataset ---------- </span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; </span>            Package               Function.used                Time</span></span>
-<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2022-07-11 09:33:28</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2023-04-19 10:38:40</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">microbiomedataset</span><span class="fu">::</span><span class="fu"><a href="../reference/plot_barplot.html">plot_barplot</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, </span>
 <span>                                top_n <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>                                fill <span class="op">=</span> <span class="st">"Phylum"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="import_data_files/figure-html/unnamed-chunk-9-1.png" width="100%"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<p><img src="import_data_files/figure-html/unnamed-chunk-10-1.png" width="100%"></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">microbiomedataset</span><span class="fu">::</span><span class="fu"><a href="../reference/plot_barplot.html">plot_barplot</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, </span>
 <span>                                top_n <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>                                fill <span class="op">=</span> <span class="st">"Phylum"</span>, </span>
 <span>                                relative <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                                re_calculate_relative <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="import_data_files/figure-html/unnamed-chunk-10-1.png" width="100%"></p>
+<p><img src="import_data_files/figure-html/unnamed-chunk-11-1.png" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="session-information">
 <strong>Session information</strong><a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.2.1 (2022-06-23)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)</span></span>
@@ -333,88 +369,97 @@ object</strong><a class="anchor" aria-label="anchor" href="#convert-phyloseq-cla
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] phyloseq_1.40.0          forcats_0.5.1.9000       stringr_1.4.0           </span></span>
-<span><span class="co">#&gt;  [4] purrr_0.3.4              readr_2.1.2              tidyr_1.2.0             </span></span>
-<span><span class="co">#&gt;  [7] tibble_3.1.7             ggplot2_3.3.6            tidyverse_1.3.1         </span></span>
-<span><span class="co">#&gt; [10] dplyr_1.0.9              microbiomedataset_0.99.4</span></span>
+<span><span class="co">#&gt;  [1] BiocManager_1.30.18       phyloseq_1.40.0          </span></span>
+<span><span class="co">#&gt;  [3] forcats_0.5.2             stringr_1.4.1            </span></span>
+<span><span class="co">#&gt;  [5] purrr_1.0.1               readr_2.1.3              </span></span>
+<span><span class="co">#&gt;  [7] tidyr_1.2.1               tibble_3.1.8             </span></span>
+<span><span class="co">#&gt;  [9] ggplot2_3.4.0             tidyverse_1.3.2          </span></span>
+<span><span class="co">#&gt; [11] dplyr_1.0.10              microbiomedataset_0.99.10</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;   [1] backports_1.4.1             readxl_1.4.0               </span></span>
-<span><span class="co">#&gt;   [3] circlize_0.4.15             systemfonts_1.0.4          </span></span>
-<span><span class="co">#&gt;   [5] igraph_1.3.2                plyr_1.8.7                 </span></span>
-<span><span class="co">#&gt;   [7] lazyeval_0.2.2              splines_4.2.1              </span></span>
-<span><span class="co">#&gt;   [9] BiocParallel_1.30.3         GenomeInfoDb_1.32.2        </span></span>
-<span><span class="co">#&gt;  [11] Rdisop_1.56.0               digest_0.6.29              </span></span>
-<span><span class="co">#&gt;  [13] foreach_1.5.2               yulab.utils_0.0.5          </span></span>
-<span><span class="co">#&gt;  [15] htmltools_0.5.2             massdataset_1.0.5          </span></span>
-<span><span class="co">#&gt;  [17] fansi_1.0.3                 magrittr_2.0.3             </span></span>
-<span><span class="co">#&gt;  [19] memoise_2.0.1               cluster_2.1.3              </span></span>
-<span><span class="co">#&gt;  [21] doParallel_1.0.17           tzdb_0.3.0                 </span></span>
-<span><span class="co">#&gt;  [23] openxlsx_4.2.5              limma_3.52.2               </span></span>
-<span><span class="co">#&gt;  [25] ComplexHeatmap_2.12.0       Biostrings_2.64.0          </span></span>
-<span><span class="co">#&gt;  [27] modelr_0.1.8                matrixStats_0.62.0         </span></span>
-<span><span class="co">#&gt;  [29] pkgdown_2.0.5               colorspace_2.0-3           </span></span>
-<span><span class="co">#&gt;  [31] rvest_1.0.2                 haven_2.5.0                </span></span>
-<span><span class="co">#&gt;  [33] textshaping_0.3.6           xfun_0.31                  </span></span>
-<span><span class="co">#&gt;  [35] crayon_1.5.1                RCurl_1.98-1.7             </span></span>
-<span><span class="co">#&gt;  [37] jsonlite_1.8.0              impute_1.70.0              </span></span>
-<span><span class="co">#&gt;  [39] zoo_1.8-10                  survival_3.3-1             </span></span>
-<span><span class="co">#&gt;  [41] iterators_1.0.14            ape_5.6-2                  </span></span>
-<span><span class="co">#&gt;  [43] glue_1.6.2                  gtable_0.3.0               </span></span>
-<span><span class="co">#&gt;  [45] zlibbioc_1.42.0             XVector_0.36.0             </span></span>
-<span><span class="co">#&gt;  [47] GetoptLong_1.0.5            DelayedArray_0.22.0        </span></span>
-<span><span class="co">#&gt;  [49] Rhdf5lib_1.18.2             shape_1.4.6                </span></span>
-<span><span class="co">#&gt;  [51] BiocGenerics_0.42.0         scales_1.2.0               </span></span>
-<span><span class="co">#&gt;  [53] vsn_3.64.0                  DBI_1.1.3                  </span></span>
-<span><span class="co">#&gt;  [55] Rcpp_1.0.8.3                mzR_2.30.0                 </span></span>
-<span><span class="co">#&gt;  [57] viridisLite_0.4.0           clue_0.3-61                </span></span>
-<span><span class="co">#&gt;  [59] tidytree_0.3.9              gridGraphics_0.5-1         </span></span>
-<span><span class="co">#&gt;  [61] preprocessCore_1.58.0       stats4_4.2.1               </span></span>
-<span><span class="co">#&gt;  [63] MsCoreUtils_1.8.0           htmlwidgets_1.5.4          </span></span>
-<span><span class="co">#&gt;  [65] httr_1.4.3                  RColorBrewer_1.1-3         </span></span>
-<span><span class="co">#&gt;  [67] ellipsis_0.3.2              farver_2.1.1               </span></span>
-<span><span class="co">#&gt;  [69] pkgconfig_2.0.3             XML_3.99-0.10              </span></span>
-<span><span class="co">#&gt;  [71] dbplyr_2.2.1                sass_0.4.1                 </span></span>
-<span><span class="co">#&gt;  [73] utf8_1.2.2                  labeling_0.4.2             </span></span>
-<span><span class="co">#&gt;  [75] ggplotify_0.1.0             tidyselect_1.1.2           </span></span>
-<span><span class="co">#&gt;  [77] rlang_1.0.3                 reshape2_1.4.4             </span></span>
-<span><span class="co">#&gt;  [79] munsell_0.5.0               cellranger_1.1.0           </span></span>
-<span><span class="co">#&gt;  [81] tools_4.2.1                 cachem_1.0.6               </span></span>
-<span><span class="co">#&gt;  [83] cli_3.3.0                   generics_0.1.3             </span></span>
-<span><span class="co">#&gt;  [85] ade4_1.7-19                 broom_1.0.0                </span></span>
-<span><span class="co">#&gt;  [87] evaluate_0.15               biomformat_1.24.0          </span></span>
-<span><span class="co">#&gt;  [89] fastmap_1.1.0               mzID_1.34.0                </span></span>
-<span><span class="co">#&gt;  [91] yaml_2.3.5                  ragg_1.2.2                 </span></span>
-<span><span class="co">#&gt;  [93] knitr_1.39                  fs_1.5.2                   </span></span>
-<span><span class="co">#&gt;  [95] zip_2.2.0                   ncdf4_1.19                 </span></span>
-<span><span class="co">#&gt;  [97] pbapply_1.5-0               nlme_3.1-158               </span></span>
-<span><span class="co">#&gt;  [99] xml2_1.3.3                  compiler_4.2.1             </span></span>
-<span><span class="co">#&gt; [101] rstudioapi_0.13             plotly_4.10.0              </span></span>
-<span><span class="co">#&gt; [103] png_0.1-7                   affyio_1.66.0              </span></span>
-<span><span class="co">#&gt; [105] reprex_2.0.1                bslib_0.3.1                </span></span>
-<span><span class="co">#&gt; [107] stringi_1.7.6               highr_0.9                  </span></span>
-<span><span class="co">#&gt; [109] desc_1.4.1                  MSnbase_2.22.0             </span></span>
-<span><span class="co">#&gt; [111] lattice_0.20-45             ProtGenerics_1.28.0        </span></span>
-<span><span class="co">#&gt; [113] Matrix_1.4-1                permute_0.9-7              </span></span>
-<span><span class="co">#&gt; [115] vegan_2.6-2                 multtest_2.52.0            </span></span>
-<span><span class="co">#&gt; [117] ggsci_2.9                   vctrs_0.4.1                </span></span>
-<span><span class="co">#&gt; [119] rhdf5filters_1.8.0          pillar_1.7.0               </span></span>
-<span><span class="co">#&gt; [121] lifecycle_1.0.1             BiocManager_1.30.18        </span></span>
-<span><span class="co">#&gt; [123] jquerylib_0.1.4             MALDIquant_1.21            </span></span>
-<span><span class="co">#&gt; [125] GlobalOptions_0.1.2         data.table_1.14.2          </span></span>
-<span><span class="co">#&gt; [127] bitops_1.0-7                GenomicRanges_1.48.0       </span></span>
-<span><span class="co">#&gt; [129] R6_2.5.1                    pcaMethods_1.88.0          </span></span>
-<span><span class="co">#&gt; [131] affy_1.74.0                 IRanges_2.30.0             </span></span>
-<span><span class="co">#&gt; [133] codetools_0.2-18            MASS_7.3-57                </span></span>
-<span><span class="co">#&gt; [135] assertthat_0.2.1            rhdf5_2.40.0               </span></span>
-<span><span class="co">#&gt; [137] SummarizedExperiment_1.26.1 rprojroot_2.0.3            </span></span>
-<span><span class="co">#&gt; [139] rjson_0.2.21                withr_2.5.0                </span></span>
-<span><span class="co">#&gt; [141] S4Vectors_0.34.0            GenomeInfoDbData_1.2.8     </span></span>
-<span><span class="co">#&gt; [143] mgcv_1.8-40                 parallel_4.2.1             </span></span>
-<span><span class="co">#&gt; [145] hms_1.1.1                   grid_4.2.1                 </span></span>
-<span><span class="co">#&gt; [147] rmarkdown_2.14              MatrixGenerics_1.8.1       </span></span>
-<span><span class="co">#&gt; [149] masstools_0.99.13           lubridate_1.8.0            </span></span>
-<span><span class="co">#&gt; [151] Biobase_2.56.0</span></span></code></pre></div>
+<span><span class="co">#&gt;   [1] utf8_1.2.2                  tidyselect_1.1.2           </span></span>
+<span><span class="co">#&gt;   [3] htmlwidgets_1.5.4           grid_4.2.1                 </span></span>
+<span><span class="co">#&gt;   [5] BiocParallel_1.30.3         munsell_0.5.0              </span></span>
+<span><span class="co">#&gt;   [7] codetools_0.2-18            ragg_1.2.2                 </span></span>
+<span><span class="co">#&gt;   [9] preprocessCore_1.58.0       withr_2.5.0                </span></span>
+<span><span class="co">#&gt;  [11] colorspace_2.0-3            Biobase_2.56.0             </span></span>
+<span><span class="co">#&gt;  [13] highr_0.9                   knitr_1.40                 </span></span>
+<span><span class="co">#&gt;  [15] rstudioapi_0.14             stats4_4.2.1               </span></span>
+<span><span class="co">#&gt;  [17] mzID_1.34.0                 labeling_0.4.2             </span></span>
+<span><span class="co">#&gt;  [19] MatrixGenerics_1.8.1        GenomeInfoDbData_1.2.8     </span></span>
+<span><span class="co">#&gt;  [21] polyclip_1.10-4             farver_2.1.1               </span></span>
+<span><span class="co">#&gt;  [23] rhdf5_2.40.0                rprojroot_2.0.3            </span></span>
+<span><span class="co">#&gt;  [25] vctrs_0.5.2                 generics_0.1.3             </span></span>
+<span><span class="co">#&gt;  [27] xfun_0.33                   timechange_0.1.1           </span></span>
+<span><span class="co">#&gt;  [29] R6_2.5.1                    doParallel_1.0.17          </span></span>
+<span><span class="co">#&gt;  [31] GenomeInfoDb_1.32.4         clue_0.3-61                </span></span>
+<span><span class="co">#&gt;  [33] graphlayouts_0.8.1          MsCoreUtils_1.8.0          </span></span>
+<span><span class="co">#&gt;  [35] bitops_1.0-7                rhdf5filters_1.8.0         </span></span>
+<span><span class="co">#&gt;  [37] cachem_1.0.6                gridGraphics_0.5-1         </span></span>
+<span><span class="co">#&gt;  [39] DelayedArray_0.22.0         assertthat_0.2.1           </span></span>
+<span><span class="co">#&gt;  [41] scales_1.2.1                googlesheets4_1.0.1        </span></span>
+<span><span class="co">#&gt;  [43] ggraph_2.0.6                gtable_0.3.1               </span></span>
+<span><span class="co">#&gt;  [45] affy_1.74.0                 tidygraph_1.2.2            </span></span>
+<span><span class="co">#&gt;  [47] rlang_1.0.6                 systemfonts_1.0.4          </span></span>
+<span><span class="co">#&gt;  [49] mzR_2.30.0                  GlobalOptions_0.1.2        </span></span>
+<span><span class="co">#&gt;  [51] splines_4.2.1               Rdisop_1.56.0              </span></span>
+<span><span class="co">#&gt;  [53] lazyeval_0.2.2              gargle_1.2.1               </span></span>
+<span><span class="co">#&gt;  [55] impute_1.70.0               broom_1.0.1                </span></span>
+<span><span class="co">#&gt;  [57] modelr_0.1.9                yaml_2.3.5                 </span></span>
+<span><span class="co">#&gt;  [59] reshape2_1.4.4              backports_1.4.1            </span></span>
+<span><span class="co">#&gt;  [61] tools_4.2.1                 ggplotify_0.1.0            </span></span>
+<span><span class="co">#&gt;  [63] affyio_1.66.0               ellipsis_0.3.2             </span></span>
+<span><span class="co">#&gt;  [65] jquerylib_0.1.4             biomformat_1.24.0          </span></span>
+<span><span class="co">#&gt;  [67] RColorBrewer_1.1-3          BiocGenerics_0.42.0        </span></span>
+<span><span class="co">#&gt;  [69] MSnbase_2.22.0              Rcpp_1.0.9                 </span></span>
+<span><span class="co">#&gt;  [71] plyr_1.8.7                  zlibbioc_1.42.0            </span></span>
+<span><span class="co">#&gt;  [73] RCurl_1.98-1.8              pbapply_1.5-0              </span></span>
+<span><span class="co">#&gt;  [75] GetoptLong_1.0.5            viridis_0.6.2              </span></span>
+<span><span class="co">#&gt;  [77] S4Vectors_0.34.0            zoo_1.8-11                 </span></span>
+<span><span class="co">#&gt;  [79] haven_2.5.1                 SummarizedExperiment_1.26.1</span></span>
+<span><span class="co">#&gt;  [81] ggrepel_0.9.2               cluster_2.1.4              </span></span>
+<span><span class="co">#&gt;  [83] fs_1.5.2                    magrittr_2.0.3             </span></span>
+<span><span class="co">#&gt;  [85] masstools_1.0.8             data.table_1.14.6          </span></span>
+<span><span class="co">#&gt;  [87] openxlsx_4.2.5.1            circlize_0.4.15            </span></span>
+<span><span class="co">#&gt;  [89] reprex_2.0.2                googledrive_2.0.0          </span></span>
+<span><span class="co">#&gt;  [91] pcaMethods_1.88.0           ProtGenerics_1.28.0        </span></span>
+<span><span class="co">#&gt;  [93] matrixStats_0.62.0          hms_1.1.2                  </span></span>
+<span><span class="co">#&gt;  [95] evaluate_0.16               XML_3.99-0.10              </span></span>
+<span><span class="co">#&gt;  [97] readxl_1.4.1                IRanges_2.30.1             </span></span>
+<span><span class="co">#&gt;  [99] gridExtra_2.3               shape_1.4.6                </span></span>
+<span><span class="co">#&gt; [101] compiler_4.2.1              ncdf4_1.20                 </span></span>
+<span><span class="co">#&gt; [103] crayon_1.5.1                htmltools_0.5.3            </span></span>
+<span><span class="co">#&gt; [105] mgcv_1.8-42                 tzdb_0.3.0                 </span></span>
+<span><span class="co">#&gt; [107] lubridate_1.9.0             DBI_1.1.3                  </span></span>
+<span><span class="co">#&gt; [109] tweenr_2.0.2                dbplyr_2.2.1               </span></span>
+<span><span class="co">#&gt; [111] ComplexHeatmap_2.12.1       MASS_7.3-58.1              </span></span>
+<span><span class="co">#&gt; [113] Matrix_1.5-1                ade4_1.7-19                </span></span>
+<span><span class="co">#&gt; [115] permute_0.9-7               cli_3.4.1                  </span></span>
+<span><span class="co">#&gt; [117] vsn_3.64.0                  parallel_4.2.1             </span></span>
+<span><span class="co">#&gt; [119] igraph_1.3.5                GenomicRanges_1.48.0       </span></span>
+<span><span class="co">#&gt; [121] pkgconfig_2.0.3             pkgdown_2.0.6              </span></span>
+<span><span class="co">#&gt; [123] plotly_4.10.0               xml2_1.3.3                 </span></span>
+<span><span class="co">#&gt; [125] MALDIquant_1.22             foreach_1.5.2              </span></span>
+<span><span class="co">#&gt; [127] bslib_0.4.0                 multtest_2.52.0            </span></span>
+<span><span class="co">#&gt; [129] XVector_0.36.0              massdataset_1.0.21         </span></span>
+<span><span class="co">#&gt; [131] rvest_1.0.3                 yulab.utils_0.0.5          </span></span>
+<span><span class="co">#&gt; [133] digest_0.6.31               vegan_2.6-2                </span></span>
+<span><span class="co">#&gt; [135] Biostrings_2.64.1           cellranger_1.1.0           </span></span>
+<span><span class="co">#&gt; [137] rmarkdown_2.16              tidytree_0.4.1             </span></span>
+<span><span class="co">#&gt; [139] curl_4.3.3                  rjson_0.2.21               </span></span>
+<span><span class="co">#&gt; [141] lifecycle_1.0.3             nlme_3.1-159               </span></span>
+<span><span class="co">#&gt; [143] jsonlite_1.8.0              Rhdf5lib_1.18.2            </span></span>
+<span><span class="co">#&gt; [145] desc_1.4.2                  viridisLite_0.4.1          </span></span>
+<span><span class="co">#&gt; [147] limma_3.52.3                fansi_1.0.3                </span></span>
+<span><span class="co">#&gt; [149] pillar_1.8.1                ggsci_2.9                  </span></span>
+<span><span class="co">#&gt; [151] lattice_0.20-45             fastmap_1.1.0              </span></span>
+<span><span class="co">#&gt; [153] httr_1.4.4                  survival_3.4-0             </span></span>
+<span><span class="co">#&gt; [155] glue_1.6.2                  remotes_2.4.2              </span></span>
+<span><span class="co">#&gt; [157] zip_2.2.1                   png_0.1-8                  </span></span>
+<span><span class="co">#&gt; [159] iterators_1.0.14            ggforce_0.3.4              </span></span>
+<span><span class="co">#&gt; [161] stringi_1.7.8               sass_0.4.2                 </span></span>
+<span><span class="co">#&gt; [163] textshaping_0.3.6           memoise_2.0.1              </span></span>
+<span><span class="co">#&gt; [165] ape_5.6-2</span></span></code></pre></div>
 </div>
   </div>
 
