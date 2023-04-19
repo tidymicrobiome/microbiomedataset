@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Functions for accessing and preprocessing Data • microbiomedataset</title>
+<title>Transform absolute to relative intensity • microbiomedataset</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -19,7 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Functions for accessing and preprocessing Data">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Transform absolute to relative intensity">
 <meta property="og:description" content="microbiomedataset">
 <meta property="og:image" content="https://tidymicrobiome.github.io/microbiomedataset/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -129,16 +129,15 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Functions for accessing and preprocessing
-Data</h1>
+      <h1 data-toc-skip>Transform absolute to relative intensity</h1>
                         <h4 data-toc-skip class="author">Xiaotao Shen
 (<a href="https://www.shenxt.info/" class="external-link uri">https://www.shenxt.info/</a>)</h4>
                         
-            <h4 data-toc-skip class="date">Created on 2022-07-09 and
+            <h4 data-toc-skip class="date">Created on 2023-04-19 and
 updated on 2023-04-19</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/tidymicrobiome/microbiomedataset/blob/HEAD/vignettes/preprocess.Rmd" class="external-link"><code>vignettes/preprocess.Rmd</code></a></small>
-      <div class="hidden name"><code>preprocess.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/tidymicrobiome/microbiomedataset/blob/HEAD/vignettes/relative_intensity.Rmd" class="external-link"><code>vignettes/relative_intensity.Rmd</code></a></small>
+      <div class="hidden name"><code>relative_intensity.Rmd</code></div>
 
     </div>
 
@@ -167,138 +166,57 @@ updated on 2023-04-19</h4>
 <span><span class="co"><span style="color: #00BB00;">#&gt; create_microbiome_dataset ---------- </span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; </span>            Package               Function.used                Time</span></span>
 <span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2022-07-10 10:56:13</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="accessors">
-<strong>Accessors</strong><a class="anchor" aria-label="anchor" href="#accessors"></a>
-</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 19216    26</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 19216</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 26</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">expression_data</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/massdataset/man/extract-mass_dataset.html" class="external-link">extract_expression_data</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span></span>
+<span><span class="va">expression_data</span><span class="op">$</span><span class="va">CL3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0 0 0 0 0 0</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "CL3"      "CC1"      "SV1"      "M31Fcsw"  "M11Fcsw"  "M31Plmr" </span></span>
-<span><span class="co">#&gt;  [7] "M11Plmr"  "F21Plmr"  "M31Tong"  "M11Tong"  "LMEpi24M" "SLEpi20M"</span></span>
-<span><span class="co">#&gt; [13] "AQC1cm"   "AQC4cm"   "AQC7cm"   "NP2"      "NP3"      "NP5"     </span></span>
-<span><span class="co">#&gt; [19] "TRRsed1"  "TRRsed2"  "TRRsed3"  "TS28"     "TS29"     "Even1"   </span></span>
-<span><span class="co">#&gt; [25] "Even2"    "Even3"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">expression_data</span><span class="op">$</span><span class="va">CL3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0 0 0 0 0 0</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "549322" "522457" "951"    "244423" "586076" "246140"</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/massdataset/man/extract-mass_dataset.html" class="external-link">extract_sample_info</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "sample_id"                "Primer"                  </span></span>
-<span><span class="co">#&gt; [3] "Final_Barcode"            "Barcode_truncated_plus_T"</span></span>
-<span><span class="co">#&gt; [5] "Barcode_full_length"      "SampleType"              </span></span>
-<span><span class="co">#&gt; [7] "Description"              "class"</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/massdataset/man/extract-mass_dataset.html" class="external-link">extract_variable_info</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "variable_id" "Kingdom"     "Phylum"      "Class"       "Order"      </span></span>
-<span><span class="co">#&gt; [6] "Family"      "Genus"       "Species"</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/massdataset/man/extract-mass_dataset.html" class="external-link">extract_expression_data</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        CL3 CC1 SV1 M31Fcsw M11Fcsw M31Plmr M11Plmr F21Plmr M31Tong M11Tong</span></span>
-<span><span class="co">#&gt; 549322   0   0   0       0       0       0       0       0       0       0</span></span>
-<span><span class="co">#&gt; 522457   0   0   0       0       0       0       0       0       0       0</span></span>
-<span><span class="co">#&gt; 951      0   0   0       0       0       0       1       0       0       0</span></span>
-<span><span class="co">#&gt; 244423   0   0   0       0       0       0       0       0       0       0</span></span>
-<span><span class="co">#&gt; 586076   0   0   0       0       0       0       0       0       0       0</span></span>
-<span><span class="co">#&gt; 246140   0   0   0       0       0       0       0       0       0       0</span></span>
-<span><span class="co">#&gt;        LMEpi24M SLEpi20M AQC1cm AQC4cm AQC7cm NP2 NP3 NP5 TRRsed1 TRRsed2</span></span>
-<span><span class="co">#&gt; 549322        0        1     27    100    130   1   0   0       0       0</span></span>
-<span><span class="co">#&gt; 522457        0        0      0      2      6   0   0   0       0       0</span></span>
-<span><span class="co">#&gt; 951           0        0      0      0      0   0   0   0       0       0</span></span>
-<span><span class="co">#&gt; 244423        0        0      0     22     29   0   0   0       0       0</span></span>
-<span><span class="co">#&gt; 586076        0        0      0      2      1   0   0   0       0       0</span></span>
-<span><span class="co">#&gt; 246140        0        0      0      1      3   0   0   0       0       0</span></span>
-<span><span class="co">#&gt;        TRRsed3 TS28 TS29 Even1 Even2 Even3</span></span>
-<span><span class="co">#&gt; 549322       0    0    0     0     0     0</span></span>
-<span><span class="co">#&gt; 522457       0    0    0     0     0     0</span></span>
-<span><span class="co">#&gt; 951          0    0    0     0     0     0</span></span>
-<span><span class="co">#&gt; 244423       0    0    0     0     0     0</span></span>
-<span><span class="co">#&gt; 586076       0    0    0     0     0     0</span></span>
-<span><span class="co">#&gt; 246140       0    0    0     0     0     0</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/massdataset/man/extract-mass_dataset.html" class="external-link">extract_sample_info</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   sample_id  Primer Final_Barcode Barcode_truncated_plus_T Barcode_full_length</span></span>
-<span><span class="co">#&gt; 1       CL3 ILBC_01        AACGCA                   TGCGTT         CTAGCGTGCGT</span></span>
-<span><span class="co">#&gt; 2       CC1 ILBC_02        AACTCG                   CGAGTT         CATCGACGAGT</span></span>
-<span><span class="co">#&gt; 3       SV1 ILBC_03        AACTGT                   ACAGTT         GTACGCACAGT</span></span>
-<span><span class="co">#&gt; 4   M31Fcsw ILBC_04        AAGAGA                   TCTCTT         TCGACATCTCT</span></span>
-<span><span class="co">#&gt; 5   M11Fcsw ILBC_05        AAGCTG                   CAGCTT         CGACTGCAGCT</span></span>
-<span><span class="co">#&gt; 6   M31Plmr ILBC_07        AATCGT                   ACGATT         CGAGTCACGAT</span></span>
-<span><span class="co">#&gt;   SampleType                                Description   class</span></span>
-<span><span class="co">#&gt; 1       Soil   Calhoun South Carolina Pine soil, pH 4.9 Subject</span></span>
-<span><span class="co">#&gt; 2       Soil   Cedar Creek Minnesota, grassland, pH 6.1 Subject</span></span>
-<span><span class="co">#&gt; 3       Soil Sevilleta new Mexico, desert scrub, pH 8.3 Subject</span></span>
-<span><span class="co">#&gt; 4      Feces    M3, Day 1, fecal swab, whole body study Subject</span></span>
-<span><span class="co">#&gt; 5      Feces   M1, Day 1, fecal swab, whole body study  Subject</span></span>
-<span><span class="co">#&gt; 6       Skin    M3, Day 1, right palm, whole body study Subject</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/massdataset/man/extract-mass_dataset.html" class="external-link">extract_variable_info</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   variable_id Kingdom        Phylum        Class        Order        Family</span></span>
-<span><span class="co">#&gt; 1      549322 Archaea Crenarchaeota Thermoprotei         &lt;NA&gt;          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2      522457 Archaea Crenarchaeota Thermoprotei         &lt;NA&gt;          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3         951 Archaea Crenarchaeota Thermoprotei Sulfolobales Sulfolobaceae</span></span>
-<span><span class="co">#&gt; 4      244423 Archaea Crenarchaeota        Sd-NA         &lt;NA&gt;          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 5      586076 Archaea Crenarchaeota        Sd-NA         &lt;NA&gt;          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6      246140 Archaea Crenarchaeota        Sd-NA         &lt;NA&gt;          &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;        Genus                  Species</span></span>
-<span><span class="co">#&gt; 1       &lt;NA&gt;                     &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2       &lt;NA&gt;                     &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3 Sulfolobus Sulfolobusacidocaldarius</span></span>
-<span><span class="co">#&gt; 4       &lt;NA&gt;                     &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 5       &lt;NA&gt;                     &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6       &lt;NA&gt;                     &lt;NA&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">expression_data</span>, <span class="fl">2</span>, <span class="va">sum</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      CL3      CC1      SV1  M31Fcsw  M11Fcsw  M31Plmr  M11Plmr  F21Plmr </span></span>
+<span><span class="co">#&gt;   864077  1135457   697509  1543451  2076476   718943   433894   186297 </span></span>
+<span><span class="co">#&gt;  M31Tong  M11Tong LMEpi24M SLEpi20M   AQC1cm   AQC4cm   AQC7cm      NP2 </span></span>
+<span><span class="co">#&gt;  2000402   100187  2117592  1217312  1167748  2357181  1699293   523634 </span></span>
+<span><span class="co">#&gt;      NP3      NP5  TRRsed1  TRRsed2  TRRsed3     TS28     TS29    Even1 </span></span>
+<span><span class="co">#&gt;  1478965  1652754    58688   493126   279704   937466  1211071  1216137 </span></span>
+<span><span class="co">#&gt;    Even2    Even3 </span></span>
+<span><span class="co">#&gt;   971073  1078241</span></span></code></pre></div>
+<p>The raw data is count.</p>
 </div>
 <div class="section level2">
-<h2 id="preprocessing">
-<strong>Preprocessing</strong><a class="anchor" aria-label="anchor" href="#preprocessing"></a>
+<h2 id="transform-to-relative-intensity">
+<strong>Transform to relative intensity</strong><a class="anchor" aria-label="anchor" href="#transform-to-relative-intensity"></a>
 </h2>
-<p>The <code>microbiomedataset</code> package also includes functions
-for filtering, subsetting, and merging abundance data.</p>
-<p>In the following example, the <code>global_patterns</code> data is
-first transformed to relative abundance, creating the new
-<code>global_patterns2</code> object, which is then filtered such that
-only OTUs with a mean greater than 10^-5 are kept.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">global_patterns2</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">global_patterns</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/transform2relative_intensity.html">transform2relative_intensity</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/mutate2variable.html">mutate2variable</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"mean_intensity"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/activate_microbiome_dataset.html">activate_microbiome_dataset</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"variable_info"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">mean_intensity</span> <span class="op">&gt;</span> <span class="fl">10</span> <span class="op">^</span> <span class="op">(</span><span class="op">-</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>This results in a highly-subsetted object,
-<code>global_patterns2</code>, containing just 4624 of the original
-~19216 OTUs.</p>
-<p>Next, only remain the variables that phylum Chlamydiae.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">global_patterns_chl</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">global_patterns</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/activate_microbiome_dataset.html">activate_microbiome_dataset</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"variable_info"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Phylum</span> <span class="op">==</span> <span class="st">"Chlamydiae"</span><span class="op">)</span></span></code></pre></div>
-<p>Next, only remain the samples with total intensity &gt; 20.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">global_patterns_chl</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">global_patterns_chl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/mutate2sample.html">mutate2sample</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"sum_intensity"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="../reference/activate_microbiome_dataset.html">activate_microbiome_dataset</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"sample_info"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">sum_intensity</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">global_patterns_relative</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="../reference/transform2relative_intensity.html">transform2relative_intensity</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">global_patterns</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">expression_data_relative</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/massdataset/man/extract-mass_dataset.html" class="external-link">extract_expression_data</a></span><span class="op">(</span><span class="va">global_patterns_relative</span><span class="op">)</span></span>
+<span><span class="va">expression_data_relative</span><span class="op">$</span><span class="va">CL3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0 0 0 0 0 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">expression_data_relative</span>, <span class="fl">2</span>, <span class="va">sum</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      CL3      CC1      SV1  M31Fcsw  M11Fcsw  M31Plmr  M11Plmr  F21Plmr </span></span>
+<span><span class="co">#&gt;        1        1        1        1        1        1        1        1 </span></span>
+<span><span class="co">#&gt;  M31Tong  M11Tong LMEpi24M SLEpi20M   AQC1cm   AQC4cm   AQC7cm      NP2 </span></span>
+<span><span class="co">#&gt;        1        1        1        1        1        1        1        1 </span></span>
+<span><span class="co">#&gt;      NP3      NP5  TRRsed1  TRRsed2  TRRsed3     TS28     TS29    Even1 </span></span>
+<span><span class="co">#&gt;        1        1        1        1        1        1        1        1 </span></span>
+<span><span class="co">#&gt;    Even2    Even3 </span></span>
+<span><span class="co">#&gt;        1        1</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-information">
 <strong>Session information</strong><a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.2.1 (2022-06-23)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)</span></span>
@@ -316,10 +234,10 @@ only OTUs with a mean greater than 10^-5 are kept.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
 <span><span class="co">#&gt;  [1] forcats_0.5.2             stringr_1.4.1            </span></span>
-<span><span class="co">#&gt;  [3] purrr_1.0.1               readr_2.1.3              </span></span>
-<span><span class="co">#&gt;  [5] tidyr_1.2.1               tibble_3.1.8             </span></span>
-<span><span class="co">#&gt;  [7] ggplot2_3.4.0             tidyverse_1.3.2          </span></span>
-<span><span class="co">#&gt;  [9] dplyr_1.0.10              microbiomedataset_0.99.10</span></span>
+<span><span class="co">#&gt;  [3] dplyr_1.0.10              purrr_1.0.1              </span></span>
+<span><span class="co">#&gt;  [5] readr_2.1.3               tidyr_1.2.1              </span></span>
+<span><span class="co">#&gt;  [7] tibble_3.1.8              ggplot2_3.4.0            </span></span>
+<span><span class="co">#&gt;  [9] tidyverse_1.3.2           microbiomedataset_0.99.10</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;   [1] utf8_1.2.2                  tidyselect_1.1.2           </span></span>

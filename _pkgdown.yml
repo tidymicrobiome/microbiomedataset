@@ -41,6 +41,8 @@ navbar:
       - text: ---
       - text: Data import
         href: articles/import_data.html
+      - text: Transform to relative intensity
+        href: articles/relative_intensity.html
       - text: Preprocess
         href: articles/preprocess.html
       - text: Merge data

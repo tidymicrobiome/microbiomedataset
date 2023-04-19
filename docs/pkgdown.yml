@@ -7,7 +7,8 @@ articles:
   merge: merge.html
   microbiomedataset: microbiomedataset.html
   preprocess: preprocess.html
-last_built: 2023-04-19T17:37Z
+  relative_intensity: relative_intensity.html
+last_built: 2023-04-19T18:00Z
 urls:
   reference: https://tidymicrobiome.github.io/microbiomedataset/reference
   article: https://tidymicrobiome.github.io/microbiomedataset/articles
