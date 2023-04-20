@@ -8,8 +8,7 @@
 extract_intensity(
   object,
   sample_wise = "sample_id",
-  taxonomic_rank = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus",
-    "Species"),
+  taxonomic_rank = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"),
   data_type = c("wider", "longer"),
   what = c("sum_intensity", "mean_intensity", "median_intensity"),
   na.rm = TRUE,
@@ -20,8 +19,7 @@ extract_intensity(
 \method{extract_intensity}{microbiome_dataset}(
   object,
   sample_wise = "sample_id",
-  taxonomic_rank = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus",
-    "Species"),
+  taxonomic_rank = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"),
   data_type = c("longer", "wider"),
   what = c("sum_intensity", "mean_intensity", "median_intensity"),
   na.rm = TRUE,

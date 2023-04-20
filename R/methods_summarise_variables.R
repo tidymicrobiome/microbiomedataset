@@ -38,16 +38,16 @@ summarize_variables <- summarise_variables
 #' data(global_patterns)
 #' dim(global_patterns)
 #' global_patterns
-#' 
+#'
 #' global_patterns <-
 #'   global_patterns %>%
 #'   activate_microbiome_dataset(what = "variable_info") %>%
 #'   dplyr::filter(!is.na(Genus))
-#' 
+#'
 #' object <-
 #'   global_patterns %>%
 #'   summarize_variables(what = "sum_intensity", group_by = "Genus")
-#' 
+#'
 #' dim(object)
 
 
@@ -74,72 +74,74 @@ summarise_variables.microbiome_dataset <-
     expression_data <-
       extract_expression_data(object)
     
-    if (!group_by %in% colnames(variable_info)) {
-      stop(group_by, " must be in the variable_info.")
+    if (!missing(group_by)) {
+      if (!group_by %in% colnames(variable_info)) {
+        stop(group_by, " must be in the variable_info.")
+      }
+      
+      variable_id <- get_variable_id(object)
+      sample_id <- get_sample_id(object)
+      
+      variable_id2 <-
+        variable_info %>%
+        dplyr::pull(group_by) %>%
+        as.character()
+      
+      if (sum(is.na(variable_id2)) > 0) {
+        stop(group_by, " contains NA.")
+      }
+      
+      expression_data2 <-
+        unique(variable_id2) %>%
+        purrr::map(function(x) {
+          temp <-
+            expression_data[which(variable_id2 == x), , drop = FALSE] %>%
+            apply(2, function(y) {
+              calculate(y, what = what)
+            })
+          temp
+        }) %>%
+        dplyr::bind_rows() %>%
+        as.data.frame()
+      
+      rownames(expression_data2) <-
+        unique(variable_id2)
+      
+      variable_info2 <-
+        variable_info
+      
+      variable_info2 <-
+        variable_info2 %>%
+        dplyr::distinct(!!!syms(group_by), .keep_all = TRUE) %>%
+        as.data.frame()
+      
+      rownames(expression_data2) <-
+        variable_info2$variable_id
+      
+      process_info <-
+        slot(object, name = "process_info")
+      
+      parameter <- new(
+        Class = "tidymass_parameter",
+        pacakge_name = "microbiomedataset",
+        function_name = "summarise_variables()",
+        parameter = list("what" = what,
+                         "group_by" = group_by),
+        time = Sys.time()
+      )
+      
+      if (all(names(process_info) != "summarise_variables")) {
+        process_info$summarise_variables <- parameter
+      } else{
+        process_info$summarise_variables <-
+          c(process_info$summarise_variables,
+            parameter)
+      }
+      slot(object, "process_info") <- process_info
+      slot(object, "variable_info") <- variable_info2
+      slot(object, "expression_data") <- expression_data2
+      return(object)
     }
-    
-    variable_id <- get_variable_id(object)
-    sample_id <- get_sample_id(object)
-    
-    variable_id2 <-
-      variable_info %>%
-      dplyr::pull(group_by) %>%
-      as.character()
-    
-    if (sum(is.na(variable_id2)) > 0) {
-      stop(group_by, " contains NA.")
-    }
-    
-    expression_data2 <-
-      unique(variable_id2) %>%
-      purrr::map(function(x) {
-        temp <-
-          expression_data[which(variable_id2 == x), , drop = FALSE] %>%
-          apply(2, function(y) {
-            calculate(y, what = what)
-          })
-        temp
-      }) %>%
-      dplyr::bind_rows() %>%
-      as.data.frame()
-    
-    rownames(expression_data2) <-
-      unique(variable_id2)
-    
-    variable_info2 <-
-      variable_info
-    
-    variable_info2 <-
-      variable_info2 %>%
-      dplyr::distinct(!!!syms(group_by), .keep_all = TRUE) %>%
-      as.data.frame()
-    
-    rownames(expression_data2) <-
-      variable_info2$variable_id
-    
-    process_info <-
-      slot(object, name = "process_info")
-    
-    parameter <- new(
-      Class = "tidymass_parameter",
-      pacakge_name = "microbiomedataset",
-      function_name = "summarise_variables()",
-      parameter = list("what" = what,
-                       "group_by" = group_by),
-      time = Sys.time()
-    )
-    
-    if (all(names(process_info) != "summarise_variables")) {
-      process_info$summarise_variables <- parameter
-    } else{
-      process_info$summarise_variables <-
-        c(process_info$summarise_variables,
-          parameter)
-    }
-    slot(object, "process_info") <- process_info
-    slot(object, "variable_info") <- variable_info2
-    slot(object, "expression_data") <- expression_data2
-    return(object)
     
     ###if don't provide the group_by
     if (missing(variable_id) & missing(variable_index)) {

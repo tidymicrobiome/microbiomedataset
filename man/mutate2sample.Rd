@@ -7,16 +7,14 @@
 \usage{
 mutate2sample(
   object,
-  what = c("mean_intensity", "median_intensity", "sum_intensity", "na_number",
-    "na_prop"),
+  what = c("mean_intensity", "median_intensity", "sum_intensity", "na_number", "na_prop"),
   according_to_variables = "all",
   ...
 )
 
 \method{mutate2sample}{microbiome_dataset}(
   object,
-  what = c("sum_intensity", "mean_intensity", "median_intensity", "na_number",
-    "na_prop"),
+  what = c("sum_intensity", "mean_intensity", "median_intensity", "na_number", "na_prop"),
   according_to_variables = "all",
   ...
 )
