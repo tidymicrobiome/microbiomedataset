@@ -175,17 +175,16 @@ graphic.</p>
 </h2>
 <p>Remove empty taxa</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">global_patterns2</span> <span class="op">&lt;-</span> </span>
-<span><span class="va">global_patterns</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/mutate2variable.html">mutate2variable</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"sum_intensity"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/activate_microbiome_dataset.html">activate_microbiome_dataset</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"variable_info"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<code class="sourceCode R"><span><span class="va">global_patterns2</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">global_patterns</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/mutate2variable.html">mutate2variable</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"sum_intensity"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/activate_microbiome_dataset.html">activate_microbiome_dataset</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"variable_info"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">sum_intensity</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">humantypes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Feces"</span>, <span class="st">"Mock"</span>, <span class="st">"Skin"</span>, <span class="st">"Tongue"</span><span class="op">)</span></span>
-<span><span class="va">global_patterns2</span> <span class="op">&lt;-</span> </span>
-<span><span class="va">global_patterns2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>   <span class="fu"><a href="../reference/activate_microbiome_dataset.html">activate_microbiome_dataset</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"sample_info"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">global_patterns2</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">global_patterns2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/activate_microbiome_dataset.html">activate_microbiome_dataset</a></span><span class="op">(</span>what <span class="op">=</span> <span class="st">"sample_info"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>human <span class="op">=</span> <span class="va">SampleType</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">humantypes</span><span class="op">)</span></span></code></pre></div>
 <p>Now on to the merging examples.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -229,16 +228,18 @@ graphic.</p>
 <strong>Merge taxas</strong><a class="anchor" aria-label="anchor" href="#merge-taxas"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">merged_variables</span> <span class="op">&lt;-</span> </span>
-<span><span class="fu">microbiomedataset</span><span class="fu">::</span><span class="fu"><a href="../reference/summarise_variables.html">summarize_variables</a></span><span class="op">(</span></span>
-<span>  object <span class="op">=</span> <span class="va">global_patterns2</span>,</span>
-<span>  variable_index <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span>
-<span>  remain_variable_info_index <span class="op">=</span> <span class="fl">1</span></span>
-<span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">merged_variables</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu">microbiomedataset</span><span class="fu">::</span><span class="fu"><a href="../reference/summarise_variables.html">summarize_variables</a></span><span class="op">(</span></span>
+<span>    object <span class="op">=</span> <span class="va">global_patterns2</span>,</span>
+<span>    variable_index <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span>
+<span>    remain_variable_info_index <span class="op">=</span> <span class="fl">1</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">merged_variables</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 18984    26</span></span>
+<span><span class="co">#&gt; variables   samples </span></span>
+<span><span class="co">#&gt;     18984        26</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">global_patterns2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 18988    26</span></span></code></pre></div>
+<span><span class="co">#&gt; variables   samples </span></span>
+<span><span class="co">#&gt;     18988        26</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-information">
