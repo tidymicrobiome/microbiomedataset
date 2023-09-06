@@ -35,12 +35,12 @@ filter.microbiome_dataset <-
     }
     
     if (.data@activated == "variable_info") {
-      if (nrow(.data@annotation_table) > 0) {
-        variable_info <- .data@variable_info
-        .data@annotation_table <-
-          .data@annotation_table %>%
-          dplyr::filter(variable_id %in% variable_info$variable_id)
-      }
+      # if (nrow(.data@annotation_table) > 0) {
+      #   variable_info <- .data@variable_info
+      #   .data@annotation_table <-
+      #     .data@annotation_table %>%
+      #     dplyr::filter(variable_id %in% variable_info$variable_id)
+      # }
       .data@expression_data <-
         .data@expression_data[x$variable_id, , drop = FALSE]
     }
