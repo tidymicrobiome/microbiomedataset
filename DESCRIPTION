@@ -63,5 +63,6 @@ Suggests:
 Note:
 Remotes: 
     gitlab::jaspershen/massdataset
+    gitlab::tidymass/masstools
 biocViews: Microbiome
 Config/testthat/edition: 3
