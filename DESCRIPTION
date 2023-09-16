@@ -62,7 +62,7 @@ Suggests:
     testthat (>= 3.0.0)
 Note:
 Remotes: 
-    gitlab::jaspershen/massdataset,
+    gitlab::tidymass/massdataset,
     gitlab::tidymass/masstools
 biocViews: Microbiome
 Config/testthat/edition: 3
