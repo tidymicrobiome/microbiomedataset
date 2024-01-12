@@ -108,3 +108,22 @@ convert2microbiome_dataset.phyloseq <-
       )
     return(new_object)
   }
+
+
+#' @method convert2microbiome_dataset mass_dataset
+#' @rdname convert2microbiome_dataset
+#' @importFrom tibble column_to_rownames
+#' @export
+
+convert2microbiome_dataset.mass_dataset <-
+  function(object,
+           ...) {
+    
+    new_object <-
+      create_microbiome_dataset(
+        expression_data = object@expression_data,
+        sample_info = object@sample_info,
+        variable_info = object@variable_info
+      )
+    return(new_object)
+  }

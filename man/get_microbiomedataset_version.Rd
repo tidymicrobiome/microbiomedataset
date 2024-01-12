@@ -3,18 +3,29 @@
 \docType{methods}
 \name{get_microbiomedataset_version}
 \alias{get_microbiomedataset_version}
-\title{get_microbiomedataset_version}
+\title{Retrieve the Version of the microbiomedataset Package}
 \usage{
 get_microbiomedataset_version()
 }
 \value{
-version
+A character string representing the version of the
+microbiomedataset package.
 }
 \description{
-Get microbiomedataset package version
+This function returns the current version of the microbiomedataset package.
+}
+\details{
+\code{get_microbiomedataset_version} retrieves the version number of the
+microbiomedataset package using the \code{packageVersion} function from the utils
+package. It returns the version as a character string.
+}
+\note{
+This function is especially useful for logging, debugging, or
+providing user feedback regarding the version of the microbiomedataset package.
 }
 \examples{
 get_microbiomedataset_version()
+
 }
 \author{
 Xiaotao Shen

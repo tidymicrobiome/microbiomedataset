@@ -4,18 +4,21 @@
 \name{global_patterns}
 \alias{global_patterns}
 \alias{GlobalPatterns}
-\title{(Data) Global patterns of 16S rRNA diversity at a depth of millions of sequences per sample (2011)}
+\title{Global Patterns of 16S rRNA Diversity}
+\format{
+An object of class \code{microbiome_dataset} with 19216 rows and 26 columns.
+}
+\usage{
+global_patterns
+}
 \description{
-Published in PNAS in early 2011. This work compared the microbial
-communities from 25 environmental samples and three known “mock communities”
-– a total of 9 sample types – at a depth averaging 3.1 million reads per
-sample. Authors were able to reproduce diversity patterns seen in many
-other published studies, while also invesitigating technical
-issues/bias by applying the same techniques to simulated microbial
-communities of known composition.
-This data is from phyloseq package
+Published in PNAS in early 2011, this dataset compares microbial communities from 25 environmental
+samples and three known “mock communities” – a total of 9 sample types – at a depth averaging 3.1
+million reads per sample. The study reproduced diversity patterns seen in many other published studies
+and investigated technical issues/bias by applying the same techniques to simulated microbial
+communities of known composition. This data is from the phyloseq package.
 }
 \examples{
 data(global_patterns)
 }
-\keyword{data}
+\keyword{datasets}

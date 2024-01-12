@@ -3,18 +3,28 @@
 \docType{methods}
 \name{microbiomedataset_logo}
 \alias{microbiomedataset_logo}
-\title{microbiomedataset_logo}
+\title{Display Logo and Version Information for microbiomedataset}
 \usage{
 microbiomedataset_logo()
 }
-\value{
-logo
-}
 \description{
-Get the detailed information of microbiomedataset package.
+This function prints the logo of the microbiomedataset package along with
+its current version and update date. It also provides a hint for obtaining
+more information about the package.
+}
+\details{
+The function displays the logo using ASCII characters and prints
+messages with version information and a suggestion to search for more
+information about the \verb{tidymicrobiome microbiomedataset}. The messages
+and logo are printed in green using the \code{crayon} package.
+}
+\note{
+This function is part of the tidymicrobiome package and is intended
+to enhance user experience by providing quick access to version information.
 }
 \examples{
 microbiomedataset_logo()
+
 }
 \author{
 Xiaotao Shen

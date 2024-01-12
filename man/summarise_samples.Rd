@@ -4,7 +4,7 @@
 \alias{summarise_samples}
 \alias{summarize_samples}
 \alias{summarise_samples.microbiome_dataset}
-\title{merge samples}
+\title{Summarize Samples in a Microbiome Dataset}
 \usage{
 summarise_samples(
   object,
@@ -28,17 +28,34 @@ summarize_samples(
 )
 }
 \arguments{
-\item{object}{microbiome_dataset}
+\item{object}{A microbiome dataset object of class \code{microbiome_dataset}.}
 
-\item{what}{which you want to use}
+\item{what}{A character string specifying the type of summary required.
+Options are "mean_intensity", "median_intensity", or "sum_intensity".
+Default is "mean_intensity".}
 
-\item{group_by}{summarize samples by}
+\item{group_by}{A character string specifying the grouping variable.}
 
-\item{...}{other params}
+\item{...}{Additional arguments.}
 }
 \value{
-microbiome_dataset
+A modified microbiome dataset object with summarized expression data.
+
+A microbiome dataset object with updated sample_info and expression_data reflecting the summarization.
 }
 \description{
-merge samples
+This generic function summarizes the expression data in a microbiome dataset object
+based on specified criteria like mean, median, or sum of intensities, grouped by a specified factor.
+
+Specific implementation of \code{summarise_samples} for objects of class \code{microbiome_dataset}.
+It performs the summarization of expression data based on the specified criteria and grouping.
+}
+\details{
+The \code{summarise_samples} function is a generic method, which calls the appropriate
+method (e.g., \code{summarise_samples.microbiome_dataset}) based on the class of the \code{object}.
+It summarizes the expression data based on the given \code{what} parameter and groups by \code{group_by}.
+
+This method specifically handles objects of the \code{microbiome_dataset} class.
+It applies the summarization as specified by the \code{what} and \code{group_by} parameters
+and updates the object accordingly.
 }

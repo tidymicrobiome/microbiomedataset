@@ -1,11 +1,25 @@
-#' @title check_microbiome_dataset_class
-#' @description Check microbiome_dataset class object.
-#' @docType methods
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param object microbiome_dataset class.
-#' @return Notice of data checking.
+#' Check Integrity and Structure of Microbiome Dataset Object
+#'
+#' Performs a series of checks on a microbiome dataset object to ensure its
+#' integrity and correct structure. This includes verifying the format of
+#' various components such as sample_info, variable_info, and expression_data.
+#'
+#' @param object A microbiome dataset object to be checked.
+#'
+#' @details The function performs checks to ensure:
+#'   - `variable_info` has a `variable_id` column and no duplicated variable IDs.
+#'   - `sample_info` has `sample_id` and `class` columns with no duplicated sample IDs.
+#'   - `sample_info_note` and `variable_info_note` have appropriate columns if they exist.
+#'   - Consistency between the `expression_data` and the `sample_info` and `variable_info`.
+#'   - Consistency between `sample_info`, `variable_info` and their respective notes.
+#' Any issues found are returned as character strings in a vector.
+#'
+#' @return TRUE if the dataset passes all checks, otherwise returns a character
+#' vector listing the found errors.
+#'
 #' @export
+#' @author Xiaotao Shen \email{shenxt1990@@outlook.com}
+#'
 
 check_microbiome_dataset_class <-
   function(object) {
@@ -130,7 +144,6 @@ check_microbiome_dataset_class <-
     else
       errors
   }
-
 
 massdataset::check_mass_dataset_class
 massdataset::check_mass_dataset

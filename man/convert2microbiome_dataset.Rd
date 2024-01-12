@@ -4,6 +4,7 @@
 \alias{convert2microbiome_dataset}
 \alias{as.microbiome_dataset}
 \alias{convert2microbiome_dataset.phyloseq}
+\alias{convert2microbiome_dataset.mass_dataset}
 \title{convert to microbiome_dataset class object.}
 \usage{
 convert2microbiome_dataset(object, ...)
@@ -11,6 +12,8 @@ convert2microbiome_dataset(object, ...)
 as.microbiome_dataset(object, ...)
 
 \method{convert2microbiome_dataset}{phyloseq}(object, ...)
+
+\method{convert2microbiome_dataset}{mass_dataset}(object, ...)
 }
 \arguments{
 \item{object}{phylosep or other class}

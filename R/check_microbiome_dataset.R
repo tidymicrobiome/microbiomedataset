@@ -1,18 +1,31 @@
-#' @title check_microbiome_dataset
-#' @description Check data format for microbiome_dataset class object.
-#' @docType methods
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param expression_data expression_data.
-#' @param sample_info sample_info.
-#' @param variable_info variable_info.
-#' @param otu_tree otu_tree
-#' @param taxa_tree taxa_tree
-#' @param ref_seq ref_seq
-#' @param sample_info_note sample_info_note.
-#' @param variable_info_note variable_info_note.
-#' @return Notice of data checking.
+#' Validate the Format and Consistency of a Microbiome Dataset
+#'
+#' This function checks the structure and consistency of various components of a 
+#' microbiome dataset, including expression data, sample information, variable information, 
+#' and their respective notes.
+#'
+#' @param expression_data A data frame representing expression data.
+#' @param sample_info A data frame containing sample information.
+#' @param variable_info A data frame containing variable information.
+#' @param otu_tree An optional parameter for OTU tree data.
+#' @param taxa_tree An optional parameter for taxa tree data.
+#' @param ref_seq An optional parameter for reference sequence data.
+#' @param sample_info_note A data frame containing notes on sample information.
+#' @param variable_info_note A data frame containing notes on variable information.
+#'
+#' @details The function performs a series of checks to ensure:
+#'   - Required data frames (expression_data, sample_info, variable_info) are provided.
+#'   - All data frames are of the correct class.
+#'   - Key columns exist and there are no duplicated items in critical fields.
+#'   - The dimensions of the data frames are consistent with each other.
+#' Errors in these checks will result in descriptive error messages.
+#'
+#' @return A string "all good." if all checks pass, otherwise returns a descriptive 
+#' error message indicating the issue found.
+#'
 #' @export
+#' @author Xiaotao Shen \email{shenxt1990@@outlook.com}
+#'
 
 check_microbiome_dataset <-
   function(expression_data,

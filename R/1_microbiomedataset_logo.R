@@ -1,5 +1,21 @@
-#' @title microbiomedataset_logo
-#' @description Get the detailed information of microbiomedataset package.
+#' Display Logo and Version Information for microbiomedataset
+#'
+#' This function prints the logo of the microbiomedataset package along with
+#' its current version and update date. It also provides a hint for obtaining
+#' more information about the package.
+#'
+#' @details The function displays the logo using ASCII characters and prints
+#' messages with version information and a suggestion to search for more
+#' information about the `tidymicrobiome microbiomedataset`. The messages
+#' and logo are printed in green using the `crayon` package.
+#'
+#' @export
+#' @examples
+#' microbiomedataset_logo()
+#'
+#' @note This function is part of the tidymicrobiome package and is intended
+#' to enhance user experience by providing quick access to version information.
+#'
 #' @docType methods
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
@@ -33,10 +49,7 @@
 #' @importFrom massdataset check_column_name extract_expression_data extract_sample_info
 #' @importFrom massdataset extract_variable_info
 #' @importFrom tidytree as.phylo as.treedata
-#' @export
-#' @return logo
-#' @examples
-#' microbiomedataset_logo()
+
 
 microbiomedataset_logo <-
   function() {
@@ -69,15 +82,28 @@ microbiomedataset_version <-
 
 update_date <- as.character(Sys.time())
 
-#' @title get_microbiomedataset_version
-#' @description Get microbiomedataset package version
+#' Retrieve the Version of the microbiomedataset Package
+#'
+#' This function returns the current version of the microbiomedataset package.
+#'
+#' @details `get_microbiomedataset_version` retrieves the version number of the
+#' microbiomedataset package using the `packageVersion` function from the utils
+#' package. It returns the version as a character string.
+#'
+#' @return A character string representing the version of the
+#' microbiomedataset package.
+#'
+#' @examples
+#' get_microbiomedataset_version()
+#'
+#' @export
+#' @note This function is especially useful for logging, debugging, or 
+#' providing user feedback regarding the version of the microbiomedataset package.
+#'
 #' @docType methods
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
-#' @export
-#' @return version
-#' @examples
-#' get_microbiomedataset_version()
+
 get_microbiomedataset_version = function() {
   return(as.character(utils::packageVersion(pkg = "microbiomedataset")))
 }

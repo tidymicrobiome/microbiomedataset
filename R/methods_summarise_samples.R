@@ -1,10 +1,21 @@
-####merge samples
-#' @title merge samples
-#' @param object microbiome_dataset
-#' @param what which you want to use
-#' @param group_by summarize samples by
-#' @param ... other params
-#' @return microbiome_dataset
+#' Summarize Samples in a Microbiome Dataset
+#'
+#' This generic function summarizes the expression data in a microbiome dataset object
+#' based on specified criteria like mean, median, or sum of intensities, grouped by a specified factor.
+#'
+#' @param object A microbiome dataset object.
+#' @param what A character string specifying the type of summary required. 
+#'             Options are "mean_intensity", "median_intensity", or "sum_intensity". 
+#'             Default is "mean_intensity".
+#' @param group_by A character string specifying the grouping variable.
+#' @param ... Additional arguments.
+#'
+#' @return A modified microbiome dataset object with summarized expression data.
+#'
+#' @details The `summarise_samples` function is a generic method, which calls the appropriate
+#' method (e.g., `summarise_samples.microbiome_dataset`) based on the class of the `object`.
+#' It summarizes the expression data based on the given `what` parameter and groups by `group_by`.
+#'
 #' @export
 summarise_samples <-
   function(object,
@@ -20,6 +31,16 @@ summarise_samples <-
 #' @export
 summarize_samples <- summarise_samples
 
+#' Summarize Samples for microbiome_dataset Class
+#'
+#' Specific implementation of `summarise_samples` for objects of class `microbiome_dataset`.
+#' It performs the summarization of expression data based on the specified criteria and grouping.
+#'
+#' @param object A microbiome dataset object of class `microbiome_dataset`.
+#' @return A microbiome dataset object with updated sample_info and expression_data reflecting the summarization.
+#' @details This method specifically handles objects of the `microbiome_dataset` class.
+#' It applies the summarization as specified by the `what` and `group_by` parameters
+#' and updates the object accordingly.
 #' @method summarise_samples microbiome_dataset
 #' @rdname summarise_samples
 #' @importFrom phyloseq sample_data tax_table phyloseq otu_table

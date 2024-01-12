@@ -1,7 +1,7 @@
 Package: microbiomedataset
 Title: microbiomedataset
-Version: 0.99.11
-Date: 2023-09-06
+Version: 0.99.12
+Date: 2024-01-11
 Authors@R: 
     person(given = "Xiaotao",
            family = "Shen",

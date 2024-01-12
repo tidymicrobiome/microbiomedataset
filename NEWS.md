@@ -31,5 +31,9 @@
 
 * Update.
 
+# microbiomedataset 0.99.12 (2024-01-11)
+
+* Fix bugs and add some functions.
+
 
 
