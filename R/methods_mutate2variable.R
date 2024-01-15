@@ -81,7 +81,7 @@ mutate2variable.microbiome_dataset <-
     expression_data <-
       extract_expression_data(object)
     
-    if (grepl("na", what)) {
+    if (grepl("na|zero", what)) {
       if (what == "na_number") {
         new_info <-
           expression_data[, according_to_samples, drop = FALSE] %>%
