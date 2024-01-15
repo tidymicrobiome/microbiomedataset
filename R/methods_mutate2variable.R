@@ -1,20 +1,34 @@
-####Mutate new columns into variable_info
-#' @title Mutate new columns into variable_info
-#' @param object microbiome_dataset
-#' @param what which you want to mutate
-#' @param according_to_samples (required) What samples used to calculate.
-#' Default is "all". If you
-#' want to use only several samples, provide their names as a vector.
-#' @param ... other params
-#' @return microbiome_dataset or data.frame.
-#' @export
+#' Mutate New Columns into Variable Info of Microbiome Dataset
+#'
+#' This function adds new columns to the `variable_info` of a `microbiome_dataset`. 
+#' It calculates various statistics like mean, median, sum of intensities, and proportions 
+#' of NA and zero values, based on the provided samples.
+#'
+#' @param object A `microbiome_dataset` object on which the mutation will be performed.
+#' @param what A character vector specifying the statistics to be calculated and added. 
+#'   Options include "mean_intensity", "median_intensity", "sum_intensity", "na_number", 
+#'   "na_prop", "zero_number", "zero_prop". Default is all options.
+#' @param according_to_samples A character vector specifying the samples to be used for 
+#'   calculations. Default is "all", which uses all samples. If only specific samples are 
+#'   needed, provide their names as a vector.
+#' @param ... Additional arguments passed to other methods.
+#'
+#' @return Returns the modified `microbiome_dataset` object with additional columns in 
+#'   `variable_info`.
+#'
+#' @importFrom phyloseq sample_data tax_table phyloseq otu_table
+#' @importFrom tibble column_to_rownames
+#' @importFrom massdataset check_column_name
+#' @export 
 mutate2variable <-
   function(object,
            what = c("mean_intensity",
                     "median_intensity",
                     "sum_intensity",
                     "na_number",
-                    "na_prop"),
+                    "na_prop",
+                    "zero_number",
+                    "zero_prop"),
            according_to_samples = "all",
            ...) {
     UseMethod("mutate2variable")
@@ -33,7 +47,9 @@ mutate2variable.microbiome_dataset <-
                     "median_intensity",
                     "sum_intensity",
                     "na_number",
-                    "na_prop"),
+                    "na_prop",
+                    "zero_number",
+                    "zero_prop"),
            according_to_samples = "all",
            ...) {
     what <-
@@ -73,7 +89,15 @@ mutate2variable.microbiome_dataset <-
             sum(is.na(x))
           })
       }
-      
+
+      if (what == "zero_number") {
+        new_info <-
+          expression_data[, according_to_samples, drop = FALSE] %>%
+          apply(1, function(x) {
+            sum(x == 0)
+          })
+      }
+
       if (what == "na_prop") {
         new_info <-
           expression_data[, according_to_samples, drop = FALSE] %>%
@@ -81,6 +105,15 @@ mutate2variable.microbiome_dataset <-
             sum(is.na(x)) / length(x)
           })
       }
+
+      if (what == "zero_prop") {
+        new_info <-
+          expression_data[, according_to_samples, drop = FALSE] %>%
+          apply(1, function(x) {
+            sum(x == 0) / length(x)
+          })
+      }
+
     } else{
       new_info <-
         expression_data[, according_to_samples, drop = FALSE] %>%

@@ -3,36 +3,43 @@
 \name{mutate2variable}
 \alias{mutate2variable}
 \alias{mutate2variable.microbiome_dataset}
-\title{Mutate new columns into variable_info}
+\title{Mutate New Columns into Variable Info of Microbiome Dataset}
 \usage{
 mutate2variable(
   object,
-  what = c("mean_intensity", "median_intensity", "sum_intensity", "na_number", "na_prop"),
+  what = c("mean_intensity", "median_intensity", "sum_intensity", "na_number", "na_prop",
+    "zero_number", "zero_prop"),
   according_to_samples = "all",
   ...
 )
 
 \method{mutate2variable}{microbiome_dataset}(
   object,
-  what = c("mean_intensity", "median_intensity", "sum_intensity", "na_number", "na_prop"),
+  what = c("mean_intensity", "median_intensity", "sum_intensity", "na_number", "na_prop",
+    "zero_number", "zero_prop"),
   according_to_samples = "all",
   ...
 )
 }
 \arguments{
-\item{object}{microbiome_dataset}
+\item{object}{A \code{microbiome_dataset} object on which the mutation will be performed.}
 
-\item{what}{which you want to mutate}
+\item{what}{A character vector specifying the statistics to be calculated and added.
+Options include "mean_intensity", "median_intensity", "sum_intensity", "na_number",
+"na_prop", "zero_number", "zero_prop". Default is all options.}
 
-\item{according_to_samples}{(required) What samples used to calculate.
-Default is "all". If you
-want to use only several samples, provide their names as a vector.}
+\item{according_to_samples}{A character vector specifying the samples to be used for
+calculations. Default is "all", which uses all samples. If only specific samples are
+needed, provide their names as a vector.}
 
-\item{...}{other params}
+\item{...}{Additional arguments passed to other methods.}
 }
 \value{
-microbiome_dataset or data.frame.
+Returns the modified \code{microbiome_dataset} object with additional columns in
+\code{variable_info}.
 }
 \description{
-Mutate new columns into variable_info
+This function adds new columns to the \code{variable_info} of a \code{microbiome_dataset}.
+It calculates various statistics like mean, median, sum of intensities, and proportions
+of NA and zero values, based on the provided samples.
 }
