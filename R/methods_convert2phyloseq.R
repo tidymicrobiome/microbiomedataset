@@ -36,6 +36,10 @@ convert2phyloseq.microbiome_dataset <-
       as.matrix() %>%
       phyloseq::tax_table()
     
+    rownames(taxa_data) <-
+      extract_variable_info(object)$variable_id
+    
+    
     if (!is.null(object@otu_tree)) {
       otu_tree <-
         object@otu_tree
