@@ -43,5 +43,7 @@
 
 * Fix bugs and add some functions.
 
+# microbiomedataset 0.99.15 (2024-12-27)
 
+* Added a test comment line to logo.R.
 
