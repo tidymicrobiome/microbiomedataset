@@ -1,11 +1,11 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# microbiomedataset <img src="man/figures/microbiomedataset_logo.png" align="right" alt="" width="120" />
+# microbiomedataset <img src="man/figures/microbiomedataset_logo.png" align="right" alt="microbiomedataset logo" width="120" />
 
-[![](https://www.r-pkg.org/badges/version/microbiomedataset?color=green)](https://cran.r-project.org/package=microbiomedataset)
-[![](https://img.shields.io/github/languages/code-size/tidymicrobiome/microbiomedataset.svg)](https://github.com/tidymicrobiome/microbiomedataset)
+[![CRAN version badge](https://www.r-pkg.org/badges/version/microbiomedataset?color=green)](https://cran.r-project.org/package=microbiomedataset)
+[![GitHub code size badge](https://img.shields.io/github/languages/code-size/tidymicrobiome/microbiomedataset.svg)](https://github.com/tidymicrobiome/microbiomedataset)
 [![Dependencies](https://tinyverse.netlify.com/badge/microbiomedataset)](https://cran.r-project.org/package=microbiomedataset)
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Lifecycle experimental badge](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 `microbiomedataset` is a part of [tidymicrobiome](https://www.tidymicrobiome.org/).
 
@@ -40,12 +40,12 @@ Please see the `Help documents`.
 # Need help?
 
 If you have any questions about `microbiomedataset`, please don’t hesitate to
-email me (<shenxt1990@outlook.com>) or reach out me via the social medias below.
+email me (<xiaotao.shen@outlook.com>) or reach out me via the social medias below.
 
 <i class="fa fa-weixin"></i>
 [shenxt1990](https://www.shenxt.info/files/wechat_QR.jpg)
 
-<i class="fa fa-envelope"></i> <shenxt@stanford.edu>
+<i class="fa fa-envelope"></i> <xiaotao.shen@outlook.com>
 
 <i class="fa fa-twitter"></i>
 [Twitter](https://twitter.com/JasperShen1990)

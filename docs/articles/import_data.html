@@ -4,157 +4,90 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Importing data • microbiomedataset</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
-<link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Importing data">
-<meta property="og:description" content="microbiomedataset">
-<meta property="og:image" content="https://tidymicrobiome.github.io/microbiomedataset/logo.png">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-000000-01"></script><script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-000000-01');
-</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Create and import microbiome datasets • microbiomedataset</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Create and import microbiome datasets">
 </head>
-<body data-spy="scroll" data-target="#toc">
-    
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">microbiomedataset</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.10</span>
-      </span>
-    </div>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../articles/microbiomedataset.html">Get started</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Tutorials
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">Basic processing</li>
-    <li class="divider">
-    </li>
-<li>
-      <a href="../articles/import_data.html">Data import</a>
-    </li>
-    <li>
-      <a href="../articles/relative_intensity.html">Transform to relative intensity</a>
-    </li>
-    <li>
-      <a href="../articles/preprocess.html">Preprocess</a>
-    </li>
-    <li>
-      <a href="../articles/merge.html">Merge data</a>
-    </li>
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
+    <a class="navbar-brand me-2" href="../index.html">microbiomedataset</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.99.1</small>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-tutorials" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Tutorials</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-tutorials">
+<li><a class="dropdown-item" href="../articles/microbiomedataset.html">Get started</a></li>
+    <li><a class="dropdown-item" href="../articles/import_data.html">Create and import data</a></li>
+    <li><a class="dropdown-item" href="../articles/preprocess.html">Filter and transform</a></li>
+    <li><a class="dropdown-item" href="../articles/merge.html">Aggregate and reshape</a></li>
+    <li><a class="dropdown-item" href="../articles/relative_intensity.html">Diversity and ordination</a></li>
+    <li><a class="dropdown-item" href="../articles/filtering.html">Trees and sequences</a></li>
+    <li><a class="dropdown-item" href="../articles/crossomics_workflow.html">Microbiome-metabolome integration</a></li>
+    <li><a class="dropdown-item" href="../articles/visualization_microbiome.html">Microbiome visualization</a></li>
+    <li><a class="dropdown-item" href="../articles/visualization_crossomics.html">Cross-omics visualization</a></li>
+    <li><a class="dropdown-item" href="../articles/advanced_visualization.html">Advanced visualization</a></li>
+    <li><a class="dropdown-item" href="../articles/microbiome_workflow.html">End-to-end workflow</a></li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    News
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../news/index.html">Change log</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/tidymicrobiome/microbiomedataset/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="https://twitter.com/xiaotaoshen1990" class="external-link">
-    <span class="fab fa-twitter fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/tidymicrobiome/microbiomedataset" aria-label="GitHub repository"><span class="fa fab fa-github"></span></a></li>
       </ul>
-<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
-        <div class="form-group">
-          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
-      </form>
-      
-    </div>
-<!--/.nav-collapse -->
+
+
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
-      
 
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Importing data</h1>
-                        <h4 data-toc-skip class="author">Xiaotao Shen
-(<a href="https://www.shenxt.info/" class="external-link uri">https://www.shenxt.info/</a>)</h4>
+
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>Create and import microbiome datasets</h1>
+                        <h4 data-toc-skip class="author">Xiaotao Shen <a href="mailto:xiaotao.shen@outlook.com" class="email">xiaotao.shen@outlook.com</a>
+</h4>
                         
-            <h4 data-toc-skip class="date">Created on 2022-07-09 and
-updated on 2023-04-19</h4>
+            <h4 data-toc-skip class="date">2026-03-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tidymicrobiome/microbiomedataset/blob/HEAD/vignettes/import_data.Rmd" class="external-link"><code>vignettes/import_data.Rmd</code></a></small>
-      <div class="hidden name"><code>import_data.Rmd</code></div>
-
+      <div class="d-none name"><code>import_data.Rmd</code></div>
     </div>
 
     
     
-<div class="section level2">
-<h2 id="loading-included-data">
-<strong>Loading included data</strong><a class="anchor" aria-label="anchor" href="#loading-included-data"></a>
-</h2>
-<p>You can load the demo data in <code>microbiomedataset</code> package
-to see the <code>microbiome_dataset</code> class.</p>
+<p>This article shows the supported entry points into
+<code>microbiome_dataset</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymicrobiome/microbiomedataset" class="external-link">microbiomedataset</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"global_patterns"</span>, package <span class="op">=</span> <span class="st">"microbiomedataset"</span><span class="op">)</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="start-from-the-packaged-demo-object">Start from the packaged demo object<a class="anchor" aria-label="anchor" href="#start-from-the-packaged-demo-object"></a>
+</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"global_patterns"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">global_patterns</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">-------------------- </span></span></span>
 <span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">microbiomedataset version: 0.99.1 </span></span></span>
@@ -168,342 +101,135 @@ to see the <code>microbiome_dataset</code> class.</p>
 <span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">Processing information (extract_process_info())</span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; create_microbiome_dataset ---------- </span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; </span>            Package               Function.used                Time</span></span>
-<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2022-07-10 10:56:13</span></span></code></pre></div>
-<p>So you can see that we have 1,9216 variables and 26 samples in the
-dataset.</p>
+<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2022-07-11 01:56:13</span></span></code></pre></div>
+<p>This is the fastest way to learn the object structure:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">@</span><span class="va">sample_info</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sample_id"</span>, <span class="st">"SampleType"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   sample_id SampleType</span></span>
+<span><span class="co">#&gt; 1       CL3       Soil</span></span>
+<span><span class="co">#&gt; 2       CC1       Soil</span></span>
+<span><span class="co">#&gt; 3       SV1       Soil</span></span>
+<span><span class="co">#&gt; 4   M31Fcsw      Feces</span></span>
+<span><span class="co">#&gt; 5   M11Fcsw      Feces</span></span>
+<span><span class="co">#&gt; 6   M31Plmr       Skin</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">@</span><span class="va">variable_info</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"variable_id"</span>, <span class="st">"Kingdom"</span>, <span class="st">"Phylum"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   variable_id Kingdom        Phylum</span></span>
+<span><span class="co">#&gt; 1      549322 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 2      522457 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 3         951 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 4      244423 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 5      586076 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 6      246140 Archaea Crenarchaeota</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="create-microbiome_dataset-class-object">
-<strong>Create microbiome_dataset class object</strong><a class="anchor" aria-label="anchor" href="#create-microbiome_dataset-class-object"></a>
+<h2 id="create-an-object-from-rectangular-data">Create an object from rectangular data<a class="anchor" aria-label="anchor" href="#create-an-object-from-rectangular-data"></a>
 </h2>
-<p>You can also create the <code>microbiome_dataset</code> class using
-the <code>create_microbiome_dataset</code> function.</p>
-<p>We need to prepare at least three data for it.</p>
+<p>At minimum, a new object needs:</p>
 <ol style="list-style-type: decimal">
-<li><p><code>expression_data</code>: rows are variables and columns are
-samples.</p></li>
-<li><p><code>sample_info</code>: Information for all the samples in
-<code>expression_data</code>. The first column should be
-<code>sample_id</code> which should be identical with the column names
-of <code>expression_data</code>.</p></li>
-<li><p><code>variable_info</code>: Information for all the variables in
-<code>expression_data</code>. The first column should be
-<code>variable_id</code> which should be identical with the row names of
-<code>expression_data</code>.</p></li>
+<li>
+<code>expression_data</code>: rows are features and columns are
+samples.</li>
+<li>
+<code>sample_info</code>: first column must be
+<code>sample_id</code>.</li>
+<li>
+<code>variable_info</code>: first column must be
+<code>variable_id</code>.</li>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">expression_data</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    nrow <span class="op">=</span> <span class="fl">10</span>,</span>
-<span>    ncol <span class="op">=</span> <span class="fl">10</span></span>
-<span>  <span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"OTU"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Sample"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">expression_data</span></span>
-<span><span class="co">#&gt;       Sample1 Sample2 Sample3 Sample4 Sample5 Sample6 Sample7 Sample8 Sample9</span></span>
-<span><span class="co">#&gt; OTU1        4      95      97      75      78      73      48      52      97</span></span>
-<span><span class="co">#&gt; OTU2       38      24      45      83     100      97      94       9      56</span></span>
-<span><span class="co">#&gt; OTU3       67      79      10      32      77      58      41      76      35</span></span>
-<span><span class="co">#&gt; OTU4       13      28      51      81     100      32      32      94       5</span></span>
-<span><span class="co">#&gt; OTU5       54      71      94      55      86      54      55      23      26</span></span>
-<span><span class="co">#&gt; OTU6       96      91      20      14      99      75      38      42      24</span></span>
-<span><span class="co">#&gt; OTU7       50      31      84      81      62      51      91      17      42</span></span>
-<span><span class="co">#&gt; OTU8       34      55      45      16      76      19      87      61      62</span></span>
-<span><span class="co">#&gt; OTU9       96      41       1      66      90      68      57      62      34</span></span>
-<span><span class="co">#&gt; OTU10      38      29      37      63      20      26       7      76      77</span></span>
-<span><span class="co">#&gt;       Sample10</span></span>
-<span><span class="co">#&gt; OTU1        61</span></span>
-<span><span class="co">#&gt; OTU2        30</span></span>
-<span><span class="co">#&gt; OTU3        51</span></span>
-<span><span class="co">#&gt; OTU4        99</span></span>
-<span><span class="co">#&gt; OTU5        80</span></span>
-<span><span class="co">#&gt; OTU6        19</span></span>
-<span><span class="co">#&gt; OTU7        11</span></span>
-<span><span class="co">#&gt; OTU8        71</span></span>
-<span><span class="co">#&gt; OTU9        79</span></span>
-<span><span class="co">#&gt; OTU10       29</span></span>
-<span></span>
-<span><span class="va">variable_info</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span>, <span class="fl">70</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    nrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span>,</span>
-<span>    ncol <span class="op">=</span> <span class="fl">7</span></span>
-<span>  <span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">variable_info</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">variable_info</span><span class="op">)</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Domain"</span>,</span>
-<span>    <span class="st">"Phylum"</span>,</span>
-<span>    <span class="st">"Class"</span>,</span>
-<span>    <span class="st">"Order"</span>,</span>
-<span>    <span class="st">"Family"</span>,</span>
-<span>    <span class="st">"Genus"</span>,</span>
-<span>    <span class="st">"Species"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">variable_info</span><span class="op">$</span><span class="va">variable_id</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">variable_info</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">variable_info</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">variable_id</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">expression_data</span> <span class="op">&lt;-</span> <span class="va">global_patterns</span><span class="op">@</span><span class="va">expression_data</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
 <span></span>
 <span><span class="va">sample_info</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>sample_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">expression_data</span><span class="op">)</span>,</span>
-<span>             class <span class="op">=</span> <span class="st">"Subject"</span><span class="op">)</span></span>
+<span>  <span class="va">global_patterns</span><span class="op">@</span><span class="va">sample_info</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sample_id"</span>, <span class="st">"SampleType"</span>, <span class="st">"class"</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
-<span><span class="va">object</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="../reference/create_microbiome_dataset.html">create_microbiome_dataset</a></span><span class="op">(</span></span>
-<span>    expression_data <span class="op">=</span> <span class="va">expression_data</span>,</span>
-<span>    sample_info <span class="op">=</span> <span class="va">sample_info</span>,</span>
-<span>    variable_info <span class="op">=</span> <span class="va">variable_info</span></span>
-<span>  <span class="op">)</span></span>
+<span><span class="va">variable_info</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">global_patterns</span><span class="op">@</span><span class="va">variable_info</span><span class="op">[</span></span>
+<span>    <span class="fl">1</span><span class="op">:</span><span class="fl">20</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"variable_id"</span>, <span class="st">"Kingdom"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>,</span>
+<span>      <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span><span class="op">)</span></span>
+<span>  <span class="op">]</span></span>
 <span></span>
-<span><span class="va">object</span></span>
+<span><span class="va">mini_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_microbiome_dataset.html">create_microbiome_dataset</a></span><span class="op">(</span></span>
+<span>  expression_data <span class="op">=</span> <span class="va">expression_data</span>,</span>
+<span>  sample_info <span class="op">=</span> <span class="va">sample_info</span>,</span>
+<span>  variable_info <span class="op">=</span> <span class="va">variable_info</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">mini_object</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">-------------------- </span></span></span>
 <span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">microbiomedataset version: 0.99.1 </span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; </span><span style="color: #BBBB00;">-------------------- </span></span></span>
-<span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">1.expression_data:</span>[ 10 x 10 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">2.sample_info:</span>[ 10 x 2 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">3.variable_info:</span>[ 10 x 8 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">4.sample_info_note:</span>[ 2 x 2 data.frame]</span></span>
+<span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">1.expression_data:</span>[ 20 x 6 data.frame]</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">2.sample_info:</span>[ 6 x 3 data.frame]</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">3.variable_info:</span>[ 20 x 8 data.frame]</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">4.sample_info_note:</span>[ 3 x 2 data.frame]</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">5.variable_info_note:</span>[ 8 x 2 data.frame]</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">-------------------- </span></span></span>
 <span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">Processing information (extract_process_info())</span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; create_microbiome_dataset ---------- </span></span></span>
 <span><span class="co"><span style="color: #00BB00;">#&gt; </span>            Package               Function.used                Time</span></span>
-<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2023-04-19 10:38:22</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2026-03-04 13:00:31</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="convert-phyloseq-class-to-microbiome_dataset-class-object">
-<strong>Convert phyloseq class to microbiome_dataset class
-object</strong><a class="anchor" aria-label="anchor" href="#convert-phyloseq-class-to-microbiome_dataset-class-object"></a>
+<h2 id="convert-to-and-from-phyloseq">Convert to and from <code>phyloseq</code><a class="anchor" aria-label="anchor" href="#convert-to-and-from-phyloseq"></a>
 </h2>
-<p>We can also transfer or convert other common class object to
-<code>microbiome_dataset</code> class.</p>
-<p>Please install <code>phyloseq</code> package at first.</p>
+<p>The package supports interoperability with <code>phyloseq</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">BiocManager</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217" class="external-link">phyloseq</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"phyloseq"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217" class="external-link">phyloseq</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">GlobalPatterns</span><span class="op">)</span></span>
-<span><span class="va">GlobalPatterns</span></span>
+<code class="sourceCode R"><span><span class="va">phyloseq_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/convert2phyloseq.html">convert2phyloseq</a></span><span class="op">(</span><span class="va">global_patterns</span><span class="op">)</span></span>
+<span><span class="va">phyloseq_object</span></span>
 <span><span class="co">#&gt; phyloseq-class experiment-level object</span></span>
 <span><span class="co">#&gt; otu_table()   OTU Table:         [ 19216 taxa and 26 samples ]</span></span>
 <span><span class="co">#&gt; sample_data() Sample Data:       [ 26 samples by 7 sample variables ]</span></span>
 <span><span class="co">#&gt; tax_table()   Taxonomy Table:    [ 19216 taxa by 7 taxonomic ranks ]</span></span>
 <span><span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 19216 tips and 19215 internal nodes ]</span></span></code></pre></div>
-<p>The first function is <code>convert2microbiome_dataset</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">object1</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="fu"><a href="../reference/convert2microbiome_dataset.html">convert2microbiome_dataset</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">GlobalPatterns</span><span class="op">)</span></span>
-<span><span class="va">object1</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">-------------------- </span></span></span>
-<span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">microbiomedataset version: 0.99.1 </span></span></span>
-<span><span class="co"><span style="color: #00BB00;">#&gt; </span><span style="color: #BBBB00;">-------------------- </span></span></span>
-<span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">1.expression_data:</span>[ 19216 x 26 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">2.sample_info:</span>[ 26 x 8 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">3.variable_info:</span>[ 19216 x 8 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">4.sample_info_note:</span>[ 8 x 2 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">5.variable_info_note:</span>[ 8 x 2 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">-------------------- </span></span></span>
-<span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">Processing information (extract_process_info())</span></span></span>
-<span><span class="co"><span style="color: #00BB00;">#&gt; create_microbiome_dataset ---------- </span></span></span>
-<span><span class="co"><span style="color: #00BB00;">#&gt; </span>            Package               Function.used                Time</span></span>
-<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2023-04-19 10:38:32</span></span></code></pre></div>
-<p>The second function is <code>as.microbiome_dataset</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">object2</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="fu"><a href="../reference/convert2microbiome_dataset.html">as.microbiome_dataset</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">GlobalPatterns</span><span class="op">)</span></span>
-<span><span class="va">object2</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">-------------------- </span></span></span>
-<span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">microbiomedataset version: 0.99.1 </span></span></span>
-<span><span class="co"><span style="color: #00BB00;">#&gt; </span><span style="color: #BBBB00;">-------------------- </span></span></span>
-<span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">1.expression_data:</span>[ 19216 x 26 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">2.sample_info:</span>[ 26 x 8 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">3.variable_info:</span>[ 19216 x 8 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">4.sample_info_note:</span>[ 8 x 2 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">5.variable_info_note:</span>[ 8 x 2 data.frame]</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">-------------------- </span></span></span>
-<span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">Processing information (extract_process_info())</span></span></span>
-<span><span class="co"><span style="color: #00BB00;">#&gt; create_microbiome_dataset ---------- </span></span></span>
-<span><span class="co"><span style="color: #00BB00;">#&gt; </span>            Package               Function.used                Time</span></span>
-<span><span class="co">#&gt; 1 microbiomedataset create_microbiome_dataset() 2023-04-19 10:38:40</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">microbiomedataset</span><span class="fu">::</span><span class="fu"><a href="../reference/plot_barplot.html">plot_barplot</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, </span>
-<span>                                top_n <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>                                fill <span class="op">=</span> <span class="st">"Phylum"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="import_data_files/figure-html/unnamed-chunk-10-1.png" width="100%"></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">microbiomedataset</span><span class="fu">::</span><span class="fu"><a href="../reference/plot_barplot.html">plot_barplot</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, </span>
-<span>                                top_n <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>                                fill <span class="op">=</span> <span class="st">"Phylum"</span>, </span>
-<span>                                relative <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>                                re_calculate_relative <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="import_data_files/figure-html/unnamed-chunk-11-1.png" width="100%"></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">roundtrip_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/convert2microbiome_dataset.html">convert2microbiome_dataset</a></span><span class="op">(</span><span class="va">phyloseq_object</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">roundtrip_object</span><span class="op">@</span><span class="va">expression_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 19216    26</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">roundtrip_object</span><span class="op">@</span><span class="va">variable_info</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"variable_id"</span>, <span class="st">"Kingdom"</span>, <span class="st">"Phylum"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   variable_id Kingdom        Phylum</span></span>
+<span><span class="co">#&gt; 1      549322 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 2      522457 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 3         951 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 4      244423 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 5      586076 Archaea Crenarchaeota</span></span>
+<span><span class="co">#&gt; 6      246140 Archaea Crenarchaeota</span></span>
+<span><span class="fu"><a href="../reference/check_microbiome_dataset_class.html">check_microbiome_dataset_class</a></span><span class="op">(</span><span class="va">roundtrip_object</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="session-information">
-<strong>Session information</strong><a class="anchor" aria-label="anchor" href="#session-information"></a>
+<h2 id="inspect-imported-schema">Inspect imported schema<a class="anchor" aria-label="anchor" href="#inspect-imported-schema"></a>
 </h2>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.2.1 (2022-06-23)</span></span>
-<span><span class="co">#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)</span></span>
-<span><span class="co">#&gt; Running under: macOS Big Sur ... 10.16</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib</span></span>
-<span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; locale:</span></span>
-<span><span class="co">#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; attached base packages:</span></span>
-<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] BiocManager_1.30.18       phyloseq_1.40.0          </span></span>
-<span><span class="co">#&gt;  [3] forcats_0.5.2             stringr_1.4.1            </span></span>
-<span><span class="co">#&gt;  [5] purrr_1.0.1               readr_2.1.3              </span></span>
-<span><span class="co">#&gt;  [7] tidyr_1.2.1               tibble_3.1.8             </span></span>
-<span><span class="co">#&gt;  [9] ggplot2_3.4.0             tidyverse_1.3.2          </span></span>
-<span><span class="co">#&gt; [11] dplyr_1.0.10              microbiomedataset_0.99.10</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;   [1] utf8_1.2.2                  tidyselect_1.1.2           </span></span>
-<span><span class="co">#&gt;   [3] htmlwidgets_1.5.4           grid_4.2.1                 </span></span>
-<span><span class="co">#&gt;   [5] BiocParallel_1.30.3         munsell_0.5.0              </span></span>
-<span><span class="co">#&gt;   [7] codetools_0.2-18            ragg_1.2.2                 </span></span>
-<span><span class="co">#&gt;   [9] preprocessCore_1.58.0       withr_2.5.0                </span></span>
-<span><span class="co">#&gt;  [11] colorspace_2.0-3            Biobase_2.56.0             </span></span>
-<span><span class="co">#&gt;  [13] highr_0.9                   knitr_1.40                 </span></span>
-<span><span class="co">#&gt;  [15] rstudioapi_0.14             stats4_4.2.1               </span></span>
-<span><span class="co">#&gt;  [17] mzID_1.34.0                 labeling_0.4.2             </span></span>
-<span><span class="co">#&gt;  [19] MatrixGenerics_1.8.1        GenomeInfoDbData_1.2.8     </span></span>
-<span><span class="co">#&gt;  [21] polyclip_1.10-4             farver_2.1.1               </span></span>
-<span><span class="co">#&gt;  [23] rhdf5_2.40.0                rprojroot_2.0.3            </span></span>
-<span><span class="co">#&gt;  [25] vctrs_0.5.2                 generics_0.1.3             </span></span>
-<span><span class="co">#&gt;  [27] xfun_0.33                   timechange_0.1.1           </span></span>
-<span><span class="co">#&gt;  [29] R6_2.5.1                    doParallel_1.0.17          </span></span>
-<span><span class="co">#&gt;  [31] GenomeInfoDb_1.32.4         clue_0.3-61                </span></span>
-<span><span class="co">#&gt;  [33] graphlayouts_0.8.1          MsCoreUtils_1.8.0          </span></span>
-<span><span class="co">#&gt;  [35] bitops_1.0-7                rhdf5filters_1.8.0         </span></span>
-<span><span class="co">#&gt;  [37] cachem_1.0.6                gridGraphics_0.5-1         </span></span>
-<span><span class="co">#&gt;  [39] DelayedArray_0.22.0         assertthat_0.2.1           </span></span>
-<span><span class="co">#&gt;  [41] scales_1.2.1                googlesheets4_1.0.1        </span></span>
-<span><span class="co">#&gt;  [43] ggraph_2.0.6                gtable_0.3.1               </span></span>
-<span><span class="co">#&gt;  [45] affy_1.74.0                 tidygraph_1.2.2            </span></span>
-<span><span class="co">#&gt;  [47] rlang_1.0.6                 systemfonts_1.0.4          </span></span>
-<span><span class="co">#&gt;  [49] mzR_2.30.0                  GlobalOptions_0.1.2        </span></span>
-<span><span class="co">#&gt;  [51] splines_4.2.1               Rdisop_1.56.0              </span></span>
-<span><span class="co">#&gt;  [53] lazyeval_0.2.2              gargle_1.2.1               </span></span>
-<span><span class="co">#&gt;  [55] impute_1.70.0               broom_1.0.1                </span></span>
-<span><span class="co">#&gt;  [57] modelr_0.1.9                yaml_2.3.5                 </span></span>
-<span><span class="co">#&gt;  [59] reshape2_1.4.4              backports_1.4.1            </span></span>
-<span><span class="co">#&gt;  [61] tools_4.2.1                 ggplotify_0.1.0            </span></span>
-<span><span class="co">#&gt;  [63] affyio_1.66.0               ellipsis_0.3.2             </span></span>
-<span><span class="co">#&gt;  [65] jquerylib_0.1.4             biomformat_1.24.0          </span></span>
-<span><span class="co">#&gt;  [67] RColorBrewer_1.1-3          BiocGenerics_0.42.0        </span></span>
-<span><span class="co">#&gt;  [69] MSnbase_2.22.0              Rcpp_1.0.9                 </span></span>
-<span><span class="co">#&gt;  [71] plyr_1.8.7                  zlibbioc_1.42.0            </span></span>
-<span><span class="co">#&gt;  [73] RCurl_1.98-1.8              pbapply_1.5-0              </span></span>
-<span><span class="co">#&gt;  [75] GetoptLong_1.0.5            viridis_0.6.2              </span></span>
-<span><span class="co">#&gt;  [77] S4Vectors_0.34.0            zoo_1.8-11                 </span></span>
-<span><span class="co">#&gt;  [79] haven_2.5.1                 SummarizedExperiment_1.26.1</span></span>
-<span><span class="co">#&gt;  [81] ggrepel_0.9.2               cluster_2.1.4              </span></span>
-<span><span class="co">#&gt;  [83] fs_1.5.2                    magrittr_2.0.3             </span></span>
-<span><span class="co">#&gt;  [85] masstools_1.0.8             data.table_1.14.6          </span></span>
-<span><span class="co">#&gt;  [87] openxlsx_4.2.5.1            circlize_0.4.15            </span></span>
-<span><span class="co">#&gt;  [89] reprex_2.0.2                googledrive_2.0.0          </span></span>
-<span><span class="co">#&gt;  [91] pcaMethods_1.88.0           ProtGenerics_1.28.0        </span></span>
-<span><span class="co">#&gt;  [93] matrixStats_0.62.0          hms_1.1.2                  </span></span>
-<span><span class="co">#&gt;  [95] evaluate_0.16               XML_3.99-0.10              </span></span>
-<span><span class="co">#&gt;  [97] readxl_1.4.1                IRanges_2.30.1             </span></span>
-<span><span class="co">#&gt;  [99] gridExtra_2.3               shape_1.4.6                </span></span>
-<span><span class="co">#&gt; [101] compiler_4.2.1              ncdf4_1.20                 </span></span>
-<span><span class="co">#&gt; [103] crayon_1.5.1                htmltools_0.5.3            </span></span>
-<span><span class="co">#&gt; [105] mgcv_1.8-42                 tzdb_0.3.0                 </span></span>
-<span><span class="co">#&gt; [107] lubridate_1.9.0             DBI_1.1.3                  </span></span>
-<span><span class="co">#&gt; [109] tweenr_2.0.2                dbplyr_2.2.1               </span></span>
-<span><span class="co">#&gt; [111] ComplexHeatmap_2.12.1       MASS_7.3-58.1              </span></span>
-<span><span class="co">#&gt; [113] Matrix_1.5-1                ade4_1.7-19                </span></span>
-<span><span class="co">#&gt; [115] permute_0.9-7               cli_3.4.1                  </span></span>
-<span><span class="co">#&gt; [117] vsn_3.64.0                  parallel_4.2.1             </span></span>
-<span><span class="co">#&gt; [119] igraph_1.3.5                GenomicRanges_1.48.0       </span></span>
-<span><span class="co">#&gt; [121] pkgconfig_2.0.3             pkgdown_2.0.6              </span></span>
-<span><span class="co">#&gt; [123] plotly_4.10.0               xml2_1.3.3                 </span></span>
-<span><span class="co">#&gt; [125] MALDIquant_1.22             foreach_1.5.2              </span></span>
-<span><span class="co">#&gt; [127] bslib_0.4.0                 multtest_2.52.0            </span></span>
-<span><span class="co">#&gt; [129] XVector_0.36.0              massdataset_1.0.21         </span></span>
-<span><span class="co">#&gt; [131] rvest_1.0.3                 yulab.utils_0.0.5          </span></span>
-<span><span class="co">#&gt; [133] digest_0.6.31               vegan_2.6-2                </span></span>
-<span><span class="co">#&gt; [135] Biostrings_2.64.1           cellranger_1.1.0           </span></span>
-<span><span class="co">#&gt; [137] rmarkdown_2.16              tidytree_0.4.1             </span></span>
-<span><span class="co">#&gt; [139] curl_4.3.3                  rjson_0.2.21               </span></span>
-<span><span class="co">#&gt; [141] lifecycle_1.0.3             nlme_3.1-159               </span></span>
-<span><span class="co">#&gt; [143] jsonlite_1.8.0              Rhdf5lib_1.18.2            </span></span>
-<span><span class="co">#&gt; [145] desc_1.4.2                  viridisLite_0.4.1          </span></span>
-<span><span class="co">#&gt; [147] limma_3.52.3                fansi_1.0.3                </span></span>
-<span><span class="co">#&gt; [149] pillar_1.8.1                ggsci_2.9                  </span></span>
-<span><span class="co">#&gt; [151] lattice_0.20-45             fastmap_1.1.0              </span></span>
-<span><span class="co">#&gt; [153] httr_1.4.4                  survival_3.4-0             </span></span>
-<span><span class="co">#&gt; [155] glue_1.6.2                  remotes_2.4.2              </span></span>
-<span><span class="co">#&gt; [157] zip_2.2.1                   png_0.1-8                  </span></span>
-<span><span class="co">#&gt; [159] iterators_1.0.14            ggforce_0.3.4              </span></span>
-<span><span class="co">#&gt; [161] stringi_1.7.8               sass_0.4.2                 </span></span>
-<span><span class="co">#&gt; [163] textshaping_0.3.6           memoise_2.0.1              </span></span>
-<span><span class="co">#&gt; [165] ape_5.6-2</span></span></code></pre></div>
+<p>During creation and conversion, taxonomy columns are standardized to
+the canonical ranks:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">roundtrip_object</span><span class="op">@</span><span class="va">variable_info</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "variable_id" "Kingdom"     "Phylum"      "Class"       "Order"      </span></span>
+<span><span class="co">#&gt; [6] "Family"      "Genus"       "Species"</span></span></code></pre></div>
+<p>This standardization is what allows downstream taxonomy-aware verbs
+to work consistently across input sources.</p>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p></p>
-<p>microbiomedataset Developed by <a href="https://www.shenxt.info/" class="external-link">Xiaotao Shen</a>. <br> from <i class="fa fa-university"></i> Stanford University <br><i class="fa fa-clinic-medical"></i>School of Medicine <br><i class="fa fa-dna"></i> Genetics Department</p>
+    <footer><div class="pkgdown-footer-left">
+  <p>microbiomedataset Developed by <a href="https://www.shenxt.info/" class="external-link">Xiaotao Shen</a>.</p>
 </div>
 
-<div class="pkgdown">
-  <p></p>
-<p><b>Contact Us:</b> <br><i class="fa fa-envelope"></i> <a href="mailto:shenxt1990@outlook.com" class="email">shenxt1990@outlook.com</a> <br><i class="fa fa-weixin"></i> <a href="https://www.shenxt.info/files/wechat_QR.jpg" class="external-link">shenxt1990</a> <br><i class="fa fa-network-wired"></i> <a href="https://www.tidymicrobiome.org/" class="external-link">A part of tidymicrobiome</a></p>
+<div class="pkgdown-footer-right">
+  <p><a href="mailto:xiaotao.shen@outlook.com" class="email">xiaotao.shen@outlook.com</a> A part of <a href="https://www.tidymicrobiome.org/" class="external-link">tidymicrobiome</a></p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
-  docsearch({
-    
-    
-    apiKey: '2f09495997a50f5008bc92fa73c5552d',
-    indexName: 'pseudomsir',
-    inputSelector: 'input#search-input.form-control',
-    transformData: function(hits) {
-      return hits.map(function (hit) {
-        hit.url = updateHitURL(hit);
-        return hit;
-      });
-    }
-  });
-</script>
-</body>
+
+
+
+
+  </body>
 </html>

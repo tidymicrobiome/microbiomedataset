@@ -1,24 +1,28 @@
 Package: microbiomedataset
-Title: microbiomedataset
-Version: 0.99.14
-Date: 2024-01-14
+Title: Data Infrastructure for Microbiome Analysis
+Version: 0.99.1
+Date: 2026-03-03
 Authors@R: 
     person(given = "Xiaotao",
            family = "Shen",
            role = c("aut", "cre"),
-           email = "shenxt1990@outlook.com",
+           email = "xiaotao.shen@outlook.com",
            comment = c(ORCID = "0000-0002-9608-9964"))
-Description: microbiomedataset provide the microbiome_dataset class for tidymicrobiome.
-URL: https://github.com/tidymicrobiome/microbiomedataset
+Description: Provides the microbiome_dataset class and supporting workflows for
+    synchronized microbiome abundance data, metadata, taxonomy, trees,
+    sequences, diversity analysis, and ordination.
+URL: https://github.com/tidymicrobiome/microbiomedataset,
+    https://tidymicrobiome.github.io/microbiomedataset/
 BugReports: https://github.com/tidymicrobiome/microbiomedataset/issues
 Depends: R (>= 4.1)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 Imports: 
+    ape,
     dplyr,
     magrittr,
     tibble,
@@ -35,12 +39,13 @@ Imports:
     readr,
     rlang,
     plyr,
-    masstools,
     ComplexHeatmap,
     grid,
     ggplotify,
     ggsci,
+    S4Vectors,
     stats,
+    SummarizedExperiment,
     utils,
     tidyr,
     tidytree,
@@ -53,16 +58,23 @@ Imports:
     tidygraph,
     ggraph
 Suggests: 
+    ANCOMBC,
     knitr,
     rmarkdown,
     BiocStyle,
     RUnit,
     BiocGenerics,
+    biomformat,
+    mia,
+    mixOmics,
+    MicrobiotaProcess,
+    qiime2R,
+    SpiecEasi,
+    TreeSummarizedExperiment,
     tidyverse,
     testthat (>= 3.0.0)
 Note:
 Remotes: 
-    gitlab::tidymass/massdataset,
-    gitlab::tidymass/masstools
+    github::tidymass/massdataset
 biocViews: Microbiome
 Config/testthat/edition: 3

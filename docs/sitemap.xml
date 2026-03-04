@@ -1,120 +1,186 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/404.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/filtering.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/import_data.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/merge.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/microbiomedataset.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/preprocess.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/articles/relative_intensity.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/index.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/activate_microbiome_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/arithmetic-microbiome_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/check_microbiome_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/check_microbiome_dataset_class.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2microbiome_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2phyloseq.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2tbl_graph.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2treedata.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/create_microbiome_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract-microbiome_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_intensity.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/get_microbiomedataset_version.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/global_patterns.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/left_join_microbiome_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiome_dataset-class.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiomedataset_conflicts.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiomedataset_logo.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiomedataset_packages.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/mutate2sample.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/mutate2variable.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_barplot.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/subsetting-mass_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_samples.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_variables.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymicrobiome.github.io/microbiomedataset/reference/transform2relative_intensity.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/404.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/LICENSE-text.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/advanced_visualization.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/crossomics_workflow.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/filtering.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/import_data.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/index.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/merge.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/microbiome_workflow.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/microbiomedataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/preprocess.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/relative_intensity.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/visualization_crossomics.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/articles/visualization_microbiome.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/authors.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/index.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/news/index.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/activate_microbiome_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/agglomerate_taxa.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/agglomerate_tree.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/align_ref_seq.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/align_samples_between_omics.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/align_tree.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/arithmetic-microbiome_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/as_tibble_diversity.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/as_tibble_ordination.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/associate_microbe_metabolite.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/build_correlation_network.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/build_mechanism_network.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/calculate_alpha_diversity.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/calculate_beta_diversity.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/calculate_correlation.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/calculate_network_centrality.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/calculate_pathway_enrichment.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/check_crossomics_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/check_microbiome_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/check_microbiome_dataset_class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/check_tree_link.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2MPSE.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2TreeSummarizedExperiment.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2mass_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2microbiome_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2phyloseq.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2tbl_graph.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert2treedata.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/convert_network_graph.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/create_differential_abundance_result.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/create_microbiome_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/create_microbiome_metabolome_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/crossomics_integration-class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/crossomics_mechanism-class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/demo_crossomics.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/detect_network_modules.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/differential_abundance_result-class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/export_ref_seq.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/export_tree.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract-microbiome_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_correlation_table.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_crossomics_integration.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_crossomics_matrix.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_diversity_result.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_intensity.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_network_table.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_ordination_result.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_tree_data.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/extract_tree_link_data.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/filter_correlation.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/filter_samples.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/filter_samples_by_group.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/filter_taxa.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/filter_taxa_by_rank.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/filter_tree_by_rank.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/get_microbiomedataset_version.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/global_patterns.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/import_biom.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/import_dada2.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/import_qiime2.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/import_ref_seq.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/import_tree.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/index.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/infer_metabolic_link.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/integrate_microbe_metabolite.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/left_join_microbiome_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/melt_crossomics_features.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/melt_features.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/melt_taxa.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/melt_tree.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/merge_samples.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbe_metabolite_association-class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbe_metabolite_network-class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiome_dataset-class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiome_diversity-class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiome_metabolome_dataset-class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiome_ordination-class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiomedataset_conflicts.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiomedataset_logo.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/microbiomedataset_packages.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/mixed_effect_result_api.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/mixed_effect_result_class.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/mutate2sample.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/mutate2variable.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_abundance.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_abundance_density.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_alpha_diversity.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_barplot.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_beta_diversity.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_composition.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_core_taxa.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_correlation_dotplot.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_correlation_heatmap.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_correlation_network.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_crossomics_integration.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_crossomics_loading_heatmap.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_crossomics_network.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_differential_boxplot.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_differential_cladogram.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_differential_effect_size.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_differential_heatmap.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_differential_ma.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_differential_volcano.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_distance_heatmap.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_heatmap.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_heatmap_annotation.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_mechanism_network.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_mechanism_summary.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_module_composition.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_module_summary.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_network_centrality.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_network_modules.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_ordination.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_ordination_3d.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_ordination_biplot.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_pathway_enrichment.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_pathway_summary.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_prevalence.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_prevalence_abundance.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_prevalence_upset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_rarefaction.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_richness.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_sample_depth.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_scree.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_taxa_boxplot.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_taxa_overlap.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_taxa_violin.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_taxonomy_sunburst.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_tree.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_tree_abundance.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_tree_heatmap.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_tree_interactive.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/plot_tree_link.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/prepare_correlation_data.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/prune_ref_seq.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/prune_samples.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/prune_taxa.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/prune_tree.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/psmelt_microbiome_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/psmelt_taxa.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/reexports.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/replace_ref_seq.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/replace_tree.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/run_differential_abundance.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/run_ordination.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/sample_sums.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/standardize_metabolite_annotation.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/standardize_pathway_link.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/standardize_taxon_pathway_link.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/subsetting-mass_dataset.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_abundance.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_network_modules.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_pathways.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_samples.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_samples_by_group.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_taxa.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/summarise_variables.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/taxa_prevalence.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/taxa_sums.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/time_series_taxa_plot.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/transform2relative_intensity.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/transform_abundance_by.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/transform_counts.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/transform_samples.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/transform_taxa.html</loc></url>
+<url><loc>https://tidymicrobiome.github.io/microbiomedataset/reference/update_microbiome_dataset.html</loc></url>
 </urlset>
+

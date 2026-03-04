@@ -19,9 +19,10 @@ other_files
 demo_data
 ^data-raw$
 pkgdown/
-vignettes/tidyverse_verse.Rmd
-vignettes/example.Rmd
-vignettes/*cache
-vignettes/*.png
-man/figures
-vignettes/
+^vignettes/tidyverse_verse\.Rmd$
+^vignettes/example\.Rmd$
+^vignettes/.*_cache$
+^vignettes/.*_files$
+^vignettes/.*\.html$
+^vignettes/.*\.png$
+^man/figures$
