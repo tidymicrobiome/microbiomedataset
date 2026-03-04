@@ -57,8 +57,9 @@ return a standardized <a href="differential_abundance_result-class.html">differe
 <span>  <span class="va">object</span>,</span>
 <span>  <span class="va">formula</span>,</span>
 <span>  group <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ancombc"</span><span class="op">)</span>,</span>
+<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ancombc"</span>, <span class="st">"ancombc2"</span>, <span class="st">"maaslin2"</span><span class="op">)</span>,</span>
 <span>  taxonomic_rank <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  random_effects <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  coefficient <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  p_adj_method <span class="op">=</span> <span class="st">"holm"</span>,</span>
 <span>  prv_cut <span class="op">=</span> <span class="fl">0.1</span>,</span>
@@ -71,7 +72,11 @@ return a standardized <a href="differential_abundance_result-class.html">differe
 <span>  alpha <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  global <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  n_cl <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  normalization <span class="op">=</span> <span class="st">"TSS"</span>,</span>
+<span>  transform <span class="op">=</span> <span class="st">"LOG"</span>,</span>
+<span>  analysis_method <span class="op">=</span> <span class="st">"LM"</span>,</span>
+<span>  standardize <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -92,12 +97,18 @@ return a standardized <a href="differential_abundance_result-class.html">differe
 
 
 <dt id="arg-method">method<a class="anchor" aria-label="anchor" href="#arg-method"></a></dt>
-<dd><p>Differential abundance method. Currently supports <code>"ancombc"</code>.</p></dd>
+<dd><p>Differential abundance method. Supports <code>"ancombc"</code>,
+<code>"ancombc2"</code>, and <code>"maaslin2"</code>.</p></dd>
 
 
 <dt id="arg-taxonomic-rank">taxonomic_rank<a class="anchor" aria-label="anchor" href="#arg-taxonomic-rank"></a></dt>
 <dd><p>Optional taxonomy rank used to aggregate the
 microbiome data before modeling.</p></dd>
+
+
+<dt id="arg-random-effects">random_effects<a class="anchor" aria-label="anchor" href="#arg-random-effects"></a></dt>
+<dd><p>Optional random-effects formula used by methods that
+support mixed-effects models.</p></dd>
 
 
 <dt id="arg-coefficient">coefficient<a class="anchor" aria-label="anchor" href="#arg-coefficient"></a></dt>
@@ -151,6 +162,23 @@ When omitted, the first non-intercept coefficient is used.</p></dd>
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
 <dd><p>Whether to print method progress.</p></dd>
+
+
+<dt id="arg-normalization">normalization<a class="anchor" aria-label="anchor" href="#arg-normalization"></a></dt>
+<dd><p>Normalization method passed to <code>Maaslin2::Maaslin2()</code>.</p></dd>
+
+
+<dt id="arg-transform">transform<a class="anchor" aria-label="anchor" href="#arg-transform"></a></dt>
+<dd><p>Transformation passed to <code>Maaslin2::Maaslin2()</code>.</p></dd>
+
+
+<dt id="arg-analysis-method">analysis_method<a class="anchor" aria-label="anchor" href="#arg-analysis-method"></a></dt>
+<dd><p>Modeling backend passed to <code>Maaslin2::Maaslin2()</code>.</p></dd>
+
+
+<dt id="arg-standardize">standardize<a class="anchor" aria-label="anchor" href="#arg-standardize"></a></dt>
+<dd><p>Whether to standardize metadata in
+<code>Maaslin2::Maaslin2()</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

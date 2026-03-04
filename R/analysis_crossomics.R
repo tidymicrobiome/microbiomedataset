@@ -758,10 +758,7 @@ associate_microbe_metabolite <- function(object = NULL,
 #' )
 #' head(extract_correlation_table(x))
 extract_correlation_table <- function(object) {
-  if (!methods::is(object, "microbe_metabolite_association")) {
-    stop("object must be a microbe_metabolite_association.")
-  }
-  object@result
+  extract_association_result(object)
 }
 
 
@@ -912,10 +909,7 @@ build_correlation_network <- function(object,
 #' @return A named list with `nodes` and `edges`.
 #' @export
 extract_network_table <- function(object) {
-  if (!methods::is(object, "microbe_metabolite_network")) {
-    stop("object must be a microbe_metabolite_network.")
-  }
-  list(nodes = object@node_data, edges = object@edge_data)
+  extract_network_result(object, what = "both")
 }
 
 
@@ -1232,6 +1226,8 @@ infer_metabolic_link <- function(object = NULL,
   for (column in c(
     "pathway_id_annotation",
     "pathway_name_annotation",
+    "reaction_id_annotation",
+    "reaction_name_annotation",
     "compound_name_annotation",
     "annotation_level_annotation"
   )) {
@@ -1245,10 +1241,14 @@ infer_metabolic_link <- function(object = NULL,
       evidence_type = dplyr::coalesce(.data$evidence_type, "association_only"),
       pathway_id = dplyr::coalesce(.data$pathway_id, .data$pathway_id_annotation),
       pathway_name = dplyr::coalesce(.data$pathway_name, .data$pathway_name_annotation),
+      reaction_id = dplyr::coalesce(.data$reaction_id, .data$reaction_id_annotation),
+      reaction_name = dplyr::coalesce(.data$reaction_name, .data$reaction_name_annotation),
       compound_name = dplyr::coalesce(.data$compound_name, .data$compound_name_annotation),
       annotation_level = dplyr::coalesce(.data$annotation_level, .data$annotation_level_annotation),
       mechanism_tier = dplyr::case_when(
+        !is.na(.data$reaction_id) & !is.na(.data$annotation_level) ~ "reaction_plus_annotation",
         !is.na(.data$pathway_id) & !is.na(.data$annotation_level) ~ "pathway_plus_annotation",
+        !is.na(.data$reaction_id) ~ "reaction_only",
         !is.na(.data$pathway_id) ~ "pathway_only",
         TRUE ~ "association_only"
       ),
@@ -1367,11 +1367,7 @@ extract_crossomics_integration <- function(object) {
   if (!methods::is(object, "crossomics_integration")) {
     stop("object must be a crossomics_integration.")
   }
-  list(
-    sample_coord = object@sample_coord,
-    microbiome_loading = object@microbiome_loading,
-    metabolome_loading = object@metabolome_loading
-  )
+  as_tibble_crossomics_integration(object, block = "all")
 }
 
 
@@ -1543,6 +1539,82 @@ summarise_pathways <- function(mechanism_result,
   result %>%
     dplyr::filter(!is.na(.data$pathway_id)) %>%
     dplyr::group_by(.data$pathway_id, .data$pathway_name) %>%
+    dplyr::summarise(
+      n_taxa = dplyr::n_distinct(.data$taxon_id),
+      n_metabolites = dplyr::n_distinct(.data$metabolite_id),
+      mean_mechanism_score = mean(.data$mechanism_score, na.rm = TRUE),
+      max_mechanism_score = if (all(is.na(.data$mechanism_score))) NA_real_ else max(.data$mechanism_score, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    dplyr::arrange(dplyr::desc(.data$max_mechanism_score))
+}
+
+
+#' Summarize Reaction-Level Mechanisms
+#'
+#' Aggregate mechanism evidence from taxon-metabolite links to reaction-level
+#' summaries, optionally incorporating taxon-to-reaction mappings.
+#'
+#' @param mechanism_result A `crossomics_mechanism` object.
+#' @param taxon_reaction_link Optional taxon-to-reaction link table.
+#'
+#' @return A reaction summary data.frame.
+#' @export
+#' @examples
+#' data("demo_crossomics", package = "microbiomedataset")
+#'
+#' pathway_link <- standardize_pathway_link(
+#'   data.frame(
+#'     taxon_id = summarise_taxa(
+#'       demo_crossomics$microbiome_data,
+#'       taxonomic_rank = "Genus"
+#'     )@variable_info$variable_id[1],
+#'     metabolite_id = demo_crossomics$metabolome_data@annotation_table$variable_id[1],
+#'     pathway_id = "pathway_a",
+#'     reaction_id = "reaction_a",
+#'     reaction_name = "Reaction A",
+#'     stringsAsFactors = FALSE
+#'   )
+#' )
+#' mechanism <- infer_metabolic_link(
+#'   microbiome_data = demo_crossomics$microbiome_data,
+#'   metabolome_data = demo_crossomics$metabolome_data,
+#'   sample_link = demo_crossomics$sample_link,
+#'   pathway_link = pathway_link,
+#'   microbiome_rank = "Genus",
+#'   q_value_cutoff = 1
+#' )
+#' summarise_reactions(mechanism)
+summarise_reactions <- function(mechanism_result,
+                                taxon_reaction_link = NULL) {
+  if (!methods::is(mechanism_result, "crossomics_mechanism")) {
+    stop("mechanism_result must be a crossomics_mechanism.")
+  }
+  taxon_reaction_link <- standardize_taxon_reaction_link(taxon_reaction_link)
+  result <- mechanism_result@result
+  if (!is.null(taxon_reaction_link)) {
+    result <- result %>%
+      dplyr::left_join(
+        taxon_reaction_link,
+        by = c("taxon_id", "reaction_id"),
+        suffix = c("", "_taxon")
+      ) %>%
+      dplyr::mutate(
+        reaction_name = dplyr::coalesce(.data$reaction_name, .data$reaction_name_taxon),
+        pathway_id = dplyr::coalesce(.data$pathway_id, .data$pathway_id_taxon),
+        pathway_name = dplyr::coalesce(.data$pathway_name, .data$pathway_name_taxon),
+        evidence_type = dplyr::coalesce(.data$evidence_type, .data$evidence_type_taxon)
+      )
+  }
+  
+  result %>%
+    dplyr::filter(!is.na(.data$reaction_id)) %>%
+    dplyr::group_by(
+      .data$reaction_id,
+      .data$reaction_name,
+      .data$pathway_id,
+      .data$pathway_name
+    ) %>%
     dplyr::summarise(
       n_taxa = dplyr::n_distinct(.data$taxon_id),
       n_metabolites = dplyr::n_distinct(.data$metabolite_id),

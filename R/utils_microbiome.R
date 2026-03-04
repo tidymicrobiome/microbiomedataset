@@ -921,6 +921,7 @@ normalize_crossomics_pathway_link <- function(pathway_link) {
   optional_columns <- c(
     "pathway_name",
     "reaction_id",
+    "reaction_name",
     "evidence_type",
     "compound_name",
     "annotation_level"
@@ -960,6 +961,62 @@ standardize_pathway_link <- function(pathway_link) {
 }
 
 
+#' Standardize Reaction Link Metadata
+#'
+#' Normalize a cross-omics reaction link table to the schema used by
+#' reaction-level mechanism summaries.
+#'
+#' @param reaction_link A reaction link table.
+#'
+#' @return A standardized reaction link table.
+#' @export
+#' @examples
+#' reaction_link <- data.frame(
+#'   taxon_id = "Genus_A",
+#'   metabolite_id = "M1",
+#'   reaction_id = "R1"
+#' )
+#' standardize_reaction_link(reaction_link)
+standardize_reaction_link <- function(reaction_link) {
+  if (is.null(reaction_link)) {
+    return(NULL)
+  }
+  reaction_link <- as.data.frame(reaction_link, check.names = FALSE)
+  required_columns <- c("taxon_id", "metabolite_id", "reaction_id")
+  missing_columns <- setdiff(required_columns, colnames(reaction_link))
+  if (length(missing_columns) > 0) {
+    stop(
+      "reaction_link is missing required columns: ",
+      paste(missing_columns, collapse = ", "),
+      "."
+    )
+  }
+  optional_columns <- c(
+    "reaction_name",
+    "pathway_id",
+    "pathway_name",
+    "evidence_type",
+    "compound_name",
+    "annotation_level"
+  )
+  for (column in required_columns) {
+    reaction_link[[column]] <- as.character(reaction_link[[column]])
+  }
+  for (column in optional_columns) {
+    if (!column %in% colnames(reaction_link)) {
+      reaction_link[[column]] <- NA_character_
+    }
+    reaction_link[[column]] <- as.character(reaction_link[[column]])
+  }
+  if (all(is.na(reaction_link$evidence_type))) {
+    reaction_link$evidence_type <- "user_supplied"
+  }
+  reaction_link <- dplyr::distinct(reaction_link)
+  rownames(reaction_link) <- NULL
+  reaction_link
+}
+
+
 #' Standardize Taxon-to-Pathway Link Metadata
 #'
 #' Normalize a taxon-to-pathway mapping table for pathway-level mechanism
@@ -989,7 +1046,7 @@ standardize_taxon_pathway_link <- function(taxon_pathway_link) {
       "."
     )
   }
-  optional_columns <- c("pathway_name", "reaction_id", "evidence_type")
+  optional_columns <- c("pathway_name", "reaction_id", "reaction_name", "evidence_type")
   taxon_pathway_link$taxon_id <- as.character(taxon_pathway_link$taxon_id)
   taxon_pathway_link$pathway_id <- as.character(taxon_pathway_link$pathway_id)
   for (column in optional_columns) {
@@ -1004,6 +1061,54 @@ standardize_taxon_pathway_link <- function(taxon_pathway_link) {
   taxon_pathway_link <- dplyr::distinct(taxon_pathway_link)
   rownames(taxon_pathway_link) <- NULL
   taxon_pathway_link
+}
+
+
+#' Standardize Taxon-to-Reaction Link Metadata
+#'
+#' Normalize a taxon-to-reaction mapping table for reaction-level mechanism
+#' summarization.
+#'
+#' @param taxon_reaction_link A taxon-to-reaction link table.
+#'
+#' @return A standardized taxon-to-reaction link table.
+#' @export
+#' @examples
+#' taxon_reaction_link <- data.frame(
+#'   taxon_id = "Genus_A",
+#'   reaction_id = "R1"
+#' )
+#' standardize_taxon_reaction_link(taxon_reaction_link)
+standardize_taxon_reaction_link <- function(taxon_reaction_link) {
+  if (is.null(taxon_reaction_link)) {
+    return(NULL)
+  }
+  taxon_reaction_link <- as.data.frame(taxon_reaction_link, check.names = FALSE)
+  required_columns <- c("taxon_id", "reaction_id")
+  missing_columns <- setdiff(required_columns, colnames(taxon_reaction_link))
+  if (length(missing_columns) > 0) {
+    stop(
+      "taxon_reaction_link is missing required columns: ",
+      paste(missing_columns, collapse = ", "),
+      "."
+    )
+  }
+  optional_columns <- c("reaction_name", "pathway_id", "pathway_name", "evidence_type")
+  for (column in required_columns) {
+    taxon_reaction_link[[column]] <- as.character(taxon_reaction_link[[column]])
+  }
+  for (column in optional_columns) {
+    if (!column %in% colnames(taxon_reaction_link)) {
+      taxon_reaction_link[[column]] <- NA_character_
+    }
+    taxon_reaction_link[[column]] <- as.character(taxon_reaction_link[[column]])
+  }
+  if (all(is.na(taxon_reaction_link$evidence_type))) {
+    taxon_reaction_link$evidence_type <- "user_supplied"
+  }
+  taxon_reaction_link <- dplyr::distinct(taxon_reaction_link)
+  rownames(taxon_reaction_link) <- NULL
+  taxon_reaction_link
 }
 
 

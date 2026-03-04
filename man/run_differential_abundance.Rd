@@ -8,8 +8,9 @@ run_differential_abundance(
   object,
   formula,
   group = NULL,
-  method = c("ancombc"),
+  method = c("ancombc", "ancombc2", "maaslin2"),
   taxonomic_rank = NULL,
+  random_effects = NULL,
   coefficient = NULL,
   p_adj_method = "holm",
   prv_cut = 0.1,
@@ -22,7 +23,11 @@ run_differential_abundance(
   alpha = 0.05,
   global = FALSE,
   n_cl = 1,
-  verbose = FALSE
+  verbose = FALSE,
+  normalization = "TSS",
+  transform = "LOG",
+  analysis_method = "LM",
+  standardize = FALSE
 )
 }
 \arguments{
@@ -32,10 +37,14 @@ run_differential_abundance(
 
 \item{group}{Optional grouping variable used by the method.}
 
-\item{method}{Differential abundance method. Currently supports \code{"ancombc"}.}
+\item{method}{Differential abundance method. Supports \code{"ancombc"},
+\code{"ancombc2"}, and \code{"maaslin2"}.}
 
 \item{taxonomic_rank}{Optional taxonomy rank used to aggregate the
 microbiome data before modeling.}
+
+\item{random_effects}{Optional random-effects formula used by methods that
+support mixed-effects models.}
 
 \item{coefficient}{Optional coefficient name extracted from the fitted model.
 When omitted, the first non-intercept coefficient is used.}
@@ -63,6 +72,15 @@ When omitted, the first non-intercept coefficient is used.}
 \item{n_cl}{Number of parallel workers passed to \code{ANCOMBC::ancombc()}.}
 
 \item{verbose}{Whether to print method progress.}
+
+\item{normalization}{Normalization method passed to \code{Maaslin2::Maaslin2()}.}
+
+\item{transform}{Transformation passed to \code{Maaslin2::Maaslin2()}.}
+
+\item{analysis_method}{Modeling backend passed to \code{Maaslin2::Maaslin2()}.}
+
+\item{standardize}{Whether to standardize metadata in
+\code{Maaslin2::Maaslin2()}.}
 }
 \value{
 A \code{differential_abundance_result} object.

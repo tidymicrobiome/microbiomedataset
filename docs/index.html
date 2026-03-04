@@ -70,52 +70,126 @@
 <img src="logo.png" class="logo" alt=""><h1 id="microbiomedataset-">microbiomedataset <a class="anchor" aria-label="anchor" href="#microbiomedataset-"></a>
 </h1>
 </div>
-<p><a href="https://cran.r-project.org/package=microbiomedataset" class="external-link"><img src="https://www.r-pkg.org/badges/version/microbiomedataset?color=green" alt="CRAN version badge"></a> <a href="https://github.com/tidymicrobiome/microbiomedataset" class="external-link"><img src="https://img.shields.io/github/languages/code-size/tidymicrobiome/microbiomedataset.svg" alt="GitHub code size badge"></a> <a href="https://cran.r-project.org/package=microbiomedataset" class="external-link"><img src="https://tinyverse.netlify.com/badge/microbiomedataset" alt="Dependencies"></a> <a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle experimental badge"></a></p>
-<p><code>microbiomedataset</code> is a part of <a href="https://www.tidymicrobiome.org/" class="external-link">tidymicrobiome</a>.</p>
-<hr>
+<p><a href="https://github.com/tidymicrobiome/microbiomedataset/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/tidymicrobiome/microbiomedataset/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://github.com/tidymicrobiome/microbiomedataset/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/tidymicrobiome/microbiomedataset/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a> <a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle experimental badge"></a></p>
+<p><code>microbiomedataset</code> is part of <a href="https://www.tidymicrobiome.org/" class="external-link">tidymicrobiome</a>.</p>
+<div class="section level2">
+<h2 id="why-this-package">Why this package<a class="anchor" aria-label="anchor" href="#why-this-package"></a>
+</h2>
+<p><code>microbiomedataset</code> is a data infrastructure package for microbiome analysis. It provides a standardized object system for:</p>
+<ul>
+<li>abundance matrices</li>
+<li>sample metadata</li>
+<li>taxonomy metadata</li>
+<li>phylogenetic trees</li>
+<li>reference sequences</li>
+<li>process tracking</li>
+</ul>
+<p>The package is designed around the same data-engineering philosophy as <code>massdataset</code>, so microbiome and metabolome data can be analyzed with aligned workflows and linked in cross-omics studies.</p>
 </div>
-<div class="section level1">
-<h1 id="about">About<a class="anchor" aria-label="anchor" href="#about"></a>
-</h1>
-<p><code>microbiomedataset</code> provide the <code>microbiome_dataset</code> class which is specifically developed and designed to organize the rectangular <strong>microbiome data sets</strong> into a standard structure.</p>
+<div class="section level2">
+<h2 id="what-is-new">What is new<a class="anchor" aria-label="anchor" href="#what-is-new"></a>
+</h2>
+<p>This package is built around three manuscript-facing ideas.</p>
+<ol style="list-style-type: decimal">
+<li><p>A tree-aware microbiome data model. <code>microbiome_dataset</code> extends the <code>massdataset</code> object model with taxonomy, explicit tree-link metadata, and reference sequences.</p></li>
+<li><p>A unified analysis and visualization layer. The package standardizes preprocessing, diversity, ordination, differential abundance, network analysis, and publication-style plotting around a single input object.</p></li>
+<li><p>A microbiome-metabolome integration layer. <code>microbiomedataset</code> can work directly with <code>massdataset</code> objects for paired sample alignment, correlation analysis, multiblock integration, and mechanism-oriented taxon-pathway-metabolite linking.</p></li>
+</ol>
 </div>
-<div class="section level1">
-<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h1>
-<p>You can install <code>microbiomedataset</code> from <a href="https://gitlab.com/jaspershen/microbiomedataset" class="external-link">GitLab</a></p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>Install the development version from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"remotes"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_gitlab.html" class="external-link">install_gitlab</a></span><span class="op">(</span><span class="st">"jaspershen/microbiomedataset"</span><span class="op">)</span></span></code></pre></div>
-<p>or <a href="https://github.com/tidymicrobiome/microbiomedataset" class="external-link">GitHub</a></p>
+<span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"tidymicrobiome/microbiomedataset"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="core-workflows">Core workflows<a class="anchor" aria-label="anchor" href="#core-workflows"></a>
+</h2>
+<div class="section level3">
+<h3 id="id_1-microbiome-data-infrastructure">1. Microbiome data infrastructure<a class="anchor" aria-label="anchor" href="#id_1-microbiome-data-infrastructure"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"tidymicrobiome/microbiomedataset"</span><span class="op">)</span></span></code></pre></div>
-<p>More information can be found <a href="https://microbiomedataset.tidymicrobiome.org/articles/microbiomedataset_install.html" class="external-link">here</a>.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymicrobiome/microbiomedataset" class="external-link">microbiomedataset</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"global_patterns"</span>, package <span class="op">=</span> <span class="st">"microbiomedataset"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">global_patterns</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/plot_composition.html">plot_composition</a></span><span class="op">(</span><span class="va">global_patterns</span>, taxonomic_rank <span class="op">=</span> <span class="st">"Phylum"</span>, top_n <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="get-started">Get started<a class="anchor" aria-label="anchor" href="#get-started"></a>
-</h1>
-<p>Please see the <code>Help documents</code>.</p>
+<div class="section level3">
+<h3 id="id_2-differential-abundance-and-ordination">2. Differential abundance and ordination<a class="anchor" aria-label="anchor" href="#id_2-differential-abundance-and-ordination"></a>
+</h3>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymicrobiome/microbiomedataset" class="external-link">microbiomedataset</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"demo_crossomics"</span>, package <span class="op">=</span> <span class="st">"microbiomedataset"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">microbiome_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/summarise_taxa.html">summarise_taxa</a></span><span class="op">(</span></span>
+<span>  <span class="va">demo_crossomics</span><span class="op">$</span><span class="va">microbiome_data</span>,</span>
+<span>  taxonomic_rank <span class="op">=</span> <span class="st">"Genus"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ordination_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_ordination.html">run_ordination</a></span><span class="op">(</span><span class="va">microbiome_object</span>, method <span class="op">=</span> <span class="st">"PCoA"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_ordination.html">plot_ordination</a></span><span class="op">(</span><span class="va">ordination_result</span>, color_by <span class="op">=</span> <span class="st">"study_group"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="need-help">Need help?<a class="anchor" aria-label="anchor" href="#need-help"></a>
-</h1>
-<p>If you have any questions about <code>microbiomedataset</code>, please don’t hesitate to email me (<a href="mailto:xiaotao.shen@outlook.com" class="email">xiaotao.shen@outlook.com</a>) or reach out me via the social medias below.</p>
-<p><i class="fa fa-weixin"></i> <a href="https://www.shenxt.info/files/wechat_QR.jpg" class="external-link">shenxt1990</a></p>
-<p><i class="fa fa-envelope"></i> <a href="mailto:xiaotao.shen@outlook.com" class="email">xiaotao.shen@outlook.com</a></p>
-<p><i class="fa fa-twitter"></i> <a href="https://twitter.com/JasperShen1990" class="external-link">Twitter</a></p>
-<p><i class="fa fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/Alway+Building/@37.4322345,-122.1770883,17z/data=!3m1!4b1!4m5!3m4!1s0x808fa4d335c3be37:0x9057931f3b312c29!8m2!3d37.4322345!4d-122.1748996" class="external-link">M339, Alway Buidling, Cooper Lane, Palo Alto, CA 94304</a></p>
+<div class="section level3">
+<h3 id="id_3-microbiome-metabolome-integration">3. Microbiome-metabolome integration<a class="anchor" aria-label="anchor" href="#id_3-microbiome-metabolome-integration"></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymicrobiome/microbiomedataset" class="external-link">microbiomedataset</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"demo_crossomics"</span>, package <span class="op">=</span> <span class="st">"microbiomedataset"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">correlation_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/calculate_correlation.html">calculate_correlation</a></span><span class="op">(</span></span>
+<span>  microbiome_data <span class="op">=</span> <span class="va">demo_crossomics</span><span class="op">$</span><span class="va">microbiome_data</span>,</span>
+<span>  metabolome_data <span class="op">=</span> <span class="va">demo_crossomics</span><span class="op">$</span><span class="va">metabolome_data</span>,</span>
+<span>  sample_link <span class="op">=</span> <span class="va">demo_crossomics</span><span class="op">$</span><span class="va">sample_link</span>,</span>
+<span>  microbiome_rank <span class="op">=</span> <span class="st">"Genus"</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"spearman"</span>,</span>
+<span>  metabolome_transform <span class="op">=</span> <span class="st">"none"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">network_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/build_correlation_network.html">build_correlation_network</a></span><span class="op">(</span></span>
+<span>  <span class="va">correlation_result</span>,</span>
+<span>  min_abs_correlation <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  max_q_value <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  top_n <span class="op">=</span> <span class="fl">25</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/plot_correlation_network.html">plot_correlation_network</a></span><span class="op">(</span><span class="va">network_object</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
-</h1>
-<p>If you use <code>microbiomedataset</code> in your publications, please cite this paper:</p>
-<p>MicrobiomeDataset: An tidy framework for organizing and processing microbiome data.</p>
-<p>Xiaotao Shen, Chuchu Wang,Michael P. Snyder.</p>
-<p>Thanks very much!</p>
 </div>
-
+<div class="section level2">
+<h2 id="tutorials">Tutorials<a class="anchor" aria-label="anchor" href="#tutorials"></a>
+</h2>
+<p>Documentation site: <a href="https://tidymicrobiome.github.io/microbiomedataset/" class="uri">https://tidymicrobiome.github.io/microbiomedataset/</a></p>
+<p>Key tutorials:</p>
+<ul>
+<li>Get started</li>
+<li>Import and preprocess</li>
+<li>Tree and sequence handling</li>
+<li>Microbiome visualization</li>
+<li>Cross-omics workflow</li>
+<li>Advanced visualization</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>If you use <code>microbiomedataset</code>, please cite the package and the associated paper when available.</p>
+</div>
+<div class="section level2">
+<h2 id="contact">Contact<a class="anchor" aria-label="anchor" href="#contact"></a>
+</h2>
+<p>Xiaotao Shen<br><a href="mailto:xiaotao.shen@outlook.com" class="email">xiaotao.shen@outlook.com</a></p>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -124,16 +198,6 @@
 <li><a href="https://github.com/tidymicrobiome/microbiomedataset" class="external-link">GitHub</a></li>
 </ul>
 </div>
-
-<div class="license">
-<h2 data-toc-skip>License</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
-</ul>
-</div>
-
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>

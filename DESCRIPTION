@@ -67,12 +67,14 @@ Suggests:
     biomformat,
     mia,
     mixOmics,
-    MicrobiotaProcess,
-    qiime2R,
-    SpiecEasi,
     TreeSummarizedExperiment,
     tidyverse,
     testthat (>= 3.0.0)
+Enhances:
+    Maaslin2,
+    MicrobiotaProcess,
+    qiime2R,
+    SpiecEasi
 Note:
 Remotes: 
     github::tidymass/massdataset

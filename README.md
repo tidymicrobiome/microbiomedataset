@@ -2,64 +2,133 @@
 
 # microbiomedataset <img src="man/figures/microbiomedataset_logo.png" align="right" alt="microbiomedataset logo" width="120" />
 
-[![CRAN version badge](https://www.r-pkg.org/badges/version/microbiomedataset?color=green)](https://cran.r-project.org/package=microbiomedataset)
-[![GitHub code size badge](https://img.shields.io/github/languages/code-size/tidymicrobiome/microbiomedataset.svg)](https://github.com/tidymicrobiome/microbiomedataset)
-[![Dependencies](https://tinyverse.netlify.com/badge/microbiomedataset)](https://cran.r-project.org/package=microbiomedataset)
+[![R-CMD-check](https://github.com/tidymicrobiome/microbiomedataset/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidymicrobiome/microbiomedataset/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/tidymicrobiome/microbiomedataset/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/tidymicrobiome/microbiomedataset/actions/workflows/pkgdown.yaml)
 [![Lifecycle experimental badge](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-`microbiomedataset` is a part of [tidymicrobiome](https://www.tidymicrobiome.org/).
+`microbiomedataset` is part of [tidymicrobiome](https://www.tidymicrobiome.org/).
 
-------
+## Why this package
 
-# About
+`microbiomedataset` is a data infrastructure package for microbiome analysis.
+It provides a standardized object system for:
 
-`microbiomedataset` provide the `microbiome_dataset` class which is specifically developed and designed to organize the rectangular **microbiome data sets** into a standard structure.
+- abundance matrices
+- sample metadata
+- taxonomy metadata
+- phylogenetic trees
+- reference sequences
+- process tracking
 
-# Installation
+The package is designed around the same data-engineering philosophy as
+`massdataset`, so microbiome and metabolome data can be analyzed with aligned
+workflows and linked in cross-omics studies.
 
-You can install `microbiomedataset` from [GitLab](https://gitlab.com/jaspershen/microbiomedataset)
+## What is new
+
+This package is built around three manuscript-facing ideas.
+
+1. A tree-aware microbiome data model.
+`microbiome_dataset` extends the `massdataset` object model with taxonomy,
+explicit tree-link metadata, and reference sequences.
+
+2. A unified analysis and visualization layer.
+The package standardizes preprocessing, diversity, ordination, differential
+abundance, network analysis, and publication-style plotting around a single
+input object.
+
+3. A microbiome-metabolome integration layer.
+`microbiomedataset` can work directly with `massdataset` objects for paired
+sample alignment, correlation analysis, multiblock integration, and
+mechanism-oriented taxon-pathway-metabolite linking.
+
+## Installation
+
+Install the development version from GitHub:
 
 ``` r
-if(!require(remotes)){
-install.packages("remotes")
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
 }
-remotes::install_gitlab("jaspershen/microbiomedataset")
-```
-or [GitHub](https://github.com/tidymicrobiome/microbiomedataset)
 
-``` r
 remotes::install_github("tidymicrobiome/microbiomedataset")
 ```
 
-More information can be found [here](https://microbiomedataset.tidymicrobiome.org/articles/microbiomedataset_install.html).
+## Core workflows
 
-# Get started
+### 1. Microbiome data infrastructure
 
-Please see the `Help documents`.
+``` r
+library(microbiomedataset)
 
-# Need help?
+data("global_patterns", package = "microbiomedataset")
 
-If you have any questions about `microbiomedataset`, please don’t hesitate to
-email me (<xiaotao.shen@outlook.com>) or reach out me via the social medias below.
+global_patterns
 
-<i class="fa fa-weixin"></i>
-[shenxt1990](https://www.shenxt.info/files/wechat_QR.jpg)
+plot_composition(global_patterns, taxonomic_rank = "Phylum", top_n = 8)
+```
 
-<i class="fa fa-envelope"></i> <xiaotao.shen@outlook.com>
+### 2. Differential abundance and ordination
 
-<i class="fa fa-twitter"></i>
-[Twitter](https://twitter.com/JasperShen1990)
+``` r
+library(microbiomedataset)
 
-<i class="fa fa-map-marker-alt"></i> [M339, Alway Buidling, Cooper Lane,
-Palo Alto, CA
-94304](https://www.google.com/maps/place/Alway+Building/@37.4322345,-122.1770883,17z/data=!3m1!4b1!4m5!3m4!1s0x808fa4d335c3be37:0x9057931f3b312c29!8m2!3d37.4322345!4d-122.1748996)
+data("demo_crossomics", package = "microbiomedataset")
 
-# Citation
+microbiome_object <- summarise_taxa(
+  demo_crossomics$microbiome_data,
+  taxonomic_rank = "Genus"
+)
 
-If you use `microbiomedataset` in your publications, please cite this paper:
+ordination_result <- run_ordination(microbiome_object, method = "PCoA")
+plot_ordination(ordination_result, color_by = "study_group")
+```
 
-MicrobiomeDataset: An tidy framework for organizing and processing microbiome data.
+### 3. Microbiome-metabolome integration
 
-Xiaotao Shen, Chuchu Wang,Michael P. Snyder.
+``` r
+library(microbiomedataset)
 
-Thanks very much!
+data("demo_crossomics", package = "microbiomedataset")
+
+correlation_result <- calculate_correlation(
+  microbiome_data = demo_crossomics$microbiome_data,
+  metabolome_data = demo_crossomics$metabolome_data,
+  sample_link = demo_crossomics$sample_link,
+  microbiome_rank = "Genus",
+  method = "spearman",
+  metabolome_transform = "none"
+)
+
+network_object <- build_correlation_network(
+  correlation_result,
+  min_abs_correlation = 0.2,
+  max_q_value = 1,
+  top_n = 25
+)
+
+plot_correlation_network(network_object)
+```
+
+## Tutorials
+
+Documentation site: <https://tidymicrobiome.github.io/microbiomedataset/>
+
+Key tutorials:
+
+- Get started
+- Import and preprocess
+- Tree and sequence handling
+- Microbiome visualization
+- Cross-omics workflow
+- Advanced visualization
+
+## Citation
+
+If you use `microbiomedataset`, please cite the package and the associated
+paper when available.
+
+## Contact
+
+Xiaotao Shen  
+<xiaotao.shen@outlook.com>

@@ -4,6 +4,8 @@ url: https://tidymicrobiome.github.io/microbiomedataset/
 home:
   title: microbiomedataset
   strip_header: false
+  sidebar:
+    structure: [links, citation, authors, dev]
   links:
     - text: GitHub
       href: https://github.com/tidymicrobiome/microbiomedataset
@@ -113,6 +115,11 @@ reference:
   - title: Extraction and visualization
     contents:
       - starts_with("extract_")
+      - extract_association_result
+      - extract_network_result
+      - extract_mechanism_result
+      - extract_differential_abundance_result
+      - extract_longitudinal_mixed_effect_result
       - starts_with("melt_")
       - check_tree_link
       - plot_composition
@@ -163,6 +170,12 @@ reference:
       - run_differential_abundance
       - create_longitudinal_mixed_effect_result
       - longitudinal_mixed_effect_result-class
+      - as_tibble_association
+      - as_tibble_network
+      - as_tibble_crossomics_integration
+      - as_tibble_mechanism
+      - as_tibble_differential_abundance
+      - as_tibble_longitudinal_mixed_effect
       - plot_longitudinal_mixed_effect
       - plot_longitudinal_effect_heatmap
       - plot_differential_ma
@@ -218,8 +231,11 @@ reference:
       - infer_metabolic_link
       - standardize_metabolite_annotation
       - standardize_pathway_link
+      - standardize_reaction_link
       - standardize_taxon_pathway_link
+      - standardize_taxon_reaction_link
       - summarise_pathways
+      - summarise_reactions
       - microbiome_metabolome_dataset-class
       - microbe_metabolite_association-class
       - microbe_metabolite_network-class
